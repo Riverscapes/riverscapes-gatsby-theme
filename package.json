@@ -3,7 +3,7 @@
   "private": true,
   "workspaces": [
     "theme",
-    "sites"
+    "sites/*"
   ],
   "description": "Riverscapes website powered by Gatsby and Markdown",
   "version": "0.1.0",

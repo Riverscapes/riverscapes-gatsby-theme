@@ -142,26 +142,6 @@ export const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         html: {},
-        a: {
-          textDecoration: 'none',
-          color: 'inherit',
-          '&:hover': {
-            textDecoration: 'underline',
-          },
-        },
-        // body: {
-        //   p: 0,
-        //   m: 0,
-        // },
-        // a: {
-        //   textDecoration: 'none',
-        //   '&:hover': {
-        //     textDecoration: 'underline',
-        //   },
-        //   '&:visited': {
-        //     textDecoration: 'none',
-        //   },
-        // },
       },
     },
     // Name of the component

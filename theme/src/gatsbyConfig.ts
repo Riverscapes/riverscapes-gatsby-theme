@@ -61,27 +61,27 @@ module.exports = ({ contentPath, manifest }: GatsbyConfigProps) => {
       {
         resolve: `gatsby-plugin-sharp`,
         options: {
-          // defaults: {
-          //   formats: [`auto`, `webp`],
-          //   placeholder: `dominantColor`,
-          //   quality: 50,
-          //   breakpoints: [750, 1080, 1366, 1920],
-          //   backgroundColor: `transparent`,
-          //   tracedSVGOptions: {},
-          //   blurredOptions: {},
-          //   jpgOptions: {},
-          //   pngOptions: {},
-          //   webpOptions: {},
-          //   avifOptions: {},
-          // },
+          defaults: {
+            formats: [`auto`, `webp`],
+            placeholder: `dominantColor`,
+            quality: 50,
+            breakpoints: [750, 1080, 1366, 1920],
+            backgroundColor: `transparent`,
+            tracedSVGOptions: {},
+            blurredOptions: {},
+            jpgOptions: {},
+            pngOptions: {},
+            webpOptions: {},
+            avifOptions: {},
+          },
         },
       },
       {
         resolve: `gatsby-plugin-manifest`,
         options: {
-          name: `Riverscapes Consortium`,
-          short_name: `Riverscapes`,
-          start_url: `/`,
+          name: manifest.name,
+          short_name: manifest.short_name,
+          start_url: manifest.start_url || '/',
           background_color: `#ffffff`,
           // This will impact how browsers show your PWA/website
           // https://css-tricks.com/meta-theme-color-and-trickery/

@@ -16,7 +16,7 @@ const Layout: React.FC<LayoutProps> = ({ location, title, children }) => {
   const isRootPath = location.pathname === rootPath
 
   return (
-    <div>
+    <>
       <CssBaseline />
       <Box className="global-wrapper" data-is-root-path={isRootPath}>
         <StyledEngineProvider injectFirst>
@@ -27,7 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ location, title, children }) => {
           </ThemeProvider>
         </StyledEngineProvider>
       </Box>
-    </div>
+    </>
   )
 }
 

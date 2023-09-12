@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Box, Container, Grid, Typography, useTheme } from '@mui/material'
+import { Box, Container, Grid, Typography } from '@mui/material'
 
 // import Bio from "../components/bio"
 import Layout from '../components/Layout'
@@ -10,10 +10,9 @@ import ImgCard from '../components/ImgCard'
 import MDXRender from '../components/MDXRender'
 import SideNav from '../components/menus/SideNav'
 
-// import PageContent from "../../content/utilities/page.json"
+import defaultImage from '../images/card-image.jpg'
 
 const PageTemplate = ({ data: { site, mdx: page, allMdx: childPages }, children, location }) => {
-  const theme = useTheme()
   const siteTitle = site.siteMetadata?.title || `Title`
   const pageHeading = page.frontmatter.banner ? (
     <Banner title={page.frontmatter.title} />
@@ -25,20 +24,13 @@ const PageTemplate = ({ data: { site, mdx: page, allMdx: childPages }, children,
     return (
       <Grid key={key} item xs={12} md={6} lg={3}>
         <ImgCard
-          img={card.frontmatter.image?.childImageSharp?.gatsbyImageData}
+          img={card.frontmatter.image?.childImageSharp?.gatsbyImageData || defaultImage}
           imgAlt={card.frontmatter.imageAlt}
           to={card.fields.slug}
           heading={card.frontmatter.title}
           headingVariant="h5"
         >
-          <Typography
-            variant="body2"
-            sx={{
-              color: 'white',
-            }}
-          >
-            {card.frontmatter.blurb}
-          </Typography>
+          <Typography variant="body2">{card.frontmatter.blurb}</Typography>
         </ImgCard>
       </Grid>
     )

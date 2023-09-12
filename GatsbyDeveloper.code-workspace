@@ -1,6 +1,14 @@
 {
   "folders": [
     {
+      "name": "🌍 Template Site",
+      "path": "sites/template"
+    },
+    {
+      "name": "🎨 Gatsby Theme",
+      "path": "theme"
+    },
+    {
       "name": "🏠 Home",
       "path": "."
     }    
@@ -24,10 +32,13 @@
       "source.fixAll.eslint": true
     },
     "files.watcherExclude": {
-      "**/node_modules/**": true
+      "**/node_modules/**": true,
+      "**/.cache/**": true
     },
     "search.exclude": {
       "**/node_modules/**": true,
+      "**/.cache/**": true,
+      "**/public/**": true,
       "**/dist/**": true,
     },
     "files.exclude": {
@@ -43,8 +54,7 @@
         "url": "http://localhost:8000",
         "sourceMaps": true,
         "outFiles": [
-          "${workspaceFolder}/site/.cache/**", 
-          "${workspaceFolder}/site/public/**",
+          "${workspaceFolder}/sites/**/.cache/**", 
           "${workspaceFolder}/theme/**",
         ],
       },
@@ -59,8 +69,7 @@
         "sourceMaps": true,
         "cwd": "${workspaceFolder}/sites/template",
         "outFiles": [
-          "${workspaceFolder}/sites/template/.cache/**", 
-          "${workspaceFolder}/sites/template/public/**",
+          "${workspaceFolder}/sites/template/.cache/**",
           "${workspaceFolder}/theme/**",
         ],
         "runtimeArgs": ["--inspect=9229"],

@@ -101,7 +101,10 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
           const { className, href } = props
 
           // For internal targets the MDX plugin renders a little SVG button. we need to leave that alone
-          if (className && className.indexOf('header-link-icon') >= 0) return <a {...props} />
+          if (className && className.indexOf('header-link-icon') >= 0) {
+            console.log('props', props)
+            return <a id={props.href} {...props} />
+          }
 
           return <RSLink to={href} {...(props as any)} />
         },
@@ -142,11 +145,11 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
           <Typography
             component={'blockquote'}
             sx={{
-              color: theme.palette.info.main,
-              fontFamily: '"JetBrains Mono", "Courier New", sans-serif',
               maxWidth: theme.breakpoints.values.xl,
               mt: 4,
-              '& p': {
+              '&,& p': {
+                color: theme.palette.info.main,
+                fontFamily: '"JetBrains Mono", "Courier New", sans-serif',
                 // px: 2,
                 fontSize: '1.95rem',
                 //   margin: [0, 'auto'],

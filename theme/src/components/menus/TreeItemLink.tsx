@@ -17,9 +17,12 @@ const TreeItemLink: React.FC<TreeItemLinkProps> = ({ to, label, children, ...res
   const theme = useTheme()
   return (
     <TreeItem
-      onClick={() => {
-        console.log('TreeItemLink: to', to)
-        navigate(to)
+      onClick={(event) => {
+        if (to.startsWith('#')) {
+          const element = document.getElementById(to)
+          event.preventDefault()
+          element.scrollIntoView()
+        } else navigate(to)
       }}
       sx={{
         '& .MuiTreeItem-content': {

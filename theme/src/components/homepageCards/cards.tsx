@@ -73,7 +73,7 @@ export const HomepageCardContent: React.FC<HomepageCardProps> = ({ children, bac
         '& *': {
           color: background === 'blue' ? 'white' : undefined,
         },
-        '& a': {
+        '& p a, & ul a': {
           color: '#eeeeee',
           textDecoration: 'underline',
         },

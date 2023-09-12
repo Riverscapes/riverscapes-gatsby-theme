@@ -22,6 +22,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import SearchIcon from '@mui/icons-material/Search'
 import { MobileMenu } from '../../types'
 import SideNav from './SideNav'
+import MenuButton from './MenuButton'
 
 interface MainMenuProps {
   mobileMenuState: boolean
@@ -137,7 +138,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ mobileMenuState }) => {
                   >
                     {link.items.map((dropdownItem, itemIndex) => (
                       <MenuItem key={itemIndex} onClick={handleClose} divider>
-                        <Link
+                        <MenuButton
                           to={dropdownItem.url}
                           style={{
                             display: 'flex',
@@ -146,7 +147,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ mobileMenuState }) => {
                         >
                           <KeyboardArrowRightIcon fontSize="small" />
                           {dropdownItem.title}
-                        </Link>
+                        </MenuButton>
                       </MenuItem>
                     ))}
                   </Paper>

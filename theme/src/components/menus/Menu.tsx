@@ -5,7 +5,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import MainMenu from './MainMenu'
-import { Box, Stack } from '@mui/material'
+import { Stack } from '@mui/material'
 import MenuButton from './MenuButton'
 
 interface MenuProps {
@@ -43,20 +43,20 @@ const Menu: React.FC<MenuProps> = ({
 
   const listMenu = (menu) => {
     return menu.map((link, key) => (
-      <Box key={key}>
-        <MenuButton
-          sx={{
-            color: 'white',
-            p: 0,
-            '&:hover': {
-              textDecoration: 'underline',
-            },
-          }}
-          to={link.url}
-        >
-          {link.title}
-        </MenuButton>
-      </Box>
+      <MenuButton
+        key={key}
+        sx={{
+          color: 'white',
+          justifyContent: 'flex-start',
+          p: 0,
+          '&:hover': {
+            textDecoration: 'underline',
+          },
+        }}
+        to={link.url}
+      >
+        {link.title}
+      </MenuButton>
     ))
   }
 

@@ -45,7 +45,10 @@ const SideNav: React.FC<SideNavProps> = ({
     return (
       <TreeItemLink key={currentKey} nodeId={`${currentKey}`} to={nodesItem.url} label={nodesItem.title}>
         {nodesMenu.items && Array.isArray(nodesMenu.items)
-          ? nodesMenu.items.map((node, nodekey) => renderTree(node, `${level}${nodekey}`, nextLevel))
+          ? nodesMenu.items.map((node, nodekey) => {
+              console.log(node)
+              return renderTree(node, `${level}${nodekey}`, nextLevel)
+            })
           : null}
       </TreeItemLink>
     )

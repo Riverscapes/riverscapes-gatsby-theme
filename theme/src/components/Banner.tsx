@@ -23,6 +23,7 @@ const Banner: React.FC<BannerProps> = ({ title }) => {
       }}
     >
       <Container
+        maxWidth="xl"
         sx={{
           paddingLeft: 2,
           paddingRight: 2,

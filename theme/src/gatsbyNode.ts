@@ -1,4 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+
+import { graphql } from 'gatsby'
+
 /**
  * Implement Gatsby's Node APIs in this file.
  *
@@ -94,7 +97,27 @@ const onCreateNode = ({ node, getNode, actions }) => {
   }
 }
 
+const createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+
+  createTypes(`
+    type Mdx implements Node {
+      frontmatter: MdxFrontmatter!
+    }
+    type MdxFrontmatter {
+      title: String
+      description: String
+      blurb: String
+      date(formatString: String): String
+      isHome: Boolean
+      image: File @fileByRelativePath
+      imageAlt: String
+    }
+  `)
+}
+
 module.exports = {
   createPages,
   onCreateNode,
+  createSchemaCustomization,
 }

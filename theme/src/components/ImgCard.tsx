@@ -5,7 +5,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
-import { Box, Card, CardActionArea, CardContent, Typography } from '@mui/material'
+import { Box, Card, CardActionArea, CardContent, Typography, useTheme } from '@mui/material'
 
 interface ImgCardProps {
   to: string
@@ -17,6 +17,7 @@ interface ImgCardProps {
 }
 
 const ImgCard: React.FC<ImgCardProps> = ({ to, img, imgAlt, heading, headingVariant, children }) => {
+  const theme = useTheme()
   return (
     <Card>
       <CardActionArea component={Link} to={to}>
