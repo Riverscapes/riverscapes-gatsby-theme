@@ -13,7 +13,7 @@
     "riverscapes"
   ],
   "scripts": {
-    "build": "yarn workspace @riverscapes/gatsby-theme build; yarn workspace @riverscapes/template-rootsite build",
+    "build": "yarn workspace @riverscapes/gatsby-theme build; yarn workspace @riverscapes/developer-site build",
     "watch": "yarn workspace @riverscapes/gatsby-theme start",
     "start": "yarn workspace @riverscapes/developer-site start",
     "publish": "yarn workspace @riverscapes/gatsby-theme publish"
