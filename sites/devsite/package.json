@@ -1,12 +1,12 @@
 {
-  "name": "@riverscapes/template-clean",
+  "name": "@riverscapes/developer-site",
   "description": "Riverscapes website powered by Gatsby and Markdown",
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
   "author": "Matt Reimer <matt@northarrowresearch.com>",
   "dependencies": {
-    "@riverscapes/gatsby-theme": "latest",
+    "@riverscapes/gatsby-theme": "*",
     "gatsby": "^5.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -15,7 +15,7 @@
   "scripts": {
     "build": "gatsby build",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "gatsby develop -p 8000 -o",
+    "start": "gatsby develop -p 8000",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"

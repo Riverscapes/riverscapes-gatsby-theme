@@ -1,108 +1,32 @@
-# Riverscape Website
+# Riverscape Gatsby Theme
 
-## Content
+#### This site has a few different packages:
 
-### MDX
+* `/theme` `@riverscapes/gatsby-theme` - The theme that is used to build the site.
+* `/sites/template` `@riverscapes/developer-site` - Working copy of the gatsby site to help debug problems and test new versions
+* `/sites/template` `@riverscapes/template-clean` - Clean template to use when creating new sites
 
-- /content/page/ - All pages
-- /content/utilities/ - Footer content
+## Developing
 
-All MDX pages must have a Heading2 text at the top. This is used in code that loops (maps) over the content pages.
+### Starting out
 
-To add cards to the bottom of an MDX page, simply add subfolders into the folder containing the parent MDX file. Copy the format from the existing subpages.
+1. Clone the repo
+2. Open the `GatsbyDeveloper.code-workspace` file in VSCode
+3. In a terminal run `yarn install` at the root of the repo
+4. Run `yarn build` to create the `dist` folder and copy the files over
 
-Markdown images in MDX files should be placed directly in the same folder as the MDX page that uses them.
+### Themeing / CSS Work
 
-### Image
-- /src/images
+For most cases you shouldn't need to do node debugging.
 
-## Build
-Develop: `gatsby develop`
+1. In one terminal window run `yarn watch` in the root folder. This will compile typescript react components as you type.
+2. In a separate terminal window `yarn start`. This will start the gatsby developer site (`@riverscapes/developer-site`) in development mode. It will watch for changes and reload the browser automatically.
+3. (Optional) In VSCode navigate to the "Run and Debug" sidebar and select "Debug Using Chrome". This will allow you to set breakpoints in the browser and debug the react components.
 
-Production build: `gatsby build` 
-- /public folder
+### Advanced developement
 
-## Custom components for MDX use
-### Button 
-- MUI contained button with Gatsby Link integration, use for internal links
-    - attribute:
-        - to: *string* - page link
-        - children: *node* - button content
+In some very rare cases there will be an issue with `gatsby-node.js` or some `graphql` problem that you need to debug at the node level. In this case you will need to run "Debug Gatsby Node API" from the "Run and Debug" sidebar. This will start the gatsby site in debug mode with NODE breakpoints enabled and allow you to set breakpoints in the node code. THEMEING AND REACT WORK SHOULD NOT NEED THIS.
 
-### Card
-- MUI card with image, with Gatsby Link integration
-    - attribute:
-        - to: *string* - page link
-        - img: *object* - image object
-        - imgAlt: *string* - image alt text
-        - heading: *string* - card headline
-        - headingVariant: *oneOf h1, h2, h3, h4, h5* - headline variant using MUI typography
-        - children: *node* - Card content
+### Notes
 
-### Hero
-- Homepage hero component
-    - attribute:
-        - image: *object* - image object
-        - children: *node* *array of node* - Content
-
-### HomepageCard
-- Homepage media and text
-- Three use cases:
-    1. Stats media and text
-    2. Quote media and text
-    3. Image media and text
-- Consists of [HomepageCardContent](#Homepagecardcontent) and [HomepageCardHighlight](#homepagecardhighlight)
-- Attributes:
-    - children: *node* - Content
-
-#### HomepageCardContent
-- Use exclusively inside [HomepageCard](#homepagecard)
-- Left side content region
-- attributes:
-    - background: *oneOf blue, white* - Different background option
-        - *blue* for blue texture background with white text
-        - *white* for white background with black text
-    - children: *node* or *array node* - content
-
-
-#### HomepageCardHighlight
-- Use exclusively inside [HomepageCard](#homepagecard)
-- Right side content region
-- attribute:
-    - type: *oneOf image, text* - Options for image or text
-        - *text* for Statistics or Quote
-        - *image* for image
-    - alignment: *oneOf center, left* - Text alignment, default left
-    - children: *node* or *array node* - children
-
-##### HomepageCardStat
-- Use exclusively inside [HomepageCardHighlight](#homepagecardcontent)
-- Use for displaying stats in large text and small size label
-- attribute: 
-    - value: *string* - number
-    - label: *string* - label
-
-## MUI components for MDX use
-### [Container](https://mui.com/material-ui/react-container/)
-- Use for defining region
-- maxWidth="xl" for max content region width
-### [Grid](https://mui.com/material-ui/react-grid/)
-
-## Menu / Navigation
-
-Header menu and footer link menu are managed through `menuLinks` in [`gatsby-config.js`](gatsby-config.js)
-
-## Footer
-
-Footer content is updated through [`footer.json`](content/utilities/footer.json) in `content/utilities`
-
-Note the footer gets the top level menu links from [`gatsby-config.js`](gatsby-config.js). It doesn't pull the second or third menu levels.
-
-# More Resources
-
-- [Gatsby Project Structure](https://www.gatsbyjs.com/docs/reference/gatsby-project-structure/)
-- [How to populate text using MUI typography](https://mui.com/material-ui/api/typography/)
-- how to add more cards to a page - card and MUI grid, container for max region width
-- how to update the main nav - identified in menu readme
-- how to update the footer info - menu above and footer readme.
-- Make sure you have the MDX extension for Visual Studio Code installed for linting.
+- If you add or change the location of theme images (just images in the `/theme/src/images` folder) you will need to run `yarn build` again to copy them into the `dist` folder. Any other image in the `sites` folder should build automatically

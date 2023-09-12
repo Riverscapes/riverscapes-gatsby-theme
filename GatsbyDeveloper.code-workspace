@@ -1,7 +1,11 @@
 {
   "folders": [
     {
-      "name": "🌍 Template Site",
+      "name": "🧰 Developer Site",
+      "path": "sites/devSite"
+    },
+    {
+      "name": "🌍 Clean Template Site",
       "path": "sites/template"
     },
     {

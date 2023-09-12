@@ -2,21 +2,19 @@ import { GatsbyConfig } from 'gatsby'
 
 module.exports = {
   siteMetadata: {
-    title: `Riverscapes Gatsby Demo`,
+    title: `Riverscapes Developer Site`,
     author: {
       name: `Matt Reimer`,
     },
-    // You need pathPrefix if you're hosting GitHub Pages at a Project Pages or if your
-    // site will live at a subdirectory like https://example.com/mypathprefix/.
-    // pathPrefix: '/mypathprefix',
+    pathPrefix: '/riverscapes-gatsby-theme',
     description: ``,
-    siteUrl: `https://YOURSITEURLHERE`,
+    siteUrl: `https://riverscapes.github.io/riverscapes-gatsby-theme/`,
     social: {
       twitter: `RiverscapesC`,
     },
     menuLinks: [
       {
-        title: 'Menu Item 1',
+        title: 'About us',
         url: '/about-us',
         items: [
           {
@@ -30,7 +28,7 @@ module.exports = {
         ],
       },
       {
-        title: 'Menu Item 2',
+        title: 'Our work',
         url: '/our-work/',
         items: [
           {
@@ -52,7 +50,7 @@ module.exports = {
         ],
       },
       {
-        title: 'Menu Item 3',
+        title: 'Impact stories',
         url: '/',
       },
       {
@@ -79,9 +77,9 @@ module.exports = {
       options: {
         contentPath: `${__dirname}/content/page`,
         manifest: {
-          name: `Riverscapes Gatsby Demo Site`,
-          short_name: `RiverscapesDemo`,
-          start_url: `/`,
+          name: `Riverscapes Developer Site`,
+          short_name: `RiverscapesDEV`,
+          start_url: `/riverscapes-gatsby-theme`,
         },
       },
     },
