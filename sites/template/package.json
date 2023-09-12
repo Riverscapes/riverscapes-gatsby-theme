@@ -1,5 +1,5 @@
 {
-  "name": "@riverscapes/gatsby-rootsite",
+  "name": "@riverscapes/template-rootsite",
   "description": "Riverscapes website powered by Gatsby and Markdown",
   "version": "0.1.0",
   "private": true,

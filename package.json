@@ -14,7 +14,8 @@
   ],
   "scripts": {
     "build": "yarn workspace @riverscapes/gatsby-theme build",
-    "watch": "yarn workspace @riverscapes/gatsby-theme watch"
+    "watch": "yarn workspace @riverscapes/gatsby-theme watch",
+    "publish": "yarn workspace @riverscapes/gatsby-theme publish"
   },
   "devDependencies": {
     "gatsby": "^5.10.0",

@@ -3,6 +3,9 @@
   "description": "Riverscapes website powered by Gatsby and Markdown",
   "version": "0.1.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.js",
   "author": "Michael Kam <work@michaelkam.com>",
   "dependencies": {
