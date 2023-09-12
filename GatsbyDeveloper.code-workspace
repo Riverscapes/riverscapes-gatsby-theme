@@ -1,0 +1,75 @@
+{
+  "folders": [
+    {
+      "name": "🏠 Home",
+      "path": "."
+    }    
+  ],
+  "settings": {
+    "window.title": "riverscapes.net GATSBY -${separator}${activeEditorShort}${separator}${rootName}",
+    "jest.disabledWorkspaceFolders": [
+      "📖 Docs",
+      "📱 App",
+      "🧬 Schema",
+      "🏠 Home",
+    ],
+    "css.lint.validProperties": ["composes"],
+    "workbench.colorCustomizations": {
+			"titleBar.activeBackground": "#001768",
+      "sideBar.background": "#242132",
+			"editor.background": "#1e1c2c"
+		},
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "files.watcherExclude": {
+      "**/node_modules/**": true
+    },
+    "search.exclude": {
+      "**/node_modules/**": true,
+      "**/dist/**": true,
+    },
+    "files.exclude": {
+      "**/node_modules/**": true
+    }
+  },
+  "launch": {
+    "configurations": [
+      {
+        "type": "chrome",
+        "name": "Debug Using Chrome",
+        "request": "launch",
+        "url": "http://localhost:8000",
+        "sourceMaps": true,
+        "outFiles": [
+          "${workspaceFolder}/site/.cache/**", 
+          "${workspaceFolder}/site/public/**",
+          "${workspaceFolder}/theme/**",
+        ],
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Debug Gatsby Node API",
+        "console": "integratedTerminal",
+        "program": "${workspaceFolder}/node_modules/.bin/gatsby",
+        "runtimeExecutable": "${env:NVM_BIN}/node",
+        "args": ["develop"],
+        "sourceMaps": true,
+        "cwd": "${workspaceFolder}/sites/template",
+        "outFiles": [
+          "${workspaceFolder}/sites/template/.cache/**", 
+          "${workspaceFolder}/sites/template/public/**",
+          "${workspaceFolder}/theme/**",
+        ],
+        "runtimeArgs": ["--inspect=9229"],
+      }
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "unifiedjs.vscode-mdx"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+src
+scripts
+content
+public
+static
+scripts
+
+__test__
+*.fixture.*
+*.test.*
+.cache
+.github
+.yarn
+.vscode
+.babelrc
+.eslintrc
+logs

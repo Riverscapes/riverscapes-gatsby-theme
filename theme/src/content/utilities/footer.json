@@ -1,0 +1,12 @@
+{
+    "contact": {
+        "heading": "Contact",
+        "content": "123 Street Name, City, XXX XXX, Country<br />E-mail: email@riverscapes.net"
+    },
+    "link": {
+        "heading": "Link"
+    },
+    "follow": {
+        "heading": "Follow Us"
+    }
+}

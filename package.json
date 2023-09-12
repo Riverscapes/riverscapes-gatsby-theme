@@ -1,0 +1,25 @@
+{
+  "name": "@riverscapes/gatsby",
+  "private": true,
+  "workspaces": [
+    "theme",
+    "sites"
+  ],
+  "description": "Riverscapes website powered by Gatsby and Markdown",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Matt Reimer <matt@northarrowresearch.com>",
+  "keywords": [
+    "riverscapes"
+  ],
+  "scripts": {
+    "build": "yarn workspace @riverscapes/gatsby-theme build",
+    "watch": "yarn workspace @riverscapes/gatsby-theme watch"
+  },
+  "devDependencies": {
+    "gatsby": "^5.10.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.7.2"
+  }
+}
