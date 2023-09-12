@@ -60,8 +60,8 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            public
-            .cache
+            ./sites/devSite/public
+            ./sites/devSite/.cache
           key: ${{ runner.os }}-gatsby-build-${{ hashFiles('public') }}
           restore-keys: |
             ${{ runner.os }}-gatsby-build-
@@ -75,7 +75,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./sites/devSite/public
-          
+
   # Deployment job
   deploy:
     environment:
