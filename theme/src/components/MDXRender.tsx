@@ -102,7 +102,6 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
 
           // For internal targets the MDX plugin renders a little SVG button. we need to leave that alone
           if (className && className.indexOf('header-link-icon') >= 0) {
-            console.log('props', props)
             return <a id={props.href} {...props} />
           }
 

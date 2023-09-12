@@ -6,6 +6,8 @@ module.exports = {
     author: {
       name: `Matt Reimer`,
     },
+    // Just leave this empty ('') if you don't want a help widget in the footer
+    helpWidgetId: '153000000178',
     pathPrefix: '/riverscapes-gatsby-theme',
     description: ``,
     siteUrl: `https://riverscapes.github.io/riverscapes-gatsby-theme/`,

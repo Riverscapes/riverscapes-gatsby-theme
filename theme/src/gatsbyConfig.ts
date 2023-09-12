@@ -87,7 +87,7 @@ module.exports = ({ contentPath, manifest }: GatsbyConfigProps) => {
           // https://css-tricks.com/meta-theme-color-and-trickery/
           // theme_color: `#663399`,
           display: `minimal-ui`,
-          icon: `${srcRoot}/images/favicon/data-exchange-icon-64x64.png`, // This path is relative to the root of the site.
+          icon: manifest.iconUrl || `${srcRoot}/images/favicon/data-exchange-icon-64x64.png`, // This path is relative to the root of the site.
         },
       },
     ],

@@ -5,7 +5,7 @@ description: "Demo Page where you can see how to do things"
 banner: true
 ---
 
-# Gatsby special markdown syntax
+# Gatsby special markdown syntaxs
 
 ## Baked-in Components
 
@@ -47,6 +47,8 @@ You can easily use remark syntax for links
 
 ### Internal Links
 
+### Relative Internal Links
+
 You can either use the markdown syntax or the `<Link />` component
 
 * [About us Link](../about-us) `[About us Link](../about-us)`
@@ -54,6 +56,15 @@ You can either use the markdown syntax or the `<Link />` component
 
 **NOTE: Don't use the `<a>` tag. It will not render properly:**
   * <a href='../about-us'>About us Link</a> `<a href='./about-us'>About us Link</a>`
+
+### Absolute Internal Links
+
+You can either use the markdown syntax or the `<Link />` component
+
+* [About us Link](/about-us) `[About us Link](/about-us)`
+* <Link to='/about-us'>About us Link</Link> `<Link to='/about-us'>About us Link</Link>`
+
+**NOTE: Once again don't use the `<a>` tag. It will not render or link properly.**
 
 ### External Links
 
@@ -133,12 +144,12 @@ You can just use Markdown's remark syntax for external images:
 ![Kitten](https://placekitten.com/200/300)
 ```
 
-Or if you need a bit more control you can use the HTML
+Or if you need a bit more control you can use the `<img />` HTML syntax
 
-<img src='https://placekitten.com/200/300' />
+<img src='https://placekitten.com/200/300' style={{border: '20px solid orange'}} />
 
 ```markdown
-<img src='https://placekitten.com/200/300' />
+<img src='https://placekitten.com/200/300' style={{border: '20px solid orange'}} />
 ```
 
 # Markdown StyleGuide
@@ -224,7 +235,7 @@ def add(a, b):
 [MUI Core](https://mui.com/material-ui/getting-started/) is a ReactJS implementation of Google's Material Design. It's a very powerful library and we use it extensively. It's also very well documented. You can find a lot of information [on their site](https://mui.com/material-ui/getting-started/).
 
 
-* Do not use the `<Container />` component as it will fight with the site's template and responsiveness
+* Do not use the `<Container />` anywhere unless the `isHome: true` frontmatter is set or it will fight with the site's template and responsiveness.
 
 ## Stack
 

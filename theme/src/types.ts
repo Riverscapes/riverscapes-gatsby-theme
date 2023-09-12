@@ -21,4 +21,5 @@ export type SiteManifest = {
   name: string
   short_name: string
   start_url: string
+  iconUrl?: string
 }

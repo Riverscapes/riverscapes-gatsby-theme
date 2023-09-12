@@ -2,7 +2,7 @@
  * Footer component
  */
 
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link as GatsbyLink, useStaticQuery, graphql } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import Menu from './menus/Menu'
@@ -22,38 +22,30 @@ const stylesThunk = (theme: Theme): Record<string, SxProps<Theme>> => ({
   },
   container: {
     position: 'relative',
-    flexDirection: {
-      xs: 'column',
-      md: 'row',
-    },
-    flexWrap: {
-      xs: 'nowrap',
-      md: 'wrap',
-    },
-    '@media (min-width: 680px) and (max-width: 979px)': {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      '& > *': {
-        flex: 1,
-      },
-      '& :nth-of-type(1)': {
-        flex: '0 0 100%',
-      },
-    },
-    '@media (min-width: 980px)': {
-      flexDirection: 'row',
-    },
   },
 })
 
+// In order to use the Freshworks widget, we need to declare the global
+declare global {
+  interface Window {
+    fwSettings: {
+      widget_id: number
+      // Add other properties if needed
+    }
+    FreshworksWidget: (...args: any[]) => void
+  }
+}
+
 const Footer: React.FC = () => {
   const theme = useTheme()
+  const boxRef = useRef(null) // Create a ref for the <Box> element
   const styles = stylesThunk(theme)
 
   const data = useStaticQuery(graphql`
     query Query {
       site {
         siteMetadata {
+          helpWidgetId
           social {
             twitter
           }
@@ -64,6 +56,27 @@ const Footer: React.FC = () => {
 
   // Set these values by editing "siteMetadata" in gatsby-config.js
   const social = data.site.siteMetadata?.social
+  const hasHelpWidget = data.site.siteMetadata?.helpWidgetId !== undefined
+  const helpWidgetId = data.site.siteMetadata?.helpWidgetId
+
+  useEffect(() => {
+    if (!helpWidgetId) return
+    // Configure Freshworks widget settings
+    window.fwSettings = {
+      widget_id: 153000000178,
+    }
+
+    const script = document.createElement('script')
+    script.type = 'text/javascript'
+    script.src = `https://widget.freshworks.com/widgets/${helpWidgetId}.js`
+    script.async = true
+    script.defer = true
+
+    // Append the script to the DOM element inside the <Box>
+    if (boxRef.current) {
+      boxRef.current.appendChild(script)
+    }
+  }, [helpWidgetId]) // Empty dependency array means this effect runs once after the initial render
 
   return (
     <Box component="footer" sx={styles.wrapper}>
@@ -83,7 +96,7 @@ const Footer: React.FC = () => {
       />
       <Container maxWidth={'xl'} sx={styles.container}>
         <Stack
-          direction="row"
+          direction={{ md: 'row', lg: 'column' }}
           spacing={4}
           gap={4}
           sx={{ width: '100%', my: 8 }}
@@ -108,6 +121,7 @@ const Footer: React.FC = () => {
               {footerContent.contact.heading}
             </Typography>
             <Typography variant="body1" dangerouslySetInnerHTML={{ __html: footerContent.contact.content }} />
+            {hasHelpWidget && <Box ref={boxRef}>{/* Your other content */}</Box>}
           </Box>
           <Box>
             <Typography variant="h3" paragraph sx={{ color: 'inherit' }}>

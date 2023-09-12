@@ -14,7 +14,9 @@ export const Copyright: React.FC = () => {
         justifyContent={'flex-end'}
         alignItems={'center'}
         gap={3}
+        onClick={() => window.open(`https://creativecommons.org/licenses/by/4.0/`, '_blank')}
         sx={{
+          cursor: 'pointer',
           color: 'white',
           p: [2, 'auto'],
         }}
@@ -25,7 +27,6 @@ export const Copyright: React.FC = () => {
           src="../images/icon-copyright.png"
           width={36}
           quality={100}
-          onClick={() => window.open(`https://creativecommons.org/licenses/by/4.0/`, '_blank')}
           alt="copyright logo"
           placeholder="none"
         />
@@ -33,13 +34,14 @@ export const Copyright: React.FC = () => {
           layout={'constrained'}
           formats={['auto', 'webp', 'avif']}
           src="../images/icon-person.png"
-          onClick={() => window.open(`https://creativecommons.org/licenses/by/4.0/`, '_blank')}
           width={36}
           quality={100}
           alt="Person logo"
           placeholder="none"
         />
-        <Typography variant="body1">Riverscapes Consortium</Typography>
+        <Typography variant="body1" sx={{ '&, & *': { color: 'white' } }}>
+          Riverscapes Consortium
+        </Typography>
       </Stack>
     </Container>
   )
