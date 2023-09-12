@@ -1,11 +1,3 @@
-src
-!src/templates/*
-scripts
-content
-public
-static
-scripts
-
 __test__
 *.fixture.*
 *.test.*

@@ -19,7 +19,7 @@
     "target": "ES5",
     "outDir": "./dist"
   },
-  "include": ["./src/gatsby"],
+  "include": ["./src"],
   "exclude": [
     "**/dist/**",
     "node_modules",
