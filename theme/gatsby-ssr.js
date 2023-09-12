@@ -4,7 +4,9 @@
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/
  */
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const ssrImport = require('./dist/gatsbySSR')
-
-export const onRenderBody = ssrImport.onRenderBody
+/**
+ * @type {import('gatsby').GatsbySSR['onRenderBody']}
+ */
+export const onRenderBody = ({ setHtmlAttributes }) => {
+  setHtmlAttributes({ lang: `en` })
+}
