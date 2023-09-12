@@ -27,6 +27,13 @@ For most cases you shouldn't need to do node debugging.
 
 In some very rare cases there will be an issue with `gatsby-node.js` or some `graphql` problem that you need to debug at the node level. In this case you will need to run "Debug Gatsby Node API" from the "Run and Debug" sidebar. This will start the gatsby site in debug mode with NODE breakpoints enabled and allow you to set breakpoints in the node code. THEMEING AND REACT WORK SHOULD NOT NEED THIS.
 
+### Publishing to NPM
+
+1. `yarn npm login`
+2. `yarn workspace @riverscapes/gatsby-theme version`
+3. `yarn workspace @riverscapes/gatsby-theme npm tag`
+4. `yarn workspace @riverscapes/gatsby-theme npm publish`
+
 ### Notes
 
 - If you add or change the location of theme images (just images in the `/theme/src/images` folder) you will need to run `yarn build` again to copy them into the `dist` folder. Any other image in the `sites` folder should build automatically
