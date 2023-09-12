@@ -29,9 +29,9 @@ In some very rare cases there will be an issue with `gatsby-node.js` or some `gr
 
 ### Publishing to NPM
 
-1. `yarn npm login`
-2. `yarn workspace @riverscapes/gatsby-theme version`
-3. `yarn workspace @riverscapes/gatsby-theme npm tag`
+1. `yarn workspace @riverscapes/gatsby-theme version patch` (You can use patch or minor or major as appropriate)
+2. Git commit and push all package.json changes
+3. `yarn npm login` - Log into NPM
 4. `yarn workspace @riverscapes/gatsby-theme npm publish`
 
 ### Notes
