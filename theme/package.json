@@ -1,7 +1,7 @@
 {
   "name": "@riverscapes/gatsby-theme",
   "description": "Riverscapes website powered by Gatsby and Markdown",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
