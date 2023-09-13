@@ -23,6 +23,14 @@ For most cases you shouldn't need to do node debugging.
 2. In a separate terminal window `yarn start`. This will start the gatsby developer site (`@riverscapes/developer-site`) in development mode. It will watch for changes and reload the browser automatically.
 3. (Optional) In VSCode navigate to the "Run and Debug" sidebar and select "Debug Using Chrome". This will allow you to set breakpoints in the browser and debug the react components.
 
+### Testing [pathPrefixes](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/) locally
+
+If you're planning to use a [pathPrefix](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/) in order to run Gatsby in a domain's subfolder you may notice some broken links and need to test it locally. 
+
+1. Make sure `pathPrefix` is set correctly in `gatsby-config.js` in the site you're testing.
+2. Run `yarn build` in the root folder. This command includes `--prefix-paths` which is required for the pathPrefix to work.
+3. Run `yarn serve` in the root folder. This will serve the site locally at `http://localhost:9000/MYPREFIX` and you can test the links.
+
 ### Advanced developement
 
 In some very rare cases there will be an issue with `gatsby-node.js` or some `graphql` problem that you need to debug at the node level. In this case you will need to run "Debug Gatsby Node API" from the "Run and Debug" sidebar. This will start the gatsby site in debug mode with NODE breakpoints enabled and allow you to set breakpoints in the node code. THEMEING AND REACT WORK SHOULD NOT NEED THIS.

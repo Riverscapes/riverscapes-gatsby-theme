@@ -28,7 +28,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -45,20 +44,30 @@ jobs:
             exit 1
           fi
 
-      # Install a version of Node that matches the one used in the Gatsby build .nvmrc
+      # Install a version of Node that matches the one used in the Gatsby build
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: "18"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
 
+      # NOTE: If you are deploying anywhere but Github pages this step will need to change
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
+        with:
+          # Automatically inject pathPrefix in your Gatsby configuration file.
+          #
+          # You may remove this line if you want to manage the configuration yourself.
+          static_site_generator: gatsby
+
       # Having a cache can save us a lot of time when installing dependencies
       - name: Restore cache
         uses: actions/cache@v3
         with:
           path: |
-            ./sites/devsite/public
-            ./sites/devsite/.cache
+            public
+            .cache
           key: ${{ runner.os }}-gatsby-build-${{ hashFiles('public') }}
           restore-keys: |
             ${{ runner.os }}-gatsby-build-
@@ -67,6 +76,7 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
+      # NOTE: WE assume that the --prefix-paths flag is set inside package.json so any links will work on GitHub Pages
       - name: Build with Gatsby
         env:
           PREFIX_PATHS: 'true'
@@ -75,7 +85,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./sites/devsite/public
+          # Change this to the path of your build directory if it is different
+          path: ./public
 
   # Deployment job
   deploy:

@@ -54,21 +54,29 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: gatsby
+
+      # Having a cache can save us a lot of time when installing dependencies
       - name: Restore cache
         uses: actions/cache@v3
         with:
           path: |
-            public
-            .cache
+            ./sites/devsite/public
+            ./sites/devsite/.cache
           key: ${{ runner.os }}-gatsby-build-${{ hashFiles('public') }}
           restore-keys: |
             ${{ runner.os }}-gatsby-build-
+
+      # This is the yarn install step
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+
+
       - name: Build with Gatsby
         env:
           PREFIX_PATHS: 'true'
         run: ${{ steps.detect-package-manager.outputs.manager }} run build
+
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:

@@ -1,14 +1,14 @@
 import { GatsbyConfig } from 'gatsby'
 
 module.exports = {
+  // You need pathPrefix if you're hosting GitHub Pages at a Project Pages or if your
+  // site will live at a subdirectory like https://example.com/mypathprefix/.
+  // pathPrefix: '/mypathprefix',
   siteMetadata: {
     title: `Riverscapes Gatsby Demo`,
     author: {
       name: `Matt Reimer`,
     },
-    // You need pathPrefix if you're hosting GitHub Pages at a Project Pages or if your
-    // site will live at a subdirectory like https://example.com/mypathprefix/.
-    // pathPrefix: '/mypathprefix',
     description: ``,
     siteUrl: `https://YOURSITEURLHERE`,
     social: {

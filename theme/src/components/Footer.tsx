@@ -96,7 +96,7 @@ const Footer: React.FC = () => {
       />
       <Container maxWidth={'xl'} sx={styles.container}>
         <Stack
-          direction={{ md: 'row', lg: 'column' }}
+          direction={{ md: 'column', lg: 'row' }}
           spacing={4}
           gap={4}
           sx={{ width: '100%', my: 8 }}

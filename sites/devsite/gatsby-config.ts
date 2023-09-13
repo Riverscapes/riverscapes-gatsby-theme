@@ -1,6 +1,10 @@
 import { GatsbyConfig } from 'gatsby'
 
 module.exports = {
+  // You need pathPrefix if you're hosting GitHub Pages at a Project Pages or if your
+  // site will live at a subdirectory like https://example.com/mypathprefix/.
+  // pathPrefix: '/mypathprefix',
+  pathPrefix: '/riverscapes-gatsby-theme',
   siteMetadata: {
     title: `Riverscapes Developer Site`,
     author: {
@@ -8,7 +12,6 @@ module.exports = {
     },
     // Just leave this empty ('') if you don't want a help widget in the footer
     helpWidgetId: '153000000178',
-    pathPrefix: '/riverscapes-gatsby-theme',
     description: ``,
     siteUrl: `https://riverscapes.github.io/riverscapes-gatsby-theme/`,
     social: {
