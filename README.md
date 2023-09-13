@@ -1,5 +1,8 @@
 # Riverscape Gatsby Theme
 
+* The demo site can be seen HERE: <https://riverscapes.github.io/riverscapes-gatsby-theme/>
+* The Feature explainer and styleguide is here: <https://riverscapes.github.io/riverscapes-gatsby-theme/demo/>
+
 #### This site has a few different packages:
 
 * `/theme` `@riverscapes/gatsby-theme` - The theme that is used to build the site.

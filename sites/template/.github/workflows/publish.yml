@@ -44,7 +44,7 @@ jobs:
             exit 1
           fi
 
-      # Install a version of Node that matches the one used in the Gatsby build
+      # Install a version of Node that matches the one used in the Gatsby build .nvmrc
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
