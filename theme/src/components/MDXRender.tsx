@@ -2,15 +2,12 @@ import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
 import { Box, Divider, Stack, Grid, Typography, useTheme, Alert } from '@mui/material'
 import 'prismjs/themes/prism-dark.css'
-// import Bio from "../components/bio"
 import Button from './RSLinkButton'
 import { RSLink } from './RSLink'
 import { StoryCard } from './StoryCard'
 import Hero from '../components/Hero'
 import { YoutubeEmbed } from '../components/YoutubeEmbed'
 import HomepageCard, { HomepageCardContent, HomepageCardHighlight, HomepageCardStat } from '../components/homepageCards'
-
-// import PageContent from "../../content/utilities/page.json"
 
 const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
   const theme = useTheme()
@@ -136,10 +133,6 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
             {children}
           </Typography>
         ),
-        // iframe: (props) => {
-        //   // iframes that get pasted in have allkinds of problems
-        //   const { allowfullscreen, frameborder, ...rest } = props
-        // },
         blockquote: ({ children }) => (
           <Typography
             component={'blockquote'}

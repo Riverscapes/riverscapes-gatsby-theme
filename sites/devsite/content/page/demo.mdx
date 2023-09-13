@@ -101,21 +101,37 @@ Internal images can come from several different places
 
 ### 1. Relative to the `.mdx` file
 
-Using a relative path to navigate relative to the mdx file.
+Using a relative path to navigate relative to the mdx file (Note the dot slash `./` which means relative to the current path)
 
 ![DemoStatic](./demoRelative.jpg)
+```html
+![DemoStatic](./demoRelative.jpg)
+```
 
-You will notice that 
+You will notice that `<img>` tags won't work for this method because the path lookup doesn't work. We may fix this at some future point but for now you're stuck with it.
 <img src='./demoRelative.jpg' alt="this doesn't work" />
 
 ```
-![DemoStatic](./demoRelative.jpg)
-
-// NOTE: <img> tags won't work for this
 <img src='./demoRelative.jpg' alt="this doesn't work" />  <------ NO!
 ```
 
-### 2. In the static folder
+### 2. Relative to the site root
+
+Using an absolute path to navigate relative to the site root. (Note the slash `/` which means relative to the site root)
+
+![DemoStatic](/demoRelative.jpg)
+```html
+![DemoStatic](/demoRelative.jpg)
+```
+
+You will notice that, unlike paths relative to the mdx file, the `<img />` tag works here.
+
+<img src='/demoRelative.jpg' alt="this doesn't work" />
+```
+<img src='/demoRelative.jpg' alt="this doesn't work" />
+```
+
+### 3. In the static folder
 
 You can also put images in the `static` folder at the root of your site and reference them from there. **You must use an absolute path for that**.
 
