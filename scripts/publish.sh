@@ -1,10 +1,11 @@
 #!/bin/bash
 
-cd packages/@riverscapes/gatsby-theme
+cd theme
 yarn version patch
-VERSION=$(yarn -s version --no-git-tag-version)
-git add .
-git commit -m "version bump to $VERSION"
+VERSION=$(node -p "require('./package.json').version")
+git add package.json
+git add ../.yarn/versions
+git commit -m "Version bump to $VERSION and PUBLISH"
 git tag $VERSION
 git push
 git push --tags
