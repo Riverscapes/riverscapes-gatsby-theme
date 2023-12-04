@@ -16,7 +16,7 @@
     "build": "yarn workspace @riverscapes/gatsby-theme build; yarn workspace @riverscapes/developer-site build",
     "watch": "yarn workspace @riverscapes/gatsby-theme start",
     "start": "yarn workspace @riverscapes/developer-site start",
-    "publish": "yarn workspace @riverscapes/gatsby-theme publish"
+    "publish": "sh scripts/publish.sh"
   },
   "devDependencies": {
     "gatsby": "^5.10.0",
