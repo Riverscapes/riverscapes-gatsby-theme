@@ -1,0 +1,302 @@
+---
+title: Demo & Styleguide
+date: "2023-05-20T22:12:03.284Z"
+description: "Demo Page where you can see how to do things"
+banner: true
+---
+
+# Gatsby special markdown syntaxs
+
+## Baked-in Components
+
+Some components you can use without importing anything:
+
+* **Custom Homepage Components:**
+  * `<HomepageCard />`
+  * `<HomepageCardContent />`
+  * `<HomepageCardHighlight />`
+  * `<HomepageCardStat />`
+  * `<Hero />`
+* **Custom Components for buttons and links:**
+  * `<Button />` This is `MuiButton` wrapped around the Gatsby Link component for navigation 
+  * `<Link />` This is Mui's `Link` component wrapped around Gatsby's Link component
+  * `<YoutubeEmbed />` This is a helper since we use a lot of youtube videos
+* **Material UI Components exposed by default:**
+  * `<Box />` This is [Mui's `Box` component](https://mui.com/material-ui/react-box/)
+  * `<Stack />` This is [Mui's `Stack` component](https://mui.com/material-ui/react-stack/)
+  * `<Grid />` This is [Mui's `Grid` component](https://mui.com/material-ui/components/grid/)
+  * `<Alert />` This is [Mui's `Alert` component](https://mui.com/material-ui/react-alert/)
+
+
+
+Using homepage elements on non-homepage pages may cause strange things to happen so use it carefully.
+
+As we continue to use and grow our sites we will likely add to this list.
+
+## Using MUI Components
+
+```typescript
+import { Container, Divider, Grid, Card, CardActionArea, CardMedia, CardContent, Typography } from '@mui/material'
+
+<Divider />
+```
+
+## Links
+
+You can easily use remark syntax for links
+
+### Internal Links
+
+### Relative Internal Links
+
+You can either use the markdown syntax or the `<Link />` component
+
+* [About us Link](../about-us) `[About us Link](../about-us)`
+* <Link to='../about-us'>About us Link</Link> `<Link to='../about-us'>About us Link</Link>`
+
+**NOTE: Don't use the `<a>` tag. It will not render properly:**
+  * <a href='../about-us'>About us Link</a> `<a href='./about-us'>About us Link</a>`
+
+### Absolute Internal Links
+
+You can either use the markdown syntax or the `<Link />` component
+
+* [About us Link](/about-us) `[About us Link](/about-us)`
+* <Link to='/about-us'>About us Link</Link> `<Link to='/about-us'>About us Link</Link>`
+
+**NOTE: Once again don't use the `<a>` tag. It will not render or link properly.**
+
+### External Links
+
+External links operate the same way. By default, external links will open a new tab.
+
+* [Google](https://google.com) `[Google](https://google.com)`
+* <Link to='https://google.com'>Google</Link> `<Link to='https://google.com'>Google</Link>`
+
+**NOTE: Again, don't use the `<a>` tag. It will not render properly.**
+
+## Buttons
+
+Buttons are almost identical to links. By default, external links will open a new tab.
+
+### Internal Links Button
+
+<Button to='../about-us'>About us Button</Button> 
+```jsx
+<Button to='../about-us'>About us Button</Button>
+```
+
+### External Link Button
+
+<Button to='https://google.com'>Google dot com</Button> 
+```jsx
+<Button to='https://google.com'>Google dot com</Button>
+```
+
+## Images
+
+Internal images can come from several different places
+
+***Note: Do not use `<StaticImage />` for markdown images. It will not work.***
+
+### 1. Relative to the `.mdx` file
+
+Using a relative path to navigate relative to the mdx file (Note the dot slash `./` which means relative to the current path)
+
+![DemoStatic](./demoRelative.jpg)
+```html
+![DemoStatic](./demoRelative.jpg)
+```
+
+You will notice that `<img>` tags won't work for this method because the path lookup doesn't work. We may fix this at some future point but for now you're stuck with it.
+<img src='./demoRelative.jpg' alt="this doesn't work" />
+
+```
+<img src='./demoRelative.jpg' alt="this doesn't work" />  <------ NO!
+```
+
+### 2. Relative to the site root
+
+Using an absolute path to navigate relative to the site root. (Note the slash `/` which means relative to the site root)
+
+![DemoStatic](/demoRelative.jpg)
+```html
+![DemoStatic](/demoRelative.jpg)
+```
+
+You will notice that, unlike paths relative to the mdx file, the `<img />` tag works here.
+
+<img src='/demoRelative.jpg' alt="this doesn't work" />
+```
+<img src='/demoRelative.jpg' alt="this doesn't work" />
+```
+
+### 3. In the static folder
+
+You can also put images in the `static` folder at the root of your site and reference them from there. **You must use an absolute path for that**.
+
+You can still use the remark syntax
+
+![DemoStatic](/images/demoStatic.jpg)
+```
+![DemoStatic](/images/demoStatic.jpg)
+```
+
+You can also use the `<img />` html element to get maxiumum control over the image.
+
+<img src='/images/demoStatic.jpg' style={{width: '100%'}} />
+
+```
+<img src='/images/demoStatic.jpg' style={{width: '100%'}} />
+```
+
+### 3. External Images
+
+You can just use Markdown's remark syntax for external images:
+
+![Kitten](https://placekitten.com/200/300)
+
+```markdown
+![Kitten](https://placekitten.com/200/300)
+```
+
+Or if you need a bit more control you can use the `<img />` HTML syntax
+
+<img src='https://placekitten.com/200/300' style={{border: '20px solid orange'}} />
+
+```markdown
+<img src='https://placekitten.com/200/300' style={{border: '20px solid orange'}} />
+```
+
+# Markdown StyleGuide
+
+## Headers
+
+# H1 Header
+
+## H2 Header
+
+### H3 Header
+
+#### H4 Header
+
+##### H5 Header
+
+###### H6 Header
+
+> Blockquote Et ullamco dolor anim magna dolor aliquip enim consequat ut minim aliqua ea.
+
+Paragraph1 Veniam est commodo sit cillum anim ipsum velit culpa id veniam. Sint aute dolor excepteur eu commodo minim reprehenderit amet reprehenderit esse ea. Eu Lorem consectetur sint id aute ex cillum aliqua laborum aute deserunt ipsum. Deserunt ullamco Lorem deserunt commodo consequat magna ea id.
+
+Paragraph2 In amet excepteur non labore anim pariatur nostrud ad consequat quis nostrud ea ullamco occaecat. Ad mollit cillum occaecat est laborum eu. Nostrud quis officia cillum qui proident aliqua deserunt voluptate culpa ad dolor irure cupidatat esse. Qui nulla duis esse velit. Reprehenderit laboris labore ea do minim anim aliqua elit occaecat voluptate duis excepteur dolore est.
+
+Paragraph3 Elit labore aliquip exercitation dolor voluptate reprehenderit occaecat esse Lorem consectetur ad. Occaecat non esse velit in. Qui aute eu elit consectetur duis anim sunt cupidatat. Elit aliquip dolor ex commodo anim. Nulla Lorem sit et aute velit officia aute adipisicing. Adipisicing esse eiusmod nulla elit exercitation laborum. Consectetur cillum sint adipisicing laborum ex aute et dolor labore amet in in dolore.
+
+## Youtube embeds
+
+We have a custom component for youtube embedding
+
+<Youtube embedId="1hPxGmTGarM" />
+
+```tsx
+<Youtube embedId="1hPxGmTGarM" />
+```
+
+You can also embed using the `<iframe />` from youtube but it's not as nice AND you should rename the attributes to be camelCase from `frameborder` to `frameBorder` and `allowfullscreen` to `allowFullScreen` or you get browser console warnings:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1hPxGmTGarM?si=fj1mSgn4toCCv5vY" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+
+## Code Blocks
+
+In order to get good syntax highlighting you need to use the markdown code block syntax.
+
+```text
+NOTE: the single quotes below SHOULD BE backticks. They are not single quotes.
+I just can't use backticks in markdown because it will think I'm trying to
+put a code block inside a code block.
+
+'''languagename
+<CODE HERE>
+'''
+```
+
+### Javascript example
+
+```javascript
+
+const foo = 'bar'
+
+function baz() {
+  return foo
+}
+
+```
+
+### Python example
+
+```python
+
+a = 1
+b = 2
+
+def add(a, b):
+  return a + b
+
+```
+
+# Advanced
+
+## Material UI (MUI)
+
+[MUI Core](https://mui.com/material-ui/getting-started/) is a ReactJS implementation of Google's Material Design. It's a very powerful library and we use it extensively. It's also very well documented. You can find a lot of information [on their site](https://mui.com/material-ui/getting-started/).
+
+
+* Do not use the `<Container />` anywhere unless the `isHome: true` frontmatter is set or it will fight with the site's template and responsiveness.
+
+## Stack
+
+### Vertical Stack
+
+<Stack spacing={2} border="2px solid red">
+  <Box to=''>Thing 1</Box>
+  <Box to=''>Thing 2</Box>
+  <Box to=''>Thing 3</Box>
+</Stack>
+
+### Horizontal Stack
+
+<Stack spacing={2} border="2px solid red" direction="row" justifyContent="center">
+  <Box to=''>Thing 1</Box>
+  <Box to=''>Thing 2</Box>
+  <Box to=''>Thing 3</Box>
+</Stack>
+
+## Grids
+
+<Grid container border="1px solid red">
+  <Grid item xs={12} md={2} border="1px solid blue">Row1-Thing1</Grid>
+  <Grid item xs={12} md={6} border="1px solid green">Row1-Thing2</Grid>
+  <Grid item xs={12} md={4} border="1px solid yellow">Row1-Thing3</Grid>
+
+  <Grid item xs={12} md={4} border="1px solid blue">Row2-Thing1</Grid>
+  <Grid item xs={12} md={6} border="1px solid green">Row2-Thing2</Grid>
+  <Grid item xs={12} md={2} border="1px solid yellow">Row2-Thing3</Grid>
+</Grid>
+
+## Alert
+
+<Alert severity="info">
+  This is an info alert — <strong>check it out!</strong>
+</Alert>
+
+<Alert severity="warning">
+  This is an info alert — <strong>check it out!</strong>
+</Alert>
+
+<Alert severity="error">
+  This is an info alert — <strong>check it out!</strong>
+</Alert>
+
+<Alert severity="success">
+  This is an info alert — <strong>check it out!</strong>
+</Alert>

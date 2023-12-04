@@ -4,11 +4,14 @@ module.exports = {
   // You need pathPrefix if you're hosting GitHub Pages at a Project Pages or if your
   // site will live at a subdirectory like https://example.com/mypathprefix/.
   // pathPrefix: '/mypathprefix',
+  pathPrefix: '/riverscapes-template',
   siteMetadata: {
-    title: `Riverscapes Gatsby Demo`,
+    title: `Riverscapes Template Site`,
     author: {
       name: `Matt Reimer`,
     },
+    // Just leave this empty ('') if you don't want a help widget in the footer
+    helpWidgetId: '153000000178',
     description: ``,
     siteUrl: `https://YOURSITEURLHERE`,
     social: {
@@ -79,9 +82,9 @@ module.exports = {
       options: {
         contentPath: `${__dirname}/content/page`,
         manifest: {
-          name: `Riverscapes Gatsby Demo Site`,
-          short_name: `RiverscapesDemo`,
-          start_url: `/`,
+          name: `Riverscapes Gatsby Template Site`,
+          short_name: `RiverscapesTemplate`,
+          start_url: `/riverscapes-template`,
         },
       },
     },
