@@ -2,8 +2,8 @@
 
 ## Creating a new `./docs` site
 
-1. Copy everything in this `./tempalte` folder to a `./docs` subfolder in your desired repo 
-2. open `gatsby-config.ts` change
+1. Copy everything in this `./template` folder to a `./docs` subfolder in your desired repo.
+2. open `gatsby-config.ts` and change:
   - `pathPrefix`: If this site is going to live at a subpath like `https://example.com/useless-site`, then change this to `/useless-site`
   - `start_url`: Should match the `pathPrefix` if you have one
 3. Now move the 2 yml files in the root of your `.git` repo. They are living in the `.github/workflows` folder next to this README.md file but they will need to be moved to the root of whatever repo they end up in.
@@ -14,3 +14,11 @@
    2. Pages
    3. Build and deployment --> Source --> Select `Github Actions`
    4. Wait for it to build and deploy.
+
+## Deploying to Former Jekyll `./docs` site
+
+Delete the old Jekyll files:
+
+- `Gemfile`
+- `.gitignore` (The steps above include a Gatsby .gitignore)
+- `_config.yml`
