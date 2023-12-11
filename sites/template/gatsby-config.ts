@@ -20,60 +20,60 @@ module.exports = {
     menuLinks: [
       {
         title: 'Menu Item 1',
-        url: '/about-us',
+        url: '/subfolder/innerpage',
         items: [
           {
-            title: 'What is a riverscape',
-            url: '/about-us/what-is-a-riverscape',
+            title: 'SubMenu 1',
+            url: '/subfolder/innerpage',
           },
           {
-            title: 'FAIR principles',
-            url: '/about-us/fair-principles',
+            title: 'SubMenu 2',
+            url: '/subfolder/innerpage',
           },
         ],
       },
-      {
-        title: 'Menu Item 2',
-        url: '/our-work/',
-        items: [
-          {
-            title: 'Riverscapes Consortium Data Exchange',
-            url: '/our-work/data-exchange',
-          },
-          {
-            title: 'Riverscapes Consortium Applications',
-            url: '/our-work/apps',
-          },
-          {
-            title: 'Riverscapes Consortium Models',
-            url: '/our-work/models',
-          },
-          {
-            title: 'Data Standards and Compliance',
-            url: '/our-work/standards',
-          },
-        ],
-      },
-      {
-        title: 'Menu Item 3',
-        url: '/',
-      },
-      {
-        title: 'Workshops & events',
-        url: '/workshops-events',
-      },
-      {
-        title: 'Get involved',
-        url: '/get-involved',
-      },
-      {
-        title: 'Contact',
-        url: '/',
-      },
-      {
-        title: 'Search',
-        url: '/search',
-      },
+      // {
+      //   title: 'Menu Item 2',
+      //   url: '/our-work/',
+      //   items: [
+      //     {
+      //       title: 'Riverscapes Consortium Data Exchange',
+      //       url: '/our-work/data-exchange',
+      //     },
+      //     {
+      //       title: 'Riverscapes Consortium Applications',
+      //       url: '/our-work/apps',
+      //     },
+      //     {
+      //       title: 'Riverscapes Consortium Models',
+      //       url: '/our-work/models',
+      //     },
+      //     {
+      //       title: 'Data Standards and Compliance',
+      //       url: '/our-work/standards',
+      //     },
+      //   ],
+      // },
+      // {
+      //   title: 'Menu Item 3',
+      //   url: '/',
+      // },
+      // {
+      //   title: 'Workshops & events',
+      //   url: '/workshops-events',
+      // },
+      // {
+      //   title: 'Get involved',
+      //   url: '/get-involved',
+      // },
+      // {
+      //   title: 'Contact',
+      //   url: '/',
+      // },
+      // {
+      //   title: 'Search',
+      //   url: '/search',
+      // },
     ],
   },
   plugins: [

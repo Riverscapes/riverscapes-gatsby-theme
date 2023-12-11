@@ -29,6 +29,7 @@
     "gatsby-source-filesystem": "^5.10.0",
     "gatsby-transformer-remark": "^6.10.0",
     "gatsby-transformer-sharp": "^5.10.0",
+    "loglevel": "^1.8.1",
     "prismjs": "^1.29.0"
   },
   "peerDependencies": {

@@ -7,6 +7,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import MainMenu from './MainMenu'
 import { Stack } from '@mui/material'
 import MenuButton from './MenuButton'
+import log from 'loglevel'
 
 interface MenuProps {
   horizontal?: boolean
@@ -42,22 +43,27 @@ const Menu: React.FC<MenuProps> = ({
   const menu = data.site.siteMetadata.menuLinks
 
   const listMenu = (menu) => {
-    return menu.map((link, key) => (
-      <MenuButton
-        key={key}
-        sx={{
-          color: 'white',
-          justifyContent: 'flex-start',
-          p: 0,
-          '&:hover': {
-            textDecoration: 'underline',
-          },
-        }}
-        to={link.url}
-      >
-        {link.title}
-      </MenuButton>
-    ))
+    try {
+      return menu.map((link, key) => (
+        <MenuButton
+          key={key}
+          sx={{
+            color: 'white',
+            justifyContent: 'flex-start',
+            p: 0,
+            '&:hover': {
+              textDecoration: 'underline',
+            },
+          }}
+          to={link.url}
+        >
+          {link.title}
+        </MenuButton>
+      ))
+    } catch (e) {
+      log.error('Menu.tsx: Broken menu', e)
+      return <strong>BROKEN</strong>
+    }
   }
 
   return (

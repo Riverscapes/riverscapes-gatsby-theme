@@ -3381,6 +3381,7 @@ __metadata:
     gatsby-source-filesystem: ^5.10.0
     gatsby-transformer-remark: ^6.10.0
     gatsby-transformer-sharp: ^5.10.0
+    loglevel: ^1.8.1
     prettier: ^2.8.8
     prismjs: ^1.29.0
     ts-jest: ^29.0.5
@@ -3392,39 +3393,6 @@ __metadata:
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
-
-"@riverscapes/gatsby-theme@npm:latest":
-  version: 0.1.0
-  resolution: "@riverscapes/gatsby-theme@npm:0.1.0"
-  dependencies:
-    "@emotion/react": ^11.11.0
-    "@emotion/styled": ^11.11.0
-    "@fontsource/jetbrains-mono": ^5.0.2
-    "@fontsource/karla": ^5.0.2
-    "@mdx-js/react": ^2.3.0
-    "@mui/icons-material": ^5.14.8
-    "@mui/lab": 5.0.0-alpha.142
-    "@mui/material": ^5.14.8
-    gatsby-plugin-image: ^3.10.0
-    gatsby-plugin-manifest: ^5.10.0
-    gatsby-plugin-mdx: ^5.10.0
-    gatsby-plugin-mdx-source-name: ^1.0.1
-    gatsby-plugin-sharp: ^5.10.0
-    gatsby-remark-autolink-headers: ^6.10.0
-    gatsby-remark-images: ^7.10.0
-    gatsby-remark-prismjs: ^7.10.0
-    gatsby-remark-responsive-iframe: ^6.10.0
-    gatsby-source-filesystem: ^5.10.0
-    gatsby-transformer-remark: ^6.10.0
-    gatsby-transformer-sharp: ^5.10.0
-    prismjs: ^1.29.0
-  peerDependencies:
-    gatsby: ^5.10.0
-    react: ^18.2.0
-    react-dom: ^18.2.0
-  checksum: 55320f85ed9029206c454c9862ac13cb15e7210850e3b1e8a312fe8ec29d343a49c0bbaf695430a2544a7a059c3d8ccdf8cc19969863ef844655fb5cacd070af
-  languageName: node
-  linkType: hard
 
 "@riverscapes/gatsby@workspace:.":
   version: 0.0.0-use.local
@@ -3441,7 +3409,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@riverscapes/template-clean@workspace:sites/template"
   dependencies:
-    "@riverscapes/gatsby-theme": latest
+    "@riverscapes/gatsby-theme": "*"
     gatsby: ^5.10.0
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -11468,6 +11436,13 @@ __metadata:
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
+  languageName: node
+  linkType: hard
+
+"loglevel@npm:^1.8.1":
+  version: 1.8.1
+  resolution: "loglevel@npm:1.8.1"
+  checksum: a1a62db40291aaeaef2f612334c49e531bff71cc1d01a2acab689ab80d59e092f852ab164a5aedc1a752fdc46b7b162cb097d8a9eb2cf0b299511106c29af61d
   languageName: node
   linkType: hard
 
