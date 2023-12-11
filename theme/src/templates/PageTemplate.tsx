@@ -14,10 +14,23 @@ import defaultImage from '../images/card-image.jpg'
 
 const PageTemplate = ({ data: { site, mdx: page, allMdx: childPages }, children, location }) => {
   const siteTitle = site.siteMetadata?.title || `Title`
+  const pageTitle = page.frontmatter.title || null
+  const pageDescription = page.frontmatter.description || null
   const pageHeading = page.frontmatter.banner ? (
-    <Banner title={page.frontmatter.title} />
+    <Banner title={page.frontmatter.title} description={page.frontmatter.description} />
   ) : (
-    <h1 itemProp="headline">{page.frontmatter.title}</h1>
+    <Container maxWidth={'xl'}>
+      {pageTitle && (
+        <Typography variant="h1" itemProp="headline" paragraph mt={2}>
+          {pageTitle}
+        </Typography>
+      )}
+      {pageDescription && (
+        <Typography variant="body2" itemProp="headline" paragraph mt={2}>
+          {pageDescription}
+        </Typography>
+      )}
+    </Container>
   )
 
   const cardsContent = childPages.nodes.map((card, key) => {

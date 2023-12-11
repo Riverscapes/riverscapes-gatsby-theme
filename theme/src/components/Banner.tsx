@@ -4,9 +4,10 @@ import background from '../images/background-banner.jpg'
 
 interface BannerProps {
   title: string
+  description?: string
 }
 
-const Banner: React.FC<BannerProps> = ({ title }) => {
+const Banner: React.FC<BannerProps> = ({ title, description }) => {
   return (
     <Box
       sx={{
@@ -39,6 +40,17 @@ const Banner: React.FC<BannerProps> = ({ title }) => {
         >
           {title}
         </Typography>
+        {description && (
+          <Typography
+            variant="body2"
+            mt={3}
+            sx={{
+              color: 'white',
+            }}
+          >
+            {description}
+          </Typography>
+        )}
       </Container>
     </Box>
   )

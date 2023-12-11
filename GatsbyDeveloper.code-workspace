@@ -25,6 +25,9 @@
       "🧬 Schema",
       "🏠 Home",
     ],
+    "[mdx]": {
+      "editor.wordWrap": "on"
+    },
     "css.lint.validProperties": ["composes"],
     "workbench.colorCustomizations": {
 			"titleBar.activeBackground": "#001768",

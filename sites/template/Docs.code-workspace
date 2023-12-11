@@ -1,0 +1,48 @@
+{
+  "folders": [
+    {
+      "name": "📜 Docs",
+      "path": "."
+    },
+  ],
+  "settings": {
+    "window.title": "riverscapes.net GATSBY -${separator}${activeEditorShort}${separator}${rootName}",
+    "jest.disabledWorkspaceFolders": [
+      "📖 Docs",
+      "📱 App",
+      "🧬 Schema",
+      "🏠 Home",
+    ],
+    "[mdx]": {
+      "editor.wordWrap": "on"
+    },
+    "css.lint.validProperties": ["composes"],
+    "workbench.colorCustomizations": {
+			"titleBar.activeBackground": "#001768",
+      "sideBar.background": "#242132",
+			"editor.background": "#1e1c2c"
+		},
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "files.watcherExclude": {
+      "**/node_modules/**": true,
+      "**/.cache/**": true
+    },
+    "search.exclude": {
+      "**/node_modules/**": true,
+      "**/.cache/**": true,
+      "**/public/**": true,
+      "**/dist/**": true,
+    },
+    "files.exclude": {
+      "**/node_modules/**": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "unifiedjs.vscode-mdx"
+    ]
+  }
+}
