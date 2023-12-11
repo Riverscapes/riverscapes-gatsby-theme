@@ -33,7 +33,7 @@
 		},
     "editor.tabSize": 2,
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
+      "source.fixAll.eslint": "explicit"
     },
     "files.watcherExclude": {
       "**/node_modules/**": true,
