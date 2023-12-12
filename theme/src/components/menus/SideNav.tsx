@@ -1,11 +1,11 @@
 import React from 'react'
 import Typography from '@mui/material/Typography'
-import TreeView from '@mui/lab/TreeView'
+import { TreeView } from '@mui/x-tree-view/TreeView'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import TreeItemLink from './TreeItemLink'
 import { MobileMenu, MobileMenuItem } from '../../types'
-import { Box } from '@mui/material'
+import { Box, IconButton } from '@mui/material'
 
 interface SideNavProps {
   heading?: string
@@ -70,8 +70,30 @@ const SideNav: React.FC<SideNavProps> = ({
       {navHeading}
       <TreeView
         aria-label="Side Navigation"
-        defaultCollapseIcon={<ExpandMoreIcon />}
-        defaultExpandIcon={<ChevronRightIcon />}
+        defaultCollapseIcon={
+          <IconButton
+            size="medium"
+            sx={{ mr: 1 }}
+            onClick={(e) => {
+              // e.preventDefault()
+              // e.stopPropagation()
+            }}
+          >
+            <ExpandMoreIcon color="error" />
+          </IconButton>
+        }
+        defaultExpandIcon={
+          <IconButton
+            size="medium"
+            sx={{ mr: 1 }}
+            onClick={(e) => {
+              // e.preventDefault()
+              // e.stopPropagation()
+            }}
+          >
+            <ChevronRightIcon />
+          </IconButton>
+        }
       >
         {content ? contentItem(content.items) : null}
       </TreeView>

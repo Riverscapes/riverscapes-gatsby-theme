@@ -4,7 +4,7 @@
 
 import React from 'react'
 import { navigate } from 'gatsby'
-import TreeItem, { TreeItemProps } from '@mui/lab/TreeItem'
+import { TreeItem, TreeItemProps } from '@mui/x-tree-view/TreeItem'
 import { useTheme } from '@mui/material'
 
 interface TreeItemLinkProps extends TreeItemProps {

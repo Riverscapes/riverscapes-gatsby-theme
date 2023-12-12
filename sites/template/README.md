@@ -74,6 +74,8 @@ v18.16.0
     - If you have `isHome` set to true (you can ommit this completely if it's false) Then you need to wrap all your content in a container tag.
     - If you want the banner at the top of the page set `banner:true`
     - `banner` and `isHome` do not work well together
+    - `image`: This is the image that will be used for this page as a thumbnail in the lower image cards below the content.
+    - `imageAlt`: Related to the `image` field. This is the alt text for the image.
 
 ```mdx
 import { Container } from '@mui/material'

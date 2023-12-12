@@ -114,7 +114,9 @@ const MainMenu: React.FC<MainMenuProps> = ({ mobileMenuState }) => {
                       onClick={(e) => {
                         e.preventDefault()
                         e.stopPropagation()
-                        handleClick(e)
+                        console.log('clicked: KeyboardArrowDownIcon')
+
+                        // handleClick(e)
                       }}
                     />
                   }
@@ -145,7 +147,14 @@ const MainMenu: React.FC<MainMenuProps> = ({ mobileMenuState }) => {
                             alignItems: 'center',
                           }}
                         >
-                          <KeyboardArrowRightIcon fontSize="small" />
+                          <KeyboardArrowRightIcon
+                            fontSize="small"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              e.stopPropagation()
+                              console.log('clicked: KeyboardArrowRightIcon')
+                            }}
+                          />
                           {dropdownItem.title}
                         </MenuButton>
                       </MenuItem>

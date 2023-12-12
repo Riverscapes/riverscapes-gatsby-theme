@@ -4,43 +4,101 @@ description: "Demo Page where you can see how to do things"
 banner: true
 ---
 
-## DO NOT IMPROVE THIS FILE. CHANGE IT IN THE DEVELOPER SITE AND THEN COPY THE CONTENTS BACK HERE
+{/* DO NOT IMPROVE THIS FILE. CHANGE IT IN THE DEVELOPER SITE AND THEN COPY THE CONTENTS BACK HERE */}
+
+
+import FaceIcon from '@mui/icons-material/Face';
+
 
 # Gatsby special markdown syntaxs
 
 ## Baked-in Components
 
-Some components you can use without importing anything:
+Some components you can use without importing anything. This list will be updated as the theme grows.
 
-* **Custom Homepage Components:**
+### Custom Homepage Components:
+
+These components were designed specifically for the Riverscapes homepage site and may not be that useful for derivative sites.
+
   * `<HomepageCard />`
   * `<HomepageCardContent />`
   * `<HomepageCardHighlight />`
   * `<HomepageCardStat />`
   * `<Hero />`
-* **Custom Components for buttons and links:**
-  * `<Button />` This is `MuiButton` wrapped around the Gatsby Link component for navigation 
-  * `<Link />` This is Mui's `Link` component wrapped around Gatsby's Link component
-  * `<YoutubeEmbed />` This is a helper since we use a lot of youtube videos
-* **Material UI Components exposed by default:**
-  * `<Box />` This is [Mui's `Box` component](https://mui.com/material-ui/react-box/)
-  * `<Stack />` This is [Mui's `Stack` component](https://mui.com/material-ui/react-stack/)
-  * `<Grid />` This is [Mui's `Grid` component](https://mui.com/material-ui/components/grid/)
-  * `<Alert />` This is [Mui's `Alert` component](https://mui.com/material-ui/react-alert/)
 
+### Custom Components for buttons and links:
 
+  * `<Button />` This is `MuiButton` wrapped around the Gatsby Link component for navigation. See examples below.
+  * `<Link />` This is Mui's `Link` component wrapped around Gatsby's Link component. See examples below.
+  * `<YoutubeEmbed />` This is a helper since we use a lot of youtube videos. See examples below.
+
+### Material UI Components exposed by default:
+
+There are a few MUI components we expose by default that are relatively safe to use:
+
+  * `<Box />` This is [Mui's `Box` component](https://mui.com/material-ui/react-box/). Use it instead of `<div />`
+  * `<Stack />` This is [Mui's `Stack` component](https://mui.com/material-ui/react-stack/). Use it to space things evenly across the screen.
+  * `<Grid />` This is [Mui's `Grid` component](https://mui.com/material-ui/react-grid/). This is for more complex layouts and should be used carefully as it may not be mobile-compatible.
+  * `<Alert />` This is [Mui's `Alert` component](https://mui.com/material-ui/react-alert/). Use it to draw attention or anounce something.
+  * *That's all for now. We may add to this list as needed...*
+
+See the Advanced section below for more information on how to use MUI components.
 
 Using homepage elements on non-homepage pages may cause strange things to happen so use it carefully.
 
 As we continue to use and grow our sites we will likely add to this list.
 
-## Using MUI Components
+----------------
+
+## Import other MUI Components *(sparingly)*
+
+This site is built on the [Material UI](https://mui.com/) framework. For special cases we may need to use components that are not exposed by default. In order to do that we need to import them from the `@mui/material` package.
+
+#### This should be done sparingly for a number of very good reasons:
+
+1. Our markdown already translates to these components in many cases. Keeping the site as close to pure Markdown as possible keeps the site aligned to the styleguide. When you go rogue with components you can easily deviate from the styleguide.
+1. **Maintainability**: The more components we use the more difficult it is to maintain the site. If MUI puts out a new patch that we decide to upgrade to the pure markdown components will not require ANY changes but the custom MUI components will all need to be re-tested across all our sites.
+1. **Context**: Not all MUI components are designed to work inside the main content of the page.
+2. **Responsiveness**: Not all components are responsive by default. Make sure you preview any changes on a phone or tablet before you commit them.
+3. **Modularity**: If you find yourself using the same pattern on multiple pages or multiple sites we should create a new `Baked-in` component for it. This will guarantee consistency across all our sites and make it easier to maintain.
+
+All of that said, if you absolutely need to use MUI components other than the ones that are baked in you must import them:
 
 ```typescript
 import { Container, Divider, Grid, Card, CardActionArea, CardMedia, CardContent, Typography } from '@mui/material'
 
 <Divider />
 ```
+
+----------------
+
+## Use MUI Icons
+
+Our theme has access to the [Material UI Icons](https://mui.com/components/material-icons/) library. You can use them in markdown like this:
+
+<FaceIcon />
+<Button to='../about-us' color='error' endIcon={<FaceIcon />}>About us Button</Button>
+
+```typescript
+import FaceIcon from '@mui/icons-material/Face';
+<FaceIcon />
+<Button to='../about-us' color='error' endIcon={<FaceIcon />}>About us Button</Button>
+```
+
+----------------
+
+## **Don't** Use HTML tags
+
+While HTML tags like are technically allowed in markdown we recommend that you do not use them at all. 
+
+#### Alternatives in descending desirability:
+
+1. Use the markdown equivalent whenever you can. This increases the maintainability of the site and reduces breakages during upgrade.
+2. Find a baked-in component that does what you want. (That's why we created them).
+3. Create a new baked-in component (or have a developer make one for you). This will mean you can use this new function across ALL sites with this theme.
+4. If there is absolutely no other way to do it then it might be best to check with a developer before proceeding.
+
+----------------
 
 ## Links
 
@@ -69,22 +127,33 @@ You can either use the markdown syntax or the `<Link />` component
 
 ### External Links
 
-External links operate the same way. By default, external links will open a new tab.
+External links operate the same way. Linking internally will navigate using the current browser tab and external links will open a new tab.
 
 * [Google](https://google.com) `[Google](https://google.com)`
 * <Link to='https://google.com'>Google</Link> `<Link to='https://google.com'>Google</Link>`
 
 **NOTE: Again, don't use the `<a>` tag. It will not render properly.**
 
+----------------
+
 ## Buttons
 
-Buttons are almost identical to links. By default, external links will open a new tab.
+Buttons are almost identical to links. Linking internally will navigate using the current browser tab and external links will open a new tab.
 
 ### Internal Links Button
 
+
 <Button to='../about-us'>About us Button</Button> 
+<Button to='../about-us' color='secondary'>About us Button</Button> 
+<Button to='../about-us' color='success'>About us Button</Button> 
+<Button to='../about-us' color='error'>About us Button</Button> 
+<Button to='../about-us' color='error' startIcon={<FaceIcon />}>About us Button</Button> 
+<Button to='../about-us' color='error' endIcon={<FaceIcon />}>About us Button</Button> 
 ```jsx
 <Button to='../about-us'>About us Button</Button>
+<Button to='../about-us' color='secondary'>About us Button</Button> 
+<Button to='../about-us' color='success'>About us Button</Button> 
+<Button to='../about-us' color='error'>About us Button</Button> 
 ```
 
 ### External Link Button
@@ -93,6 +162,8 @@ Buttons are almost identical to links. By default, external links will open a ne
 ```jsx
 <Button to='https://google.com'>Google dot com</Button>
 ```
+
+----------------
 
 ## Images
 
@@ -193,6 +264,8 @@ Paragraph2 In amet excepteur non labore anim pariatur nostrud ad consequat quis 
 
 Paragraph3 Elit labore aliquip exercitation dolor voluptate reprehenderit occaecat esse Lorem consectetur ad. Occaecat non esse velit in. Qui aute eu elit consectetur duis anim sunt cupidatat. Elit aliquip dolor ex commodo anim. Nulla Lorem sit et aute velit officia aute adipisicing. Adipisicing esse eiusmod nulla elit exercitation laborum. Consectetur cillum sint adipisicing laborum ex aute et dolor labore amet in in dolore.
 
+----------------
+
 ## Youtube embeds
 
 We have a custom component for youtube embedding
@@ -206,6 +279,8 @@ We have a custom component for youtube embedding
 You can also embed using the `<iframe />` from youtube but it's not as nice AND you should rename the attributes to be camelCase from `frameborder` to `frameBorder` and `allowfullscreen` to `allowFullScreen` or you get browser console warnings:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/1hPxGmTGarM?si=fj1mSgn4toCCv5vY" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+
+----------------
 
 ## Code Blocks
 
@@ -245,6 +320,8 @@ def add(a, b):
 
 ```
 
+----------------
+
 # Advanced
 
 ## Material UI (MUI)
@@ -256,7 +333,9 @@ def add(a, b):
 
 ## Stack
 
-### Vertical Stack
+`<Stack />` This is [Mui's Stack component](https://mui.com/material-ui/react-stack/). Use it to space things evenly either as a row or a column. This is preferable to `<Grid />` for simple layouts.
+
+#### Vertical Stack
 
 <Stack spacing={2} border="2px solid red">
   <Box to=''>Thing 1</Box>
@@ -264,7 +343,7 @@ def add(a, b):
   <Box to=''>Thing 3</Box>
 </Stack>
 
-### Horizontal Stack
+#### Horizontal Stack
 
 <Stack spacing={2} border="2px solid red" direction="row" justifyContent="center">
   <Box to=''>Thing 1</Box>
@@ -273,6 +352,11 @@ def add(a, b):
 </Stack>
 
 ## Grids
+
+Grids are useful for more complex layouts. They are not responsive by default so you need to use the `xs`, `sm`, `md`, `lg`, and `xl` props to make them responsive. You can also use the `spacing` prop to add space between the grid items. More information can be found [here](https://mui.com/components/grid/).
+
+
+***NOTE: Always try using `<Stack />` before using `<Grid />`. It's much easier to use and is responsive by default.***
 
 <Grid container border="1px solid red">
   <Grid item xs={12} md={2} border="1px solid blue">Row1-Thing1</Grid>
@@ -285,6 +369,8 @@ def add(a, b):
 </Grid>
 
 ## Alert
+
+Alert is a component that draws attention to something. It's useful for announcements or warnings. You can find more information [here](https://mui.com/components/alert/).
 
 <Alert severity="info">
   This is an info alert — <strong>check it out!</strong>
