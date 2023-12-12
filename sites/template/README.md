@@ -1,6 +1,6 @@
 # Clean template site
 
-## Getting started for development
+## Getting started for writing content
 
 1. Open up the `Docs.code-workspace` file in VSCode. This should open up the workspace and put you in the right place to run the site.
 2. Make sure you are running node > v18 and have access to yarn at the command line:
@@ -50,7 +50,11 @@ Delete the old Jekyll files:
 
 ## Typical problems and content gotchas:
 
-- Frontmatter Fields: 
+- Look for liquid tags that are left over from jekyll: `{{ some.liquid.tag }}` these need to be removed.
+- Any changes to `gatsby-config.ts` will require a restart of the dev server.
+- Unclosed img tags: `<img src="some-image.jpg">` is not allowed. You need to close the tag like this `<img src="some-image.jpg" />`
+- HTML Comments: `<!-- This is a comment -->` are not allowed and will break the site. You need to use MDX comments like this `{/* This is a comment */}`
+- Frontmatter Fields:
     - All frontmatter is optional. You can have no frontmatter at all and the page will still work.
     - `title` is optional. It is used in conjunction with `banner`
     - `description` is optional. It is used in conjunction with `banner`
@@ -65,9 +69,7 @@ import { Container } from '@mui/material'
 
 ## This is a title
 
-Et voluptate anim nulla magna nisi reprehenderit id. Labore exercitation esse magna Lorem proident cillum nisi ipsum voluptate id labore est culpa officia. Quis ipsum id deserunt sit quis in adipisicing est mollit in consequat. Dolore laboris veniam Lorem reprehenderit commodo do laborum consequat consequat amet sit laborum nostrud nostrud. Nulla commodo enim occaecat minim. Dolor minim amet Lorem aute deserunt excepteur reprehenderit laborum exercitation.
-
-Nulla cupidatat nulla sit reprehenderit laborum exercitation proident sunt duis tempor eiusmod commodo consequat officia. Aute occaecat ad et sunt do veniam irure irure excepteur minim enim eiusmod ullamco. Adipisicing officia exercitation sit et ex excepteur incididunt nulla incididunt non ullamco irure minim. Pariatur aliqua et fugiat culpa voluptate ea cupidatat incididunt ut pariatur commodo officia nostrud consectetur. Qui in duis sint sint labore eiusmod minim ut. Proident ut esse occaecat amet dolore aute tempor amet mollit. In cupidatat nisi deserunt laboris aute cupidatat laborum eu excepteur voluptate.
+here is some content
 
 </Container>
 ```

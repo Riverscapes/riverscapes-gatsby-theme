@@ -103,10 +103,28 @@ exports.createSchemaCustomization = ({ actions }) => {
   `)
 }
 
+function MDXSafetyFilter(text) {
+  let safeText = text
+  // Replace liquid tags with an empty string
+  safeText = safeText.replace(/{{[a-z0-9. ]+}}/g, 'ERROR_LIQUID_TAG')
+  // Replace unclosed <img> tags with <img />
+  safeText = safeText.replace(/<img([^>]+)(?<!\/)>/g, '<ErrorUnclosed tagName="img"><img$1 /></ErrorUnclosed>')
+  // Replace unclosed <br> tags with <br />
+  safeText = safeText.replace(/<br([^>]*)(?<!\/)>/g, '<ErrorUnclosed tagName="br"><br$1 /></ErrorUnclosed>')
+  // Replace unclosed <hr> tags with <hr />
+  safeText = safeText.replace(/<hr([^>]*)(?<!\/)>/g, '<ErrorUnclosed tagName="hr"><hr$1 /></ErrorUnclosed>')
+
+  return safeText
+}
+
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === `Mdx`) {
     const slug = createFilePath({ node, getNode, basePath: `pages` })
+    // Check if the node's content contains any liquid tags
+    if (node.rawBody) node.rawBody = MDXSafetyFilter(node.rawBody)
+    if (node.body) node.body = MDXSafetyFilter(node.body)
+    if (node.excerpt) node.excerpt = MDXSafetyFilter(node.excerpt)
     createNodeField({
       node,
       name: `slug`,

@@ -3,12 +3,11 @@ import { GatsbyConfig } from 'gatsby'
 module.exports = {
   // You need pathPrefix if you're hosting GitHub Pages at a Project Pages or if your
   // site will live at a subdirectory like https://example.com/mypathprefix/.
-  // pathPrefix: '/mypathprefix',
   pathPrefix: '/riverscapes-template',
   siteMetadata: {
     title: `Riverscapes Template Site`,
     author: {
-      name: `Matt Reimer`,
+      name: `North Arrow Research`,
     },
     // Just leave this empty ('') if you don't want a help widget in the footer
     helpWidgetId: '153000000178',
@@ -32,48 +31,6 @@ module.exports = {
           },
         ],
       },
-      // {
-      //   title: 'Menu Item 2',
-      //   url: '/our-work/',
-      //   items: [
-      //     {
-      //       title: 'Riverscapes Consortium Data Exchange',
-      //       url: '/our-work/data-exchange',
-      //     },
-      //     {
-      //       title: 'Riverscapes Consortium Applications',
-      //       url: '/our-work/apps',
-      //     },
-      //     {
-      //       title: 'Riverscapes Consortium Models',
-      //       url: '/our-work/models',
-      //     },
-      //     {
-      //       title: 'Data Standards and Compliance',
-      //       url: '/our-work/standards',
-      //     },
-      //   ],
-      // },
-      // {
-      //   title: 'Menu Item 3',
-      //   url: '/',
-      // },
-      // {
-      //   title: 'Workshops & events',
-      //   url: '/workshops-events',
-      // },
-      // {
-      //   title: 'Get involved',
-      //   url: '/get-involved',
-      // },
-      // {
-      //   title: 'Contact',
-      //   url: '/',
-      // },
-      // {
-      //   title: 'Search',
-      //   url: '/search',
-      // },
     ],
   },
   plugins: [

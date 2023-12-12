@@ -73,7 +73,7 @@ const SideNav: React.FC<SideNavProps> = ({
         defaultCollapseIcon={<ExpandMoreIcon />}
         defaultExpandIcon={<ChevronRightIcon />}
       >
-        {contentItem(content.items)}
+        {content ? contentItem(content.items) : null}
       </TreeView>
     </Box>
   )

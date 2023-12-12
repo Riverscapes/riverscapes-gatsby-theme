@@ -8,7 +8,7 @@ module.exports = {
   siteMetadata: {
     title: `Riverscapes Developer Site`,
     author: {
-      name: `Matt Reimer`,
+      name: `North Arrow Research`,
     },
     // Just leave this empty ('') if you don't want a help widget in the footer
     helpWidgetId: '153000000178',
