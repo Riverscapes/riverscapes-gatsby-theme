@@ -44,7 +44,7 @@ v18.16.0
 ## Upgrading a site to the latest version of Gatsby
 
 1. Open a terminal and make sure you are in the `./docs` folder with the correct version of Nodejs.
-2. Run `yarn up` to upgrade to the latest version of Gatsby.
+2. Run `yarn upgrade:theme` (it's a custom script) to upgrade to the latest version of Gatsby.
 3. If you like, check your `yarn.lock` file in the git diff to make sure the theme is at the correct level.
 
 ## Migration of Jekyll `./docs` site to Gatsby

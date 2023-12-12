@@ -3345,6 +3345,7 @@ __metadata:
     "@mdx-js/react": ^2.3.0
     "@mui/icons-material": ^5.14.8
     "@mui/material": ^5.14.8
+    "@mui/x-tree-view": ^6.17.0
     "@types/jest": ^29.2.5
     "@types/lodash": ^4.14.178
     "@types/node": ^14.18.12
@@ -3392,7 +3393,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@riverscapes/gatsby@workspace:."
   dependencies:
-    "@mui/x-tree-view": ^6.17.0
     gatsby: ^5.10.0
     react: ^18.2.0
     react-dom: ^18.2.0

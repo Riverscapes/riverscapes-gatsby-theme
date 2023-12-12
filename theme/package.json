@@ -1,7 +1,7 @@
 {
   "name": "@riverscapes/gatsby-theme",
   "description": "Riverscapes website powered by Gatsby and Markdown",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -16,6 +16,7 @@
     "@mdx-js/react": "^2.3.0",
     "@mui/icons-material": "^5.14.8",
     "@mui/material": "^5.14.8",
+    "@mui/x-tree-view": "^6.17.0",
     "gatsby-plugin-image": "^3.10.0",
     "gatsby-plugin-manifest": "^5.10.0",
     "gatsby-plugin-mdx": "^5.10.0",
