@@ -3,7 +3,7 @@
 ## Getting started for writing content
 
 1. Open up the `Docs.code-workspace` file in VSCode. This should open up the workspace and put you in the right place to run the site.
-2. Make sure you are running node > v18 and have access to yarn at the command line:
+2. Make sure you are running node > v18 and have access to yarn at the command line
 
 ```bash
 > node --version
@@ -13,11 +13,13 @@ v18.16.0
 3.6.1
 ```
 
+3. If yarn insn't found you may need to install it: `npm install --global yarn`
+
 ***The version of yarn isn't that important for content writers. We just run this command to make sure it's installed.***
 
-3. Open up a terminal window in VSCode and run `yarn install` to install all the dependencies.
-4. Run `yarn start` to start the dev server and develop locally.
-5. If you think something is broken or weird you can run `yarn clean` to clear the cache and then `yarn start` again to see if that fixes it. We also have `yarn start:clean` that combines these two steps.
+4. Open up a terminal window in VSCode and run `yarn install` to install all the dependencies.
+5. Run `yarn start` to start the dev server and develop locally.
+6. If you think something is broken or weird you can run `yarn clean` to clear the cache and then `yarn start` again to see if that fixes it. We also have `yarn start:clean` that combines these two steps.
 
 
 ## Creating a new `./docs` site
