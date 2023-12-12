@@ -18,10 +18,17 @@ interface ImgCardProps {
 
 const ImgCard: React.FC<ImgCardProps> = ({ to, img, imgAlt, heading, headingVariant, children }) => {
   const theme = useTheme()
+  const imgIsString = typeof img === 'string'
   return (
     <Card>
       <CardActionArea component={Link} to={to}>
-        <GatsbyImage image={img} alt={imgAlt} />
+        {imgIsString ? (
+          <Box>
+            <img src={img} alt={imgAlt} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          </Box>
+        ) : (
+          <GatsbyImage image={img} alt={imgAlt} />
+        )}
         <CardContent>
           <Typography gutterBottom variant={headingVariant} component="div">
             {heading}
