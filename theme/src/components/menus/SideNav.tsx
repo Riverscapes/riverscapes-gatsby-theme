@@ -63,7 +63,7 @@ const SideNav: React.FC<SideNavProps> = ({
   return (
     <Box
       sx={{
-        mt: 4,
+        mt: showHeading ? 4 : 0,
         backgroundColor: theme === 'white' ? 'white' : undefined,
       }}
     >
@@ -79,7 +79,7 @@ const SideNav: React.FC<SideNavProps> = ({
               // e.stopPropagation()
             }}
           >
-            <ExpandMoreIcon color="error" />
+            <ExpandMoreIcon />
           </IconButton>
         }
         defaultExpandIcon={

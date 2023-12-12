@@ -16,6 +16,7 @@ import {
   useTheme,
   useMediaQuery,
   Stack,
+  IconButton,
 } from '@mui/material'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
@@ -105,20 +106,19 @@ const MainMenu: React.FC<MainMenuProps> = ({ mobileMenuState }) => {
                   key={key}
                   sx={{ px: 0 }}
                   endIcon={
-                    <KeyboardArrowDownIcon
+                    <IconButton
                       id={`${key}`}
-                      color="inherit"
                       aria-haspopup="true"
                       aria-controls={anchorEl[`${key}`] ? `menu-${key}` : undefined}
                       aria-expanded={anchorEl[`${key}`] ? 'true' : undefined}
                       onClick={(e) => {
                         e.preventDefault()
                         e.stopPropagation()
-                        console.log('clicked: KeyboardArrowDownIcon')
-
-                        // handleClick(e)
+                        handleClick(e)
                       }}
-                    />
+                    >
+                      <KeyboardArrowDownIcon color="inherit" />
+                    </IconButton>
                   }
                 >
                   {link.title}
@@ -152,7 +152,6 @@ const MainMenu: React.FC<MainMenuProps> = ({ mobileMenuState }) => {
                             onClick={(e) => {
                               e.preventDefault()
                               e.stopPropagation()
-                              console.log('clicked: KeyboardArrowRightIcon')
                             }}
                           />
                           {dropdownItem.title}

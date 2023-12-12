@@ -14,7 +14,7 @@ const MenuButton: React.FC<LinkButtonProps> = ({ to, ...props }) => {
   const CustomLinkStub = (props, ref) => <GatsbyLink to={to} {...props} ref={ref} />
   const CustomLink = React.forwardRef(CustomLinkStub)
 
-  return <Button variant="text" component={CustomLink} sx={{}} {...props} />
+  return <Button variant="text" component={CustomLink} {...props} />
 }
 
 export default MenuButton

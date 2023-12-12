@@ -35,6 +35,9 @@ const stylesThunk = (theme: Theme): Record<string, SxProps<Theme>> => ({
   menu: {
     flexGrow: 1,
   },
+  // mobileMenu: {
+  //   width: '100%',
+  // },
 })
 
 const Header: React.FC = () => {
@@ -65,15 +68,15 @@ const Header: React.FC = () => {
               />
             </Link>
           </Box>
-          {isXL ? (
-            <Box sx={styles.menu}>
-              <Menu menuOption="full" horizontal mobileMenuState={mobileMenu} invert />
-            </Box>
-          ) : (
+          {!isXL ? (
             <Box sx={styles.menuButton}>
               <Button onClick={handleMobileMenuChange} variant="text" sx={{ color: '#fff' }} startIcon={<MenuIcon />}>
                 Menu
               </Button>
+            </Box>
+          ) : (
+            <Box sx={styles.menu}>
+              <Menu menuOption="full" horizontal mobileMenuState={mobileMenu} invert />
             </Box>
           )}
         </Stack>
@@ -85,6 +88,11 @@ const Header: React.FC = () => {
         quality={95}
         alt="Wave Pattern"
       />
+      {!isXL && (
+        <Box sx={styles.mobileMenu}>
+          <Menu menuOption="full" horizontal mobileMenuState={mobileMenu} invert />
+        </Box>
+      )}
     </Box>
   )
 }
