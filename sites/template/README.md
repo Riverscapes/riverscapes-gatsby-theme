@@ -83,3 +83,10 @@ here is some content
 ```
   ModuleNotFoundError: Module not found: Error: Can't resolve './what-is-riverscape.jpg' in '/some/path/content/page'
 ```
+1. Delete the old Jekyll files:
+   - `Gemfile`
+   - `.gitignore` (The steps above include a Gatsby .gitignore)
+   - `_config.yml`
+1. Move all existing markdown files into the `content` folder.
+1. Change all existing markdown files to `*.mdx` and fix the frontmatter.
+1. Move images from the `assets/images` folder to the `static/images` folder.
