@@ -18,13 +18,7 @@
     }    
   ],
   "settings": {
-    "window.title": "riverscapes.net GATSBY -${separator}${activeEditorShort}${separator}${rootName}",
-    "jest.disabledWorkspaceFolders": [
-      "📖 Docs",
-      "📱 App",
-      "🧬 Schema",
-      "🏠 Home",
-    ],
+    "window.title": "RS GatsbyTheme${separator}${activeEditorShort}${separator}${rootName}",
     "[mdx]": {
       "editor.wordWrap": "on"
     },

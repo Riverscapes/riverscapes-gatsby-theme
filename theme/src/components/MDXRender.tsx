@@ -10,6 +10,7 @@ import { YoutubeEmbed } from '../components/YoutubeEmbed'
 import HomepageCard, { HomepageCardContent, HomepageCardHighlight, HomepageCardStat } from '../components/homepageCards'
 import MDXErrorBoundary from './MDXErrorBoundary'
 import { ErrorLiquidText, ErrorUnclosed } from './MDXErrors'
+import { RSStaticImage } from './StaticImage'
 
 const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
   const theme = useTheme()
@@ -21,6 +22,7 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
     HomepageCardStat,
     Button,
     Hero,
+    RSStaticImage,
     Link: RSLink,
     ErrorLiquidText,
     ErrorUnclosed,
@@ -77,27 +79,19 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
               {children}
             </Typography>
           ),
-          // Add a custom component for the 'comment' tag
+          // Add a custom component for the 'comment' tag so we ignore comments
           comment: ({ children }) => <React.Fragment>{/* Ignore comments */}</React.Fragment>,
           img: ({ src, alt, ...rest }) => {
             return (
               <Box
                 sx={{
-                  maxWidth: '100%',
-                  height: 'auto',
-                  alignItems: 'center',
-                  textAlign: 'center',
+                  width: '100%',
+                  display: 'flex', // Make this a flex container
+                  alignItems: 'center', // Center children vertically
+                  justifyContent: 'center', // Center children horizontally
                 }}
               >
-                <img
-                  src={src}
-                  style={{
-                    maxWidth: '100%',
-                    height: 'auto',
-                  }}
-                  alt={alt}
-                  {...rest}
-                />
+                <RSStaticImage src={src} alt={alt} />
               </Box>
             )
           },

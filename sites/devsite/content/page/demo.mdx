@@ -31,6 +31,7 @@ These components were designed specifically for the Riverscapes homepage site an
   * `<Button />` This is `MuiButton` wrapped around the Gatsby Link component for navigation. See examples below.
   * `<Link />` This is Mui's `Link` component wrapped around Gatsby's Link component. See examples below.
   * `<Youtube />` This is a helper since we use a lot of youtube videos. See examples below.
+  * `<StaticImage />` This is a helper since we use a lot of images. See examples below.
 
 ### Material UI Components exposed by default:
 
@@ -76,14 +77,15 @@ import { Container, Divider, Grid, Card, CardActionArea, CardMedia, CardContent,
 
 Our theme has access to the [Material UI Icons](https://mui.com/components/material-icons/) library. You can use them in markdown like this:
 
-<FaceIcon />
-<Button to='../about-us' color='error' endIcon={<FaceIcon />}>About us Button</Button>
-
 ```typescript
 import FaceIcon from '@mui/icons-material/Face';
 <FaceIcon />
 <Button to='../about-us' color='error' endIcon={<FaceIcon />}>About us Button</Button>
 ```
+
+<FaceIcon />
+<Button to='../about-us' color='error' endIcon={<FaceIcon />}>About us Button</Button>
+
 
 ----------------
 
@@ -143,102 +145,117 @@ Buttons are almost identical to links. Linking internally will navigate using th
 ### Internal Links Button
 
 
+```jsx
 <Button to='../about-us'>About us Button</Button> 
 <Button to='../about-us' color='secondary'>About us Button</Button> 
 <Button to='../about-us' color='success'>About us Button</Button> 
 <Button to='../about-us' color='error'>About us Button</Button> 
 <Button to='../about-us' color='error' startIcon={<FaceIcon />}>About us Button</Button> 
 <Button to='../about-us' color='error' endIcon={<FaceIcon />}>About us Button</Button> 
-```jsx
-<Button to='../about-us'>About us Button</Button>
+```
+<Button to='../about-us'>About us Button</Button> 
 <Button to='../about-us' color='secondary'>About us Button</Button> 
 <Button to='../about-us' color='success'>About us Button</Button> 
 <Button to='../about-us' color='error'>About us Button</Button> 
-```
+<Button to='../about-us' color='error' startIcon={<FaceIcon />}>About us Button</Button> 
+<Button to='../about-us' color='error' endIcon={<FaceIcon />}>About us Button</Button> 
 
 ### External Link Button
 
-<Button to='https://google.com'>Google dot com</Button> 
 ```jsx
 <Button to='https://google.com'>Google dot com</Button>
 ```
+<Button to='https://google.com'>Google dot com</Button> 
 
 ----------------
 
-## Images
+# Images
 
 Internal images can come from several different places
 
 ***Note: Do not use `<StaticImage />` for markdown images. It will not work.***
 
-### 1. Relative to the `.mdx` file
+
+## 1. In the `static` folder (Prefered Method)
+
+When you put images in the `/static` folder at the root of your site and reference them from there. **You must use an absolute path for that**.
+
+#### Markdown/Remark syntax
+
+Quick and dirty. **Whenever possible please do images like this**. they are not very configurable but they are guaranteed responsive on mobile and easy to maintain.
+
+```
+![DemoStatic](/images/demoStatic.jpg)
+```
+![DemoStatic](/images/demoStatic.jpg)
+
+#### RSStaticImage (instead of `<img />`)
+
+If you need a bit more control you can use the `<RSStaticImage />` HTML syntax. You can use it the same as an `<img />` tag with all the same attributes.
+
+```typescript
+<RSStaticImage src='https://placekitten.com/200/300' style={{opacity: 0.2, border: "20px solid orange"}} />
+```
+<RSStaticImage src='https://placekitten.com/200/300' style={{opacity: 0.2, border: "20px solid orange"}} />
+
+#### Caveats and notes:
+
+- `<img />` doesn't work for this method either.
+
+## 2. Relative to the `.mdx` file
 
 Using a relative path to navigate relative to the mdx file (Note the dot slash `./` which means relative to the current path)
 
-![DemoStatic](./demoRelative.jpg)
+
 ```html
 ![DemoStatic](./demoRelative.jpg)
 ```
+![DemoStatic](./demoRelative.jpg)
 
-You will notice that `<img>` tags won't work for this method because the path lookup doesn't work. We may fix this at some future point but for now you're stuck with it.
-<img src='./demoRelative.jpg' alt="this doesn't work" />
+#### Caveats and notes:
 
-```
-<img src='./demoRelative.jpg' alt="this doesn't work" />  <------ NO!
-```
+- `<RSStaticImage />` doesn't work with relative image paths.
+- `<img />` doesn't work for this method either.
 
-### 2. Relative to the site root
+## 3. Relative to the site root
 
 Using an absolute path to navigate relative to the site root. (Note the slash `/` which means relative to the site root)
 
-![DemoStatic](/demoRelative.jpg)
 ```html
 ![DemoStatic](/demoRelative.jpg)
 ```
+![DemoStatic](/demoRelative.jpg)
 
-You will notice that, unlike paths relative to the mdx file, the `<img />` tag works here.
+#### Caveats and notes:
 
-<img src='/demoRelative.jpg' alt="this doesn't work" />
-```
-<img src='/demoRelative.jpg' alt="this doesn't work" />
-```
+- `<RSStaticImage />` doesn't work with relative image paths.
+- `<img />` doesn't work for this method either.
 
-### 3. In the static folder
-
-You can also put images in the `static` folder at the root of your site and reference them from there. **You must use an absolute path for that**.
-
-You can still use the remark syntax
-
-![DemoStatic](/images/demoStatic.jpg)
-```
-![DemoStatic](/images/demoStatic.jpg)
-```
-
-You can also use the `<img />` html element to get maxiumum control over the image.
-
-<img src='/images/demoStatic.jpg' style={{width: '100%'}} />
-
-```
-<img src='/images/demoStatic.jpg' style={{width: '100%'}} />
-```
 
 ### 3. External Images
 
-You can just use Markdown's remark syntax for external images:
-
-![Kitten](https://placekitten.com/200/300)
+You can just use Markdown's Markdown/Remark syntax for external images:
 
 ```markdown
 ![Kitten](https://placekitten.com/200/300)
 ```
+![Kitten](https://placekitten.com/200/300)
 
-Or if you need a bit more control you can use the `<img />` HTML syntax
 
-<img src='https://placekitten.com/200/300' style={{border: '20px solid orange'}} />
+Or if you need a bit more control you can use the `<RSStaticImage />` HTML syntax. You can use it the same as an `<img />` tag with all the same attributes.
 
-```markdown
-<img src='https://placekitten.com/200/300' style={{border: '20px solid orange'}} />
+```typescript
+<RSStaticImage src='https://placekitten.com/200/300' style={{opacity: 0.2, border: "20px solid orange"}} />
 ```
+<RSStaticImage src='https://placekitten.com/200/300' style={{opacity: 0.2, border: "20px solid orange"}} />
+
+
+#### Caveats and notes:
+
+- DO NOT USE `<img />` for this method either.
+
+
+-------------------
 
 # Markdown StyleGuide
 
@@ -270,11 +287,12 @@ Paragraph3 Elit labore aliquip exercitation dolor voluptate reprehenderit occaec
 
 We have a custom component for youtube embedding
 
-<Youtube embedId="1hPxGmTGarM" />
-
 ```tsx
 <Youtube embedId="1hPxGmTGarM" />
 ```
+
+<Youtube embedId="1hPxGmTGarM" />
+
 
 You can also embed using the `<iframe />` from youtube but it's not as nice AND you should rename the attributes to be camelCase from `frameborder` to `frameBorder` and `allowfullscreen` to `allowFullScreen` or you get browser console warnings:
 
@@ -299,19 +317,18 @@ put a code block inside a code block.
 ### Javascript example
 
 ```javascript
-
+#!/usr/bin/env node
 const foo = 'bar'
 
 function baz() {
   return foo
 }
-
 ```
 
 ### Python example
 
 ```python
-
+#!/usr/bin/env python3
 a = 1
 b = 2
 
@@ -337,6 +354,14 @@ def add(a, b):
 
 #### Vertical Stack
 
+```jsx
+<Stack spacing={2} border="2px solid red">
+  <Box to=''>Thing 1</Box>
+  <Box to=''>Thing 2</Box>
+  <Box to=''>Thing 3</Box>
+</Stack>
+```
+
 <Stack spacing={2} border="2px solid red">
   <Box to=''>Thing 1</Box>
   <Box to=''>Thing 2</Box>
@@ -344,6 +369,14 @@ def add(a, b):
 </Stack>
 
 #### Horizontal Stack
+
+```jsx
+<Stack spacing={2} border="2px solid red" direction="row" justifyContent="center">
+  <Box to=''>Thing 1</Box>
+  <Box to=''>Thing 2</Box>
+  <Box to=''>Thing 3</Box>
+</Stack>
+```
 
 <Stack spacing={2} border="2px solid red" direction="row" justifyContent="center">
   <Box to=''>Thing 1</Box>
@@ -357,6 +390,18 @@ Grids are useful for more complex layouts. They are not responsive by default so
 
 
 ***NOTE: Always try using `<Stack />` before using `<Grid />`. It's much easier to use and is responsive by default.***
+
+```jsx
+<Grid container border="1px solid red">
+  <Grid item xs={12} md={2} border="1px solid blue">Row1-Thing1</Grid>
+  <Grid item xs={12} md={6} border="1px solid green">Row1-Thing2</Grid>
+  <Grid item xs={12} md={4} border="1px solid yellow">Row1-Thing3</Grid>
+
+  <Grid item xs={12} md={4} border="1px solid blue">Row2-Thing1</Grid>
+  <Grid item xs={12} md={6} border="1px solid green">Row2-Thing2</Grid>
+  <Grid item xs={12} md={2} border="1px solid yellow">Row2-Thing3</Grid>
+</Grid>
+```
 
 <Grid container border="1px solid red">
   <Grid item xs={12} md={2} border="1px solid blue">Row1-Thing1</Grid>
@@ -372,17 +417,40 @@ Grids are useful for more complex layouts. They are not responsive by default so
 
 Alert is a component that draws attention to something. It's useful for announcements or warnings. You can find more information [here](https://mui.com/components/alert/).
 
+```jsx
 <Alert severity="info">
   This is an info alert — <strong>check it out!</strong>
 </Alert>
+```
+<Alert severity="info">
+  This is an info alert — <strong>check it out!</strong>
+</Alert>
+
+```jsx
+<Alert severity="warning">
+  This is an info alert — <strong>check it out!</strong>
+</Alert>
+```
 
 <Alert severity="warning">
   This is an info alert — <strong>check it out!</strong>
 </Alert>
 
+```jsx
 <Alert severity="error">
   This is an info alert — <strong>check it out!</strong>
 </Alert>
+```
+
+<Alert severity="error">
+  This is an info alert — <strong>check it out!</strong>
+</Alert>
+
+```jsx
+<Alert severity="success">
+  This is an info alert — <strong>check it out!</strong>
+</Alert>
+```
 
 <Alert severity="success">
   This is an info alert — <strong>check it out!</strong>
