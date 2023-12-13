@@ -1,6 +1,5 @@
 import React from 'react'
 import { Typography, Alert, AlertTitle, Box } from '@mui/material'
-import 'prismjs/themes/prism-dark.css'
 import log from 'loglevel'
 
 interface ErrorBoundaryProps {

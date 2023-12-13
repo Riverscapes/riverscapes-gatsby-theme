@@ -164,7 +164,27 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
           ),
         }}
       >
-        {children}
+        <Box
+          // Any last-minute style injection can happen here
+          sx={{
+            // Inline code blocks need some tweaking from what prismjs gives us
+            '& code.language-text': {
+              color: '#555577',
+              fontSize: '0.9em',
+              fontFamily: '"JetBrains Mono", "Courier New", sans-serif',
+              background: '#44444444',
+              border: '1px solid #2a2a2a',
+              px: 1,
+              mx: 0.5,
+              py: 0.2,
+              borderRadius: 1,
+              textShadow: 'none',
+              boxShadow: 'none',
+            },
+          }}
+        >
+          {children}
+        </Box>
       </MDXProvider>
     </MDXErrorBoundary>
   )

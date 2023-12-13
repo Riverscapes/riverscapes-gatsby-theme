@@ -5,7 +5,7 @@
 import React from 'react'
 import { withPrefix } from 'gatsby'
 import { RSLink } from './RSLink'
-import { Box, Stack, Typography } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 
 type RSStaticImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
   src: string

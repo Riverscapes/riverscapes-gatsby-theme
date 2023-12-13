@@ -205,7 +205,7 @@ If you need a bit more control you can use the `<RSStaticImage />` HTML syntax. 
 ```
 <RSStaticImage src='/images/demoStatic.jpg' to='../about-us' caption="This is a simple caption" style={{border: "20px solid orange"}}/>
 
-- **No Wrapping (advanced mode)**: You can add a `noWrap` attribute to remove all the fitting, centering and img wrapping. If you use this you will be left with the equivalent of a single unwrapped `<img />` tag. As you can see though, this is not necessarily going to play nice with our theme.
+- **No Wrapping (advanced mode)**: You can add a `noWrap` attribute to remove all the fitting, centering and img wrapping. If you use this you will be left with the equivalent of a single unwrapped `<img />` tag. As you can see though, this is not necessarily going to play nice with our theme. ***NOTE: IF YOU USE NOWRAP IT WILL IGNORE THE `caption` ATTRIBUTE.***
 
 
 ```typescript
@@ -287,13 +287,13 @@ Paragraph3 Elit labore aliquip exercitation dolor voluptate reprehenderit occaec
 
 ## Youtube embeds
 
-We have a custom component for youtube embedding
+We have a custom component for youtube embedding. There is an optional `caption` attribute that will add a caption to the video.
 
 ```tsx
-<Youtube embedId="1hPxGmTGarM" />
+<Youtube embedId="1hPxGmTGarM" caption="This is a simple caption" />
 ```
 
-<Youtube embedId="1hPxGmTGarM" />
+<Youtube embedId="1hPxGmTGarM" caption="This is a simple caption"/>
 
 
 You can also embed using the `<iframe />` from youtube but it's not as nice AND you should rename the attributes to be camelCase from `frameborder` to `frameBorder` and `allowfullscreen` to `allowFullScreen` or you get browser console warnings:
