@@ -191,12 +191,28 @@ Quick and dirty. **Whenever possible please do images like this**. they are not 
 
 #### RSStaticImage (instead of `<img />`)
 
-If you need a bit more control you can use the `<RSStaticImage />` HTML syntax. You can use it the same as an `<img />` tag with all the same attributes. As you can see though, this is not necessarily going to play nice with our theme.
-
+If you need a bit more control you can use the `<RSStaticImage />` HTML syntax. You can use it the same as an `<img />` tag with all the same attributes.
 ```typescript
 <RSStaticImage src='/images/demoStatic.jpg' style={{opacity: 0.2, border: "20px solid orange"}} />
 ```
 <RSStaticImage src='/images/demoStatic.jpg' style={{opacity: 0.2, border: "20px solid orange"}} />
+
+
+- **Linked images**: Additionally you can include an `to` attribute to make the image a link. The properties of the `to` attribute are identical to the `<Link />` compoent above (i.e. You can use relative or absolute paths.)
+
+```typescript
+<RSStaticImage src='/images/demoStatic.jpg' to='../about-us' style={{border: "20px solid orange"}}/>
+```
+<RSStaticImage src='/images/demoStatic.jpg' to='../about-us' style={{border: "20px solid orange"}}/>
+
+- **No Wrapping (advanced mode)**: You can add a `noWrap` attribute to remove all the fitting, centering and img wrapping. If you use this you will be left with the equivalent of a single unwrapped `<img />` tag. As you can see though, this is not necessarily going to play nice with our theme.
+
+
+```typescript
+<RSStaticImage src='/images/demoStatic.jpg' to='../about-us' noWrap />
+```
+<RSStaticImage src='/images/demoStatic.jpg' to='../about-us' noWrap />
+
 
 #### Caveats and notes:
 
@@ -211,20 +227,6 @@ Using a relative path to navigate relative to the mdx file (Note the dot slash `
 ![DemoStatic](./demoRelative.jpg)
 ```
 ![DemoStatic](./demoRelative.jpg)
-
-#### Caveats and notes:
-
-- `<RSStaticImage />` doesn't work with relative image paths.
-- `<img />` doesn't work for this method either.
-
-## 3. Relative to the site root
-
-Using an absolute path to navigate relative to the site root. (Note the slash `/` which means relative to the site root)
-
-```html
-![DemoStatic](/demoRelative.jpg)
-```
-![DemoStatic](/demoRelative.jpg)
 
 #### Caveats and notes:
 

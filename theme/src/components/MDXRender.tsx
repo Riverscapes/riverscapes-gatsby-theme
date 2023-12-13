@@ -10,7 +10,7 @@ import { YoutubeEmbed } from '../components/YoutubeEmbed'
 import HomepageCard, { HomepageCardContent, HomepageCardHighlight, HomepageCardStat } from '../components/homepageCards'
 import MDXErrorBoundary from './MDXErrorBoundary'
 import { ErrorLiquidText, ErrorUnclosed } from './MDXErrors'
-import { RSStaticImage } from './StaticImage'
+import { RSStaticImage } from './RSStaticImage'
 
 const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
   const theme = useTheme()
