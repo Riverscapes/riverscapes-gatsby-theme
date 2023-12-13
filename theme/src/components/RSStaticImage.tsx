@@ -5,15 +5,16 @@
 import React from 'react'
 import { withPrefix } from 'gatsby'
 import { RSLink } from './RSLink'
-import { Box } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 
 type RSStaticImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
   src: string
   to?: string
   noWrap?: boolean
+  caption?: string
 }
 
-export const RSStaticImage: React.FC<RSStaticImageProps> = ({ src, to, noWrap, style, ...rest }) => {
+export const RSStaticImage: React.FC<RSStaticImageProps> = ({ src, to, noWrap, style, caption, ...rest }) => {
   // If the image is a relative path, append the pathPrefix from gatsby-config.js
   let newSrc: string = src
   if (newSrc.startsWith('/')) {
@@ -21,7 +22,7 @@ export const RSStaticImage: React.FC<RSStaticImageProps> = ({ src, to, noWrap, s
   }
 
   return (
-    <RStaticFullWidthWrapper noWrap={!noWrap}>
+    <RStaticFullWidthWrapper noWrap={!noWrap} caption={caption}>
       <RSStaticImageLink to={to}>
         <img
           src={newSrc}
@@ -52,12 +53,13 @@ export const RSStaticImageLink: React.FC<RSStaticImageLinkProps> = ({ to, childr
 
 type RStaticFullWidthWrapperProps = {
   noWrap?: boolean
+  caption?: string
   children: React.ReactNode
 }
-export const RStaticFullWidthWrapper: React.FC<RStaticFullWidthWrapperProps> = ({ noWrap, children }) => {
+export const RStaticFullWidthWrapper: React.FC<RStaticFullWidthWrapperProps> = ({ noWrap, caption, children }) => {
   if (!noWrap) return <>{children}</>
   return (
-    <Box
+    <Stack
       style={{
         display: 'flex',
         justifyContent: 'center',
@@ -65,6 +67,11 @@ export const RStaticFullWidthWrapper: React.FC<RStaticFullWidthWrapperProps> = (
       }}
     >
       {children}
-    </Box>
+      {caption && (
+        <Typography variant="caption" style={{ textAlign: 'center', width: '100%' }}>
+          {caption}
+        </Typography>
+      )}
+    </Stack>
   )
 }

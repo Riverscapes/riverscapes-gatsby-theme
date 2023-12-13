@@ -6,7 +6,6 @@ banner: true
 
 {/* DO NOT IMPROVE THIS FILE. CHANGE IT IN THE DEVELOPER SITE AND THEN COPY THE CONTENTS BACK HERE */}
 
-
 import FaceIcon from '@mui/icons-material/Face';
 
 
@@ -199,11 +198,12 @@ If you need a bit more control you can use the `<RSStaticImage />` HTML syntax. 
 
 
 - **Linked images**: Additionally you can include an `to` attribute to make the image a link. The properties of the `to` attribute are identical to the `<Link />` compoent above (i.e. You can use relative or absolute paths.)
+- **Image Captions**: You can also include a `caption` attribute to add a caption to the image. This is useful for images that are not self-explanatory.
 
 ```typescript
-<RSStaticImage src='/images/demoStatic.jpg' to='../about-us' style={{border: "20px solid orange"}}/>
+<RSStaticImage src='/images/demoStatic.jpg' to='../about-us' caption="This is a simple caption" style={{border: "20px solid orange"}}/>
 ```
-<RSStaticImage src='/images/demoStatic.jpg' to='../about-us' style={{border: "20px solid orange"}}/>
+<RSStaticImage src='/images/demoStatic.jpg' to='../about-us' caption="This is a simple caption" style={{border: "20px solid orange"}}/>
 
 - **No Wrapping (advanced mode)**: You can add a `noWrap` attribute to remove all the fitting, centering and img wrapping. If you use this you will be left with the equivalent of a single unwrapped `<img />` tag. As you can see though, this is not necessarily going to play nice with our theme.
 
