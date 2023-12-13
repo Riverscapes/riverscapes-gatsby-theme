@@ -52,7 +52,14 @@ const PageTemplate = ({ data: { site, mdx: page, allMdx: childPages }, children,
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Box component="article" itemScope itemType="http://schema.org/Article">
+      <Box
+        component="article"
+        itemScope
+        itemType="http://schema.org/Article"
+        sx={{
+          position: 'relative',
+        }}
+      >
         {!page.frontmatter.isHome ? (
           <>
             <Box component="header">{pageHeading}</Box>
