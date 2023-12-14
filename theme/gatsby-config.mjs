@@ -1,7 +1,11 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const path = require(`path`)
+import path from 'path'
+import remarkGfm from 'remark-gfm'
+import { fileURLToPath } from 'url'
 
-module.exports = ({ contentPath, manifest }) => {
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+const config = ({ contentPath, manifest }) => {
   const srcRoot = path.resolve(path.join(__dirname))
   if (!contentPath) throw new Error('contentPath is required')
   if (!manifest) throw new Error('manifest is required')
@@ -29,6 +33,11 @@ module.exports = ({ contentPath, manifest }) => {
       {
         resolve: `gatsby-plugin-mdx`,
         options: {
+          mdxOptions: {
+            // NOTE: DO NOT UPDATE REMARK TO VERSION 4 UNTIL YOU TEST TABLES
+            // https://github.com/storybookjs/storybook/issues/24743#issuecomment-1799810754
+            remarkPlugins: [remarkGfm],
+          },
           gatsbyRemarkPlugins: [
             {
               resolve: `gatsby-remark-images`,
@@ -88,3 +97,5 @@ module.exports = ({ contentPath, manifest }) => {
     ],
   }
 }
+
+export default config

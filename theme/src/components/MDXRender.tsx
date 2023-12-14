@@ -1,6 +1,21 @@
 import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
-import { Box, Divider, Stack, Grid, Typography, useTheme, Alert } from '@mui/material'
+import {
+  Box,
+  Divider,
+  Stack,
+  Grid,
+  Typography,
+  useTheme,
+  Alert,
+  TableContainer,
+  Table,
+  TableRow,
+  TableCell,
+  TableHead,
+  TableBody,
+  TableFooter,
+} from '@mui/material'
 import 'prismjs/themes/prism-dark.css'
 import Button from './RSLinkButton'
 import { RSLink } from './RSLink'
@@ -37,6 +52,7 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
   const hStyles = {
     mt: 8,
     mb: 6,
+    clear: 'both',
     '&:hover': {
       '& .header-link-icon': {
         display: 'block',
@@ -125,6 +141,24 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
               }}
             />
           ),
+          ul: ({ children }) => (
+            <ul
+              style={{
+                clear: 'both',
+              }}
+            >
+              {children}
+            </ul>
+          ),
+          ol: ({ children }) => (
+            <ol
+              style={{
+                clear: 'both',
+              }}
+            >
+              {children}
+            </ol>
+          ),
           li: ({ children }) => (
             <Typography
               component="li"
@@ -153,6 +187,29 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
               {children}
             </Typography>
           ),
+          table: ({ children }) => (
+            <TableContainer
+              sx={{
+                clear: 'both',
+              }}
+            >
+              <Table>{children}</Table>
+            </TableContainer>
+          ),
+          thead: ({ children }) => <TableHead>{children}</TableHead>,
+          tbody: ({ children }) => <TableBody>{children}</TableBody>,
+          tfoot: ({ children }) => <TableFooter>{children}</TableFooter>,
+          tr: ({ children }) => (
+            <TableRow
+              style={{
+                clear: 'both',
+              }}
+            >
+              {children}
+            </TableRow>
+          ),
+          td: ({ children }) => <TableCell>{children}</TableCell>,
+          th: ({ children }) => <TableCell sx={{ fontWeight: 'bold' }}>{children}</TableCell>,
           '*': ({ children }) => (
             <Typography
               component="span"
@@ -169,11 +226,11 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
           // Any last-minute style injection can happen here
           sx={{
             // Inline code blocks need some tweaking from what prismjs gives us
-            '& code.language-text': {
+            '& :not(pre) > code[class*="language-"]': {
               color: '#555577',
               fontSize: '0.9em',
               fontFamily: '"JetBrains Mono", "Courier New", sans-serif',
-              background: '#44444444',
+              backgroundColor: '#44444444',
               border: '1px solid #2a2a2a',
               px: 1,
               mx: 0.5,

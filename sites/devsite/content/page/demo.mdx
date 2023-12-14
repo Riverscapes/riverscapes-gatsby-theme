@@ -216,7 +216,7 @@ If you need a bit more control you can use the `<RSStaticImage />` HTML syntax. 
 
 - **Float**: You can add a `float` attribute to float the image to the `left` or `right`. This is useful for text wrapping. 
     - ***NOTE: Float is ignored if `noWrap` is used***
-    - Floats are sometimes hard to work with and can be unpredictable. If you need a clearing element use a horizotal rule `------------`
+    - Floats are sometimes hard to work with and can be unpredictable. Headers (i.e. `#`, `##`, `###`), Dividers (`---`), and lists (`*`, `1.`, `-`) will clear the float.
     - Floats will revert to full width on mobile screens.
 
 ```typescript
@@ -275,6 +275,7 @@ Or if you need a bit more control you can use the `<RSStaticImage />` HTML synta
 
 # Markdown StyleGuide
 
+```markdown
 ## Headers
 
 # H1 Header
@@ -296,6 +297,56 @@ Paragraph1 Veniam est commodo sit cillum anim ipsum velit culpa id veniam. Sint 
 Paragraph2 In amet excepteur non labore anim pariatur nostrud ad consequat quis nostrud ea ullamco occaecat. Ad mollit cillum occaecat est laborum eu. Nostrud quis officia cillum qui proident aliqua deserunt voluptate culpa ad dolor irure cupidatat esse. Qui nulla duis esse velit. Reprehenderit laboris labore ea do minim anim aliqua elit occaecat voluptate duis excepteur dolore est.
 
 Paragraph3 Elit labore aliquip exercitation dolor voluptate reprehenderit occaecat esse Lorem consectetur ad. Occaecat non esse velit in. Qui aute eu elit consectetur duis anim sunt cupidatat. Elit aliquip dolor ex commodo anim. Nulla Lorem sit et aute velit officia aute adipisicing. Adipisicing esse eiusmod nulla elit exercitation laborum. Consectetur cillum sint adipisicing laborum ex aute et dolor labore amet in in dolore.
+
+* List item 1
+* List item 2
+
+1. List item 1
+1. List item 2
+
+| Header 1 | Header2  | Header 3   |
+|--------------|------|---|
+|Row1 Column1 | Row1 Column2 | Row1 Column3 |
+|Row2 Column1 | Row2 Column2 | Row2 Column3 |
+|Row3 Column1 | Row3 Column2 | Row3 Column3 |
+|Row4 Column1 | Row4 Column2 | Row4 Column3 |
+```
+
+
+## Headers
+
+# H1 Header
+
+## H2 Header
+
+### H3 Header
+
+#### H4 Header
+
+##### H5 Header
+
+###### H6 Header
+
+> Blockquote Et ullamco dolor anim magna dolor aliquip enim consequat ut minim aliqua ea.
+
+Paragraph1 Veniam est commodo sit cillum anim ipsum velit culpa id veniam. Sint aute dolor excepteur eu commodo minim reprehenderit amet reprehenderit esse ea. Eu Lorem consectetur sint id aute ex cillum aliqua laborum aute deserunt ipsum. Deserunt ullamco Lorem deserunt commodo consequat magna ea id.
+
+Paragraph2 In amet excepteur non labore anim pariatur nostrud ad consequat quis nostrud ea ullamco occaecat. Ad mollit cillum occaecat est laborum eu. Nostrud quis officia cillum qui proident aliqua deserunt voluptate culpa ad dolor irure cupidatat esse. Qui nulla duis esse velit. Reprehenderit laboris labore ea do minim anim aliqua elit occaecat voluptate duis excepteur dolore est.
+
+Paragraph3 Elit labore aliquip exercitation dolor voluptate reprehenderit occaecat esse Lorem consectetur ad. Occaecat non esse velit in. Qui aute eu elit consectetur duis anim sunt cupidatat. Elit aliquip dolor ex commodo anim. Nulla Lorem sit et aute velit officia aute adipisicing. Adipisicing esse eiusmod nulla elit exercitation laborum. Consectetur cillum sint adipisicing laborum ex aute et dolor labore amet in in dolore.
+
+* List item 1
+* List item 2
+
+1. List item 1
+1. List item 2
+
+| Header 1 | Header2  | Header 3   |
+|--------------|------|---|
+|Row1 Column1 | Row1 Column2 | Row1 Column3 |
+|Row2 Column1 | Row2 Column2 | Row2 Column3 |
+|Row3 Column1 | Row3 Column2 | Row3 Column3 |
+|Row4 Column1 | Row4 Column2 | Row4 Column3 |
 
 ----------------
 
