@@ -214,6 +214,20 @@ If you need a bit more control you can use the `<RSStaticImage />` HTML syntax. 
 <RSStaticImage src='/images/demoStatic.jpg' to='../about-us' noWrap />
 
 
+- **Float**: You can add a `float` attribute to float the image to the `left` or `right`. This is useful for text wrapping. 
+    - ***NOTE: Float is ignored if `noWrap` is used***
+    - Floats are sometimes hard to work with and can be unpredictable. If you need a clearing element use a horizotal rule `------------`
+    - Floats will revert to full width on mobile screens.
+
+```typescript
+<RSStaticImage src='https://placekitten.com/200/300' to="https://google.com" float="left" caption="kitten pic" />
+Velit nulla exercitation consectetur laborum elit magna ea non consectetur magna. Fugiat amet est voluptate consequat est commodo irure reprehenderit tempor pariatur adipisicing consequat aliquip. Labore proident veniam nulla officia dolor do. Nostrud adipisicing nisi aliquip magna sit aute velit labore nulla culpa cillum ex.
+```
+<RSStaticImage src='https://placekitten.com/200/300' to="https://google.com" float="left" caption="kitten pic" />
+Velit nulla exercitation consectetur laborum elit magna ea non consectetur magna. Fugiat amet est voluptate consequat est commodo irure reprehenderit tempor pariatur adipisicing consequat aliquip. Labore proident veniam nulla officia dolor do. Nostrud adipisicing nisi aliquip magna sit aute velit labore nulla culpa cillum ex.
+
+-------------
+
 #### Caveats and notes:
 
 - `<img />` doesn't work for this method either.
@@ -247,9 +261,9 @@ You can just use Markdown's Markdown/Remark syntax for external images:
 Or if you need a bit more control you can use the `<RSStaticImage />` HTML syntax. You can use it the same as an `<img />` tag with all the same attributes.
 
 ```typescript
-<RSStaticImage src='https://placekitten.com/200/300' style={{opacity: 0.2, border: "20px solid orange"}} />
+<RSStaticImage src='https://placekitten.com/200/300' to="https://google.com" style={{opacity: 0.2, border: "20px solid orange"}} />
 ```
-<RSStaticImage src='https://placekitten.com/200/300' style={{opacity: 0.2, border: "20px solid orange"}} />
+<RSStaticImage src='https://placekitten.com/200/300' to="https://google.com" style={{opacity: 0.2, border: "20px solid orange"}} />
 
 
 #### Caveats and notes:

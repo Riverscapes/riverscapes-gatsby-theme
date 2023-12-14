@@ -118,6 +118,7 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
           hr: () => (
             <Divider
               sx={{
+                clear: 'both',
                 border: '2px solid #B4CE00',
                 backgroundColor: '#B4CE00',
                 color: '#B4CE00',
