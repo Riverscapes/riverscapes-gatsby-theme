@@ -1,13 +1,9 @@
 ---
 title: Demo & Styleguide DERIVATIVE
 description: "Demo Page where you can see how to do things"
+NOTE: IF YOU EDIT THIS FILE MAKE SURE TO UPDATE ITS COUNTERPART IN https://github.com/Riverscapes/developer-website
 banner: true
 ---
-
-{/* DO NOT IMPROVE THIS FILE. CHANGE IT IN THE DEVELOPER SITE AND THEN COPY THE CONTENTS BACK HERE */}
-
-import FaceIcon from '@mui/icons-material/Face';
-
 
 # Gatsby special markdown syntaxs
 
@@ -72,31 +68,70 @@ import { Container, Divider, Grid, Card, CardActionArea, CardMedia, CardContent,
 
 ----------------
 
+## Theme colors
+
+The style we use has a number of preset colors that we can reference by name.
+
+<Button color="primary" title="primary" to="" fullWidth />
+<Button color="secondary" title="secondary" to="" fullWidth />
+<Button color="success" title="success" to="" fullWidth />
+<Button color="error" title="error" to="" fullWidth />
+<Button color="info" title="info" to="" fullWidth />
+<Button color="warning" title="warning" to="" fullWidth />
+
+
+----------------
+
 ## Use MUI Icons
 
 Our theme has access to the [Material UI Icons](https://mui.com/components/material-icons/) library. You can use them in markdown like this:
 
 ```typescript
-import FaceIcon from '@mui/icons-material/Face';
-<FaceIcon />
-<Button to='../about-us' color='error' endIcon={<FaceIcon />}>About us Button</Button>
+#### Use them on their own
+
+<Icon iconName="Face" />
+<Icon iconName="Face" color="primary"/>
+<Icon iconName="Face" color="secondary"/>
+<Icon iconName="Face" color="success"/>
+<Icon iconName="FaceSpellBad" />
+
+#### Use them in buttons too
+
+<Button to="./demo" color="primary" iconName={"Face"} title="Icon found" />
+<Button to="./demo" color="secondary" iconName={"FaceSpellBad"} title="With typo" />
 ```
 
-<FaceIcon />
-<Button to='../about-us' color='error' endIcon={<FaceIcon />}>About us Button</Button>
+#### Use them on their own
 
+<Icon iconName="Face" />
+<Icon iconName="Face" color="primary"/>
+<Icon iconName="Face" color="secondary"/>
+<Icon iconName="Face" color="success"/>
+<Icon iconName="FaceSpellBad" />
+
+#### Use them in buttons too
+
+<Button to="./demo" color="primary" iconName={"Face"} title="Icon found" />
+<Button to="./demo" color="secondary" iconName={"FaceSpellBad"} title="With typo" />
+
+You can place icons inline as well <Icon iconName="Alarm" />
+Notice that when an icon isn't found you see <Icon iconName="FaceSpellBad" /> with a tooltip.
+
+### Note about MUI icon names
+
+Make sure to use the name exactly from the [Material UI Icons](https://mui.com/components/material-icons/) library. Note that the names are case sensitive and DO NOT END WITH 'Icon'. For example, the icon `Face` is used like this: `<Icon iconName="Face" />` NOT `<Icon iconName="FaceIcon" />`.
 
 ----------------
 
-## **Don't** Use HTML tags
+## **Don't** Use ANY HTML tags!
 
-While HTML tags like are technically allowed in markdown we recommend that you do not use them at all. 
+While HTML tags like `<a href="">, <hr> <b> etc...` are technically allowed in markdown we recommend that you do not use them at all. They require a lot of extra work and styling to make them responsive and they are an anti-pattern to good markdown writing because they clutter up the content. Furthermore, this pattern now needs to be copied across pages and sites any time you nede it, snowballing the clutter to epic levels!
 
 #### Alternatives in descending desirability:
 
-1. Use the markdown equivalent whenever you can. This increases the maintainability of the site and reduces breakages during upgrade.
-2. Find a baked-in component that does what you want. (That's why we created them).
-3. Create a new baked-in component (or have a developer make one for you). This will mean you can use this new function across ALL sites with this theme.
+1. **Use the markdown equivalent whenever you can**. This increases the maintainability of the site and reduces breakages during upgrade.
+2. **Find a baked-in component that does what you want**. (That's why we created them).
+3. **Create a new baked-in component** (or have a developer make one for you). This will mean you can use this new function across ALL sites with this theme.
 4. If there is absolutely no other way to do it then it might be best to check with a developer before proceeding.
 
 ----------------
@@ -112,17 +147,17 @@ You can easily use remark syntax for links
 You can either use the markdown syntax or the `<Link />` component
 
 * [About us Link](../about-us) `[About us Link](../about-us)`
-* <Link to='../about-us'>About us Link</Link> `<Link to='../about-us'>About us Link</Link>`
+* <Link to="../about-us">About us Link</Link> `<Link to="../about-us">About us Link</Link>`
 
 **NOTE: Don't use the `<a>` tag. It will not render properly:**
-  * <a href='../about-us'>About us Link</a> `<a href='./about-us'>About us Link</a>`
+  * <a href="../about-us">About us Link</a> `<a href="./about-us">About us Link</a>`
 
 ### Absolute Internal Links
 
 You can either use the markdown syntax or the `<Link />` component
 
 * [About us Link](/about-us) `[About us Link](/about-us)`
-* <Link to='/about-us'>About us Link</Link> `<Link to='/about-us'>About us Link</Link>`
+* <Link to="/about-us">About us Link</Link> `<Link to="/about-us">About us Link</Link>`
 
 **NOTE: Once again don't use the `<a>` tag. It will not render or link properly.**
 
@@ -131,7 +166,7 @@ You can either use the markdown syntax or the `<Link />` component
 External links operate the same way. Linking internally will navigate using the current browser tab and external links will open a new tab.
 
 * [Google](https://google.com) `[Google](https://google.com)`
-* <Link to='https://google.com'>Google</Link> `<Link to='https://google.com'>Google</Link>`
+* <Link to="https://google.com">Google</Link> `<Link to="https://google.com">Google</Link>`
 
 **NOTE: Again, don't use the `<a>` tag. It will not render properly.**
 
@@ -145,26 +180,72 @@ Buttons are almost identical to links. Linking internally will navigate using th
 
 
 ```jsx
-<Button to='../about-us'>About us Button</Button> 
-<Button to='../about-us' color='secondary'>About us Button</Button> 
-<Button to='../about-us' color='success'>About us Button</Button> 
-<Button to='../about-us' color='error'>About us Button</Button> 
-<Button to='../about-us' color='error' startIcon={<FaceIcon />}>About us Button</Button> 
-<Button to='../about-us' color='error' endIcon={<FaceIcon />}>About us Button</Button> 
-```
-<Button to='../about-us'>About us Button</Button> 
-<Button to='../about-us' color='secondary'>About us Button</Button> 
-<Button to='../about-us' color='success'>About us Button</Button> 
-<Button to='../about-us' color='error'>About us Button</Button> 
-<Button to='../about-us' color='error' startIcon={<FaceIcon />}>About us Button</Button> 
-<Button to='../about-us' color='error' endIcon={<FaceIcon />}>About us Button</Button> 
+<Button to="./demo">Regular button</Button> 
 
-### External Link Button
+####  You can also the title attribute instead of putting the text in the child node
+<Button to="./demo" title="Regular button" /> 
 
-```jsx
-<Button to='https://google.com'>Google dot com</Button>
+#### Different colors
+<Button to="./demo" color="secondary" title="Secondary Color" />
+<Button to="./demo" color="success" title="Success Color" />
+<Button to="./demo" color="error" title="Error Color" />
+
+#### With Icons
+<Button to="./demo" color="success" iconName="Face" title="About us Button" /> 
+
+####  You can also add a subtitle
+<Button to="./demo" color="info" iconName="Face"
+  title="This is a title"
+  subtitle="This is a subtitle"
+/>
+
+####  FullWidth
+
+<Button to="./demo" title="Full Width Button" fullWidth/> 
+
+#### Sizes
+
+<Button to="./demo" title="Full Width Button" size="small"/> 
+<Button to="./demo" title="Full Width Button" size="medium"/> 
+<Button to="./demo" title="Full Width Button" size="large"/> 
+
+#### External Link Button
+
+<Button to="https://google.com">Google dot com</Button> 
 ```
-<Button to='https://google.com'>Google dot com</Button> 
+
+<Button to="./demo">Regular button</Button> 
+
+####  You can also the title attribute instead of putting the text in the child node
+<Button to="./demo" title="Regular button" /> 
+
+#### Different colors
+<Button to="./demo" color="secondary" title="Secondary Color" />
+<Button to="./demo" color="success" title="Success Color" />
+<Button to="./demo" color="error" title="Error Color" />
+
+#### With Icons
+<Button to="./demo" color="success" iconName="Face" title="About us Button" /> 
+
+####  You can also add a subtitle
+<Button to="./demo" color="info" iconName="Face"
+  title="This is a title"
+  subtitle="This is a subtitle"
+/>
+
+####  FullWidth
+
+<Button to="./demo" title="Full Width Button" fullWidth/> 
+
+#### Sizes
+
+<Button to="./demo" title="Full Width Button" size="small"/> 
+<Button to="./demo" title="Full Width Button" size="medium"/> 
+<Button to="./demo" title="Full Width Button" size="large"/> 
+
+#### External Link Button
+
+<Button to="https://google.com">Google dot com</Button> 
 
 ----------------
 
@@ -188,30 +269,30 @@ Quick and dirty. **Whenever possible please do images like this**. they are not 
 ```
 ![DemoStatic](/images/demoStatic.jpg)
 
-#### RSStaticImage (instead of `<img />`)
+#### Image (instead of `<img />`)
 
-If you need a bit more control you can use the `<RSStaticImage />` HTML syntax. You can use it the same as an `<img />` tag with all the same attributes.
+If you need a bit more control you can use the `<Image />` HTML syntax. You can use it the same as an `<img />` tag with all the same attributes.
 ```typescript
-<RSStaticImage src='/images/demoStatic.jpg' style={{opacity: 0.2, border: "20px solid orange"}} />
+<Image src="/images/demoStatic.jpg" style={{opacity: 0.2, border: "20px solid orange"}} />
 ```
-<RSStaticImage src='/images/demoStatic.jpg' style={{opacity: 0.2, border: "20px solid orange"}} />
+<Image src="/images/demoStatic.jpg" style={{opacity: 0.2, border: "20px solid orange"}} />
 
 
 - **Linked images**: Additionally you can include an `to` attribute to make the image a link. The properties of the `to` attribute are identical to the `<Link />` compoent above (i.e. You can use relative or absolute paths.)
 - **Image Captions**: You can also include a `caption` attribute to add a caption to the image. This is useful for images that are not self-explanatory.
 
 ```typescript
-<RSStaticImage src='/images/demoStatic.jpg' to='../about-us' caption="This is a simple caption" style={{border: "20px solid orange"}}/>
+<Image src="/images/demoStatic.jpg" to="../about-us" caption="This is a simple caption" style={{border: "20px solid orange"}}/>
 ```
-<RSStaticImage src='/images/demoStatic.jpg' to='../about-us' caption="This is a simple caption" style={{border: "20px solid orange"}}/>
+<Image src="/images/demoStatic.jpg" to="../about-us" caption="This is a simple caption" style={{border: "20px solid orange"}}/>
 
 - **No Wrapping (advanced mode)**: You can add a `noWrap` attribute to remove all the fitting, centering and img wrapping. If you use this you will be left with the equivalent of a single unwrapped `<img />` tag. As you can see though, this is not necessarily going to play nice with our theme. ***NOTE: IF YOU USE NOWRAP IT WILL IGNORE THE `caption` ATTRIBUTE.***
 
 
 ```typescript
-<RSStaticImage src='/images/demoStatic.jpg' to='../about-us' noWrap />
+<Image src="/images/demoStatic.jpg" to="../about-us" noWrap />
 ```
-<RSStaticImage src='/images/demoStatic.jpg' to='../about-us' noWrap />
+<Image src="/images/demoStatic.jpg" to="../about-us" noWrap />
 
 
 - **Float**: You can add a `float` attribute to float the image to the `left` or `right`. This is useful for text wrapping. 
@@ -220,10 +301,10 @@ If you need a bit more control you can use the `<RSStaticImage />` HTML syntax. 
     - Floats will revert to full width on mobile screens.
 
 ```typescript
-<RSStaticImage src='https://placekitten.com/200/300' to="https://google.com" float="left" caption="kitten pic" />
+<Image src="https://placekitten.com/200/300" to="https://google.com" float="left" caption="kitten pic" />
 Velit nulla exercitation consectetur laborum elit magna ea non consectetur magna. Fugiat amet est voluptate consequat est commodo irure reprehenderit tempor pariatur adipisicing consequat aliquip. Labore proident veniam nulla officia dolor do. Nostrud adipisicing nisi aliquip magna sit aute velit labore nulla culpa cillum ex.
 ```
-<RSStaticImage src='https://placekitten.com/200/300' to="https://google.com" float="left" caption="kitten pic" />
+<Image src="https://placekitten.com/200/300" to="https://google.com" float="left" caption="kitten pic" />
 Velit nulla exercitation consectetur laborum elit magna ea non consectetur magna. Fugiat amet est voluptate consequat est commodo irure reprehenderit tempor pariatur adipisicing consequat aliquip. Labore proident veniam nulla officia dolor do. Nostrud adipisicing nisi aliquip magna sit aute velit labore nulla culpa cillum ex.
 
 -------------
@@ -244,7 +325,7 @@ Using a relative path to navigate relative to the mdx file (Note the dot slash `
 
 #### Caveats and notes:
 
-- `<RSStaticImage />` doesn't work with relative image paths.
+- `<Image />` doesn't work with relative image paths.
 - `<img />` doesn't work for this method either.
 
 
@@ -258,12 +339,12 @@ You can just use Markdown's Markdown/Remark syntax for external images:
 ![Kitten](https://placekitten.com/200/300)
 
 
-Or if you need a bit more control you can use the `<RSStaticImage />` HTML syntax. You can use it the same as an `<img />` tag with all the same attributes.
+Or if you need a bit more control you can use the `<Image />` HTML syntax. You can use it the same as an `<img />` tag with all the same attributes.
 
 ```typescript
-<RSStaticImage src='https://placekitten.com/200/300' to="https://google.com" style={{opacity: 0.2, border: "20px solid orange"}} />
+<Image src="https://placekitten.com/200/300" to="https://google.com" style={{opacity: 0.2, border: "20px solid orange"}} />
 ```
-<RSStaticImage src='https://placekitten.com/200/300' to="https://google.com" style={{opacity: 0.2, border: "20px solid orange"}} />
+<Image src="https://placekitten.com/200/300" to="https://google.com" style={{opacity: 0.2, border: "20px solid orange"}} />
 
 
 #### Caveats and notes:
@@ -292,11 +373,11 @@ Or if you need a bit more control you can use the `<RSStaticImage />` HTML synta
 
 > Blockquote Et ullamco dolor anim magna dolor aliquip enim consequat ut minim aliqua ea.
 
-Paragraph1 Veniam est commodo sit cillum anim ipsum velit culpa id veniam. Sint aute dolor excepteur eu commodo minim reprehenderit amet reprehenderit esse ea. Eu Lorem consectetur sint id aute ex cillum aliqua laborum aute deserunt ipsum. Deserunt ullamco Lorem deserunt commodo consequat magna ea id.
+**Paragraph1** Veniam est [inline link](./demo) sit cillum anim ipsum velit culpa id veniam. Sint aute dolor excepteur eu commodo minim reprehenderit amet reprehenderit esse ea. Eu Lorem consectetur sint id aute ex cillum aliqua laborum aute deserunt ipsum. Deserunt ullamco Lorem deserunt commodo consequat magna ea id.
 
-Paragraph2 In amet excepteur non labore anim pariatur nostrud ad consequat quis nostrud ea ullamco occaecat. Ad mollit cillum occaecat est laborum eu. Nostrud quis officia cillum qui proident aliqua deserunt voluptate culpa ad dolor irure cupidatat esse. Qui nulla duis esse velit. Reprehenderit laboris labore ea do minim anim aliqua elit occaecat voluptate duis excepteur dolore est.
+**Paragraph2** In amet excepteur non labore anim pariatur nostrud ad consequat quis nostrud ea ullamco occaecat. Ad mollit cillum occaecat est laborum eu. Nostrud quis officia cillum qui proident aliqua deserunt voluptate culpa ad dolor irure cupidatat esse. Qui nulla duis esse velit. Reprehenderit laboris labore ea do minim anim aliqua elit occaecat voluptate duis excepteur dolore est.
 
-Paragraph3 Elit labore aliquip exercitation dolor voluptate reprehenderit occaecat esse Lorem consectetur ad. Occaecat non esse velit in. Qui aute eu elit consectetur duis anim sunt cupidatat. Elit aliquip dolor ex commodo anim. Nulla Lorem sit et aute velit officia aute adipisicing. Adipisicing esse eiusmod nulla elit exercitation laborum. Consectetur cillum sint adipisicing laborum ex aute et dolor labore amet in in dolore.
+**Paragraph3** Elit labore aliquip exercitation dolor voluptate reprehenderit occaecat esse Lorem consectetur ad. Occaecat non esse velit in. Qui aute eu elit consectetur duis anim sunt cupidatat. Elit aliquip dolor ex commodo anim. Nulla Lorem sit et aute velit officia aute adipisicing. Adipisicing esse eiusmod nulla elit exercitation laborum. Consectetur cillum sint adipisicing laborum ex aute et dolor labore amet in in dolore.
 
 * List item 1
 * List item 2
@@ -311,7 +392,6 @@ Paragraph3 Elit labore aliquip exercitation dolor voluptate reprehenderit occaec
 |Row3 Column1 | Row3 Column2 | Row3 Column3 |
 |Row4 Column1 | Row4 Column2 | Row4 Column3 |
 ```
-
 
 ## Headers
 
@@ -329,11 +409,11 @@ Paragraph3 Elit labore aliquip exercitation dolor voluptate reprehenderit occaec
 
 > Blockquote Et ullamco dolor anim magna dolor aliquip enim consequat ut minim aliqua ea.
 
-Paragraph1 Veniam est commodo sit cillum anim ipsum velit culpa id veniam. Sint aute dolor excepteur eu commodo minim reprehenderit amet reprehenderit esse ea. Eu Lorem consectetur sint id aute ex cillum aliqua laborum aute deserunt ipsum. Deserunt ullamco Lorem deserunt commodo consequat magna ea id.
+**Paragraph1** Veniam est [inline link](./demo) sit cillum anim ipsum velit culpa id veniam. Sint aute dolor excepteur eu commodo minim reprehenderit amet reprehenderit esse ea. Eu Lorem consectetur sint id aute ex cillum aliqua laborum aute deserunt ipsum. Deserunt ullamco Lorem deserunt commodo consequat magna ea id.
 
-Paragraph2 In amet excepteur non labore anim pariatur nostrud ad consequat quis nostrud ea ullamco occaecat. Ad mollit cillum occaecat est laborum eu. Nostrud quis officia cillum qui proident aliqua deserunt voluptate culpa ad dolor irure cupidatat esse. Qui nulla duis esse velit. Reprehenderit laboris labore ea do minim anim aliqua elit occaecat voluptate duis excepteur dolore est.
+**Paragraph2** In amet excepteur non labore anim pariatur nostrud ad consequat quis nostrud ea ullamco occaecat. Ad mollit cillum occaecat est laborum eu. Nostrud quis officia cillum qui proident aliqua deserunt voluptate culpa ad dolor irure cupidatat esse. Qui nulla duis esse velit. Reprehenderit laboris labore ea do minim anim aliqua elit occaecat voluptate duis excepteur dolore est.
 
-Paragraph3 Elit labore aliquip exercitation dolor voluptate reprehenderit occaecat esse Lorem consectetur ad. Occaecat non esse velit in. Qui aute eu elit consectetur duis anim sunt cupidatat. Elit aliquip dolor ex commodo anim. Nulla Lorem sit et aute velit officia aute adipisicing. Adipisicing esse eiusmod nulla elit exercitation laborum. Consectetur cillum sint adipisicing laborum ex aute et dolor labore amet in in dolore.
+**Paragraph3** Elit labore aliquip exercitation dolor voluptate reprehenderit occaecat esse Lorem consectetur ad. Occaecat non esse velit in. Qui aute eu elit consectetur duis anim sunt cupidatat. Elit aliquip dolor ex commodo anim. Nulla Lorem sit et aute velit officia aute adipisicing. Adipisicing esse eiusmod nulla elit exercitation laborum. Consectetur cillum sint adipisicing laborum ex aute et dolor labore amet in in dolore.
 
 * List item 1
 * List item 2
@@ -423,32 +503,32 @@ def add(a, b):
 
 ```jsx
 <Stack spacing={2} border="2px solid red">
-  <Box to=''>Thing 1</Box>
-  <Box to=''>Thing 2</Box>
-  <Box to=''>Thing 3</Box>
+  <Box to="">Thing 1</Box>
+  <Box to="">Thing 2</Box>
+  <Box to="">Thing 3</Box>
 </Stack>
 ```
 
 <Stack spacing={2} border="2px solid red">
-  <Box to=''>Thing 1</Box>
-  <Box to=''>Thing 2</Box>
-  <Box to=''>Thing 3</Box>
+  <Box to="">Thing 1</Box>
+  <Box to="">Thing 2</Box>
+  <Box to="">Thing 3</Box>
 </Stack>
 
 #### Horizontal Stack
 
 ```jsx
 <Stack spacing={2} border="2px solid red" direction="row" justifyContent="center">
-  <Box to=''>Thing 1</Box>
-  <Box to=''>Thing 2</Box>
-  <Box to=''>Thing 3</Box>
+  <Box to="">Thing 1</Box>
+  <Box to="">Thing 2</Box>
+  <Box to="">Thing 3</Box>
 </Stack>
 ```
 
 <Stack spacing={2} border="2px solid red" direction="row" justifyContent="center">
-  <Box to=''>Thing 1</Box>
-  <Box to=''>Thing 2</Box>
-  <Box to=''>Thing 3</Box>
+  <Box to="">Thing 1</Box>
+  <Box to="">Thing 2</Box>
+  <Box to="">Thing 3</Box>
 </Stack>
 
 ## Grids
@@ -486,39 +566,49 @@ Alert is a component that draws attention to something. It's useful for announce
 
 ```jsx
 <Alert severity="info">
-  This is an info alert — <strong>check it out!</strong>
+  This is an **info** alert — <strong>check it out!</strong>
 </Alert>
 ```
 <Alert severity="info">
-  This is an info alert — <strong>check it out!</strong>
+  This is an **info** alert — <strong>check it out!</strong>
 </Alert>
 
 ```jsx
+<Alert severity="info" variant='filled'>
+  This is an **info** alert with the **filled** variant — <strong>check it out!</strong>
+</Alert>
+```
+<Alert severity="info" variant='filled'>
+  This is an **info** alert with the **filled** variant — <strong>check it out!</strong>
+</Alert>
+
+
+```jsx
 <Alert severity="warning">
-  This is an info alert — <strong>check it out!</strong>
+  This is an **warning** alert — <strong>check it out!</strong>
 </Alert>
 ```
 
 <Alert severity="warning">
-  This is an info alert — <strong>check it out!</strong>
+  This is an **warning** alert — <strong>check it out!</strong>
 </Alert>
 
 ```jsx
 <Alert severity="error">
-  This is an info alert — <strong>check it out!</strong>
+  This is an **error** alert — <strong>check it out!</strong>
 </Alert>
 ```
 
 <Alert severity="error">
-  This is an info alert — <strong>check it out!</strong>
+  This is an **error** alert — <strong>check it out!</strong>
 </Alert>
 
 ```jsx
 <Alert severity="success">
-  This is an info alert — <strong>check it out!</strong>
+  This is an **success** alert — <strong>check it out!</strong>
 </Alert>
 ```
 
 <Alert severity="success">
-  This is an info alert — <strong>check it out!</strong>
+  This is an **success** alert — <strong>check it out!</strong>
 </Alert>

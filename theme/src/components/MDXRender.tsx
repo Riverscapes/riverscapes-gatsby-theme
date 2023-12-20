@@ -17,31 +17,39 @@ import {
   TableFooter,
 } from '@mui/material'
 import 'prismjs/themes/prism-dark.css'
-import Button from './RSLinkButton'
-import { RSLink } from './RSLink'
+import RSLinkButton from './custom/RSLinkButton'
+import { RSLink } from './custom/RSLink'
 import { StoryCard } from './StoryCard'
-import Hero from '../components/Hero'
-import { YoutubeEmbed } from '../components/YoutubeEmbed'
+import Hero from './custom/Hero'
+import { YoutubeEmbed } from './custom/YoutubeEmbed'
 import HomepageCard, { HomepageCardContent, HomepageCardHighlight, HomepageCardStat } from '../components/homepageCards'
 import MDXErrorBoundary from './MDXErrorBoundary'
 import { ErrorLiquidText, ErrorUnclosed } from './MDXErrors'
-import { RSStaticImage } from './RSStaticImage'
+import { RSStaticImage } from './custom/RSStaticImage'
+import { RSIcon } from './custom/RSIcon'
 
 const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
   const theme = useTheme()
 
   const shortcodes: Record<string, any> = {
+    // Here are the homepage-specifc cards
     HomepageCard,
     HomepageCardContent,
     HomepageCardHighlight,
     HomepageCardStat,
-    Button,
+    // And here are the custom components we wrote to make content
+    // writing easier
     Hero,
-    RSStaticImage,
+    Button: RSLinkButton,
+    Icon: RSIcon,
+    Image: RSStaticImage,
     Link: RSLink,
+    Youtube: YoutubeEmbed,
+    // These aren't supposed to be used directly but we need them to catch
+    // conversion errors from old MDX components
     ErrorLiquidText,
     ErrorUnclosed,
-    Youtube: YoutubeEmbed,
+    // And we expose some MUI native elements as well
     Box,
     StoryCard,
     Stack,
