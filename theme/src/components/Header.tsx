@@ -4,6 +4,7 @@ import { StaticImage } from 'gatsby-plugin-image'
 import { Box, Button, Container, Stack, SxProps, Theme, useMediaQuery, useTheme } from '@mui/material'
 import Menu from './menus/Menu'
 import MenuIcon from '@mui/icons-material/Menu'
+import { RSStaticImage } from './custom/RSStaticImage'
 
 const stylesThunk = (theme: Theme): Record<string, SxProps<Theme>> => ({
   wrapper: {
@@ -56,16 +57,7 @@ const Header: React.FC = () => {
         <Stack sx={styles.content} direction="row" alignItems={'center'} justifyContent={'space-between'}>
           <Box sx={styles.logo}>
             <Link to="/">
-              <StaticImage
-                layout="constrained"
-                formats={['auto', 'webp', 'avif']}
-                src="../images/logo.png"
-                width={228}
-                quality={100}
-                loading="eager"
-                alt="Riverscapes Consortium logo"
-                placeholder="none"
-              />
+              <RSStaticImage src="/images/logo.png" width={228} alt="Riverscapes Consortium logo" />
             </Link>
           </Box>
           {!isXL ? (

@@ -66,6 +66,14 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
         display: 'block',
       },
     },
+    // Dial back the font sizes a bit for the content
+    // area. Reference `/theme/src/muiTheme.tsx`
+    '&.MuiTypography-h1': { fontSize: '2.5rem' },
+    '&.MuiTypography-h2': { fontSize: '1.8rem' },
+    '&.MuiTypography-h3': { fontSize: '1.4rem' },
+    '&.MuiTypography-h4': { fontSize: '1rem' },
+    '&.MuiTypography-h5': { fontSize: '1.25rem' },
+    '&.MuiTypography-h6': { fontSize: '1rem' },
   }
 
   return (
