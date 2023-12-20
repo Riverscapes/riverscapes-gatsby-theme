@@ -190,24 +190,23 @@ Buttons are almost identical to links. Linking internally will navigate using th
 <Button to="./demo" color="success" title="Success Color" />
 <Button to="./demo" color="error" title="Error Color" />
 
-#### With Icons
-<Button to="./demo" color="success" iconName="Face" title="About us Button" /> 
-
 ####  You can also add a subtitle
-<Button to="./demo" color="info" iconName="Face"
+<Button to="./demo" iconName="Face"
   title="This is a title"
   subtitle="This is a subtitle"
 />
 
+#### With Mui Icons
+<Button to="./demo" iconName="Face" title="MUI Icon button" /> 
+<Button to="./demo" color="warning" iconName="Face_BAD" title="MUI Icon button (note misspelled icon)" /> 
+
+#### With Image Icons
+<Button to="./demo" imageSrc="/images/logo-nasa.png" title="Arbitrary image icon" /> 
+<Button to="./demo" imageSrc="/images/logo-nasa_BAD.png" title="Arbitrary image icon"  subtitle="(note the broken link)" /> 
+
 ####  FullWidth
 
 <Button to="./demo" title="Full Width Button" fullWidth/> 
-
-#### Sizes
-
-<Button to="./demo" title="Full Width Button" size="small"/> 
-<Button to="./demo" title="Full Width Button" size="medium"/> 
-<Button to="./demo" title="Full Width Button" size="large"/> 
 
 #### External Link Button
 
@@ -224,24 +223,23 @@ Buttons are almost identical to links. Linking internally will navigate using th
 <Button to="./demo" color="success" title="Success Color" />
 <Button to="./demo" color="error" title="Error Color" />
 
-#### With Icons
-<Button to="./demo" color="success" iconName="Face" title="About us Button" /> 
-
 ####  You can also add a subtitle
-<Button to="./demo" color="info" iconName="Face"
+<Button to="./demo" iconName="Face"
   title="This is a title"
   subtitle="This is a subtitle"
 />
 
+#### With Mui Icons
+<Button to="./demo" iconName="Face" title="MUI Icon button" /> 
+<Button to="./demo" color="warning" iconName="Face_BAD" title="MUI Icon button" subtitle="(note misspelled icon)"/> 
+
+#### With Image Icons
+<Button to="./demo" imageSrc="/images/logo-nasa.png" title="Arbitrary image icon" /> 
+<Button to="./demo" imageSrc="/images/logo-nasa_BAD.png" title="Arbitrary image icon"  subtitle="(note the broken link)" /> 
+
 ####  FullWidth
 
 <Button to="./demo" title="Full Width Button" fullWidth/> 
-
-#### Sizes
-
-<Button to="./demo" title="Full Width Button" size="small"/> 
-<Button to="./demo" title="Full Width Button" size="medium"/> 
-<Button to="./demo" title="Full Width Button" size="large"/> 
 
 #### External Link Button
 
@@ -573,6 +571,7 @@ Alert is a component that draws attention to something. It's useful for announce
   This is an **info** alert — <strong>check it out!</strong>
 </Alert>
 
+
 ```jsx
 <Alert severity="info" variant='filled'>
   This is an **info** alert with the **filled** variant — <strong>check it out!</strong>
@@ -593,6 +592,7 @@ Alert is a component that draws attention to something. It's useful for announce
   This is an **warning** alert — <strong>check it out!</strong>
 </Alert>
 
+
 ```jsx
 <Alert severity="error">
   This is an **error** alert — <strong>check it out!</strong>
@@ -603,6 +603,7 @@ Alert is a component that draws attention to something. It's useful for announce
   This is an **error** alert — <strong>check it out!</strong>
 </Alert>
 
+
 ```jsx
 <Alert severity="success">
   This is an **success** alert — <strong>check it out!</strong>
@@ -612,3 +613,4 @@ Alert is a component that draws attention to something. It's useful for announce
 <Alert severity="success">
   This is an **success** alert — <strong>check it out!</strong>
 </Alert>
+

@@ -3,15 +3,17 @@
  */
 
 import React from 'react'
-import { Button, ButtonProps, Stack, Typography, useTheme } from '@mui/material'
+import { Button, ButtonProps, Stack, Typography } from '@mui/material'
 import { Link as GatsbyLink } from 'gatsby'
 import * as allIcons from '@mui/icons-material'
 import { RSIcon } from './RSIcon'
+import { RSStaticImage } from './RSStaticImage'
 
 interface RSLinkButtonProps extends Omit<ButtonProps, 'href'> {
   to: string
   children: React.ReactNode
   iconName?: keyof typeof allIcons
+  imageSrc?: string
   title: string
   subtitle?: string
 }
@@ -30,8 +32,14 @@ const RSLinkButton: React.FC<RSLinkButtonProps> = ({ to, children, ...props }) =
   )
 }
 
-const FinalButton: React.FC<Omit<RSLinkButtonProps, 'to'>> = ({ iconName, title, subtitle, children, ...props }) => {
-  const theme = useTheme()
+const FinalButton: React.FC<Omit<RSLinkButtonProps, 'to'>> = ({
+  iconName,
+  imageSrc,
+  title,
+  subtitle,
+  children,
+  ...props
+}) => {
   return (
     <Button
       variant="contained"
@@ -50,6 +58,15 @@ const FinalButton: React.FC<Omit<RSLinkButtonProps, 'to'>> = ({ iconName, title,
               height: '2em',
               width: '2em',
               mr: 0.5,
+            }}
+          />
+        ) : imageSrc ? (
+          <RSStaticImage
+            noWrap
+            src={imageSrc}
+            style={{
+              width: 35,
+              height: 35,
             }}
           />
         ) : undefined
