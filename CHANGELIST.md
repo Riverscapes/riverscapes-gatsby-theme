@@ -1,9 +1,9 @@
-### @riverscapes/gatsby-theme 0.1.18
+### @riverscapes/gatsby-theme 0.1.20
 
 **Potentially Breaking changes:**
 
 - `RSStaticImage` renamed to just `Image`
-- `Button` now has new `iconname`, `title` and optional `subtitle` props.
+- `Button` now has new `iconname`, `imageSrc`, `title` and optional `subtitle` props.
 - `Icon` introduced
 
 **New Features:**
