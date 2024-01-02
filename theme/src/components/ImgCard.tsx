@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import { default as Link } from '../ContentLink'
+import { default as Link } from './ContentLink'
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import { Box, Card, CardActionArea, CardContent, Typography, useTheme } from '@mui/material'
 
