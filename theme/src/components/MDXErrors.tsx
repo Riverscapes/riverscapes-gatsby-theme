@@ -1,6 +1,5 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import 'prismjs/themes/prism-dark.css'
 
 export const ErrorLiquidText = ({ children }) => {
   return (

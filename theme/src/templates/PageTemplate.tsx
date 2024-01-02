@@ -49,7 +49,8 @@ const PageTemplate = ({ data: { site, mdx: page, allMdx: childPages }, children,
     )
   })
   const hasSidebar = page.tabletofContents !== null
-
+  const hasTOC = page.tabletofContents && page.tabletofContents.items?.length > 0
+  console.log('MARZIPAN', { cardsContent, childPages, page })
   return (
     <Layout location={location} title={siteTitle}>
       <Box
@@ -68,7 +69,7 @@ const PageTemplate = ({ data: { site, mdx: page, allMdx: childPages }, children,
                 <Grid item xs={12} md={hasSidebar ? 8 : 12}>
                   <MDXRender>{children}</MDXRender>
                 </Grid>
-                {page.tabletofContents !== null && (
+                {hasTOC && (
                   <Grid item xs={12} md={4} component="aside">
                     <SideNav heading="On this page" headingType="h2" content={page.tableOfContents} showHeading />
                   </Grid>

@@ -16,7 +16,7 @@ import {
   TableBody,
   TableFooter,
 } from '@mui/material'
-import 'prismjs/themes/prism-dark.css'
+
 import RSLinkButton from './custom/RSLinkButton'
 import { ContentLink } from './ContentLink'
 import { StoryCard } from './StoryCard'
@@ -243,17 +243,17 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
           sx={{
             // Inline code blocks need some tweaking from what prismjs gives us
             '& :not(pre) > code[class*="language-"]': {
-              color: '#555577',
-              fontSize: '0.9em',
-              fontFamily: '"JetBrains Mono", "Courier New", sans-serif',
-              backgroundColor: '#44444444',
-              border: '1px solid #2a2a2a',
-              px: 1,
-              mx: 0.5,
-              py: 0.2,
-              borderRadius: 1,
-              textShadow: 'none',
-              boxShadow: 'none',
+              // color: '#555577',
+              // fontSize: '0.9em',
+              // fontFamily: '"JetBrains Mono", "Courier New", sans-serif',
+              // backgroundColor: '#44444444',
+              // border: '1px solid #2a2a2a',
+              // px: 1,
+              // mx: 0.5,
+              // py: 0.2,
+              // borderRadius: 1,
+              // textShadow: 'none',
+              // boxShadow: 'none',
             },
           }}
         >
