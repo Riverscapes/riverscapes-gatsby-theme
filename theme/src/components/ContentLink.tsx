@@ -8,13 +8,25 @@ export interface LinkProps extends GatsbyLinkProps<unknown> {
 }
 
 const ContentLink: React.FC<LinkProps> = ({ to, children, ref, ...rest }) => {
-  const CustomLinkStub = (props, ref) => <GatsbyLink to={to} {...rest} ref={ref} />
-  const CustomLink = React.forwardRef(CustomLinkStub)
-  return (
-    <CustomLink to={to} {...rest}>
-      {children}
-    </CustomLink>
-  )
+  // Check if the link is an external URL
+  const isExternal = /^https?:\/\//.test(to);
+
+  // Render an external link or Gatsby Link accordingly
+  if (isExternal) {
+    return (
+      <a href={to} {...rest}>
+        {children}
+      </a>
+    );
+  } else {
+    const CustomLinkStub = (props, ref) => <GatsbyLink to={to} {...rest} ref={ref} />
+    const CustomLink = React.forwardRef(CustomLinkStub)
+    return (
+      <CustomLink to={to} {...rest}>
+        {children}
+      </CustomLink>
+    );
+  }
 }
 
 export default ContentLink
