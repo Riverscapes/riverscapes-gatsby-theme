@@ -115,6 +115,7 @@ export const pageQuery = graphql`
       }
       tableOfContents(maxDepth: 3)
     }
+    # TODO: NOTICE THE HARD CODING TO REGEX MATCH THE SLUG
     allMdx(filter: { fields: { slug: { regex: "/our-work//" } } }) {
       nodes {
         id
