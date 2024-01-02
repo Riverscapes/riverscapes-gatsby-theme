@@ -20,37 +20,47 @@ module.exports = {
     menuLinks: [
       {
         title: 'About us',
-        url: '/about-us',
+        url: '/contentPages',
         items: [
           {
             title: 'What is a riverscape',
-            url: '/about-us/what-is-a-riverscape',
+            url: '/contentPages/contentSubFolder',
+            items: [
+              {
+                title: 'Level 2 A',
+                url: '/contentPages/contentSubFolder',
+              },
+              {
+                title: 'Level 2 B',
+                url: '/contentPages/contentSubFolder',
+              },
+            ],
           },
           {
             title: 'FAIR principles',
-            url: '/about-us/fair-principles',
+            url: '/contentPages/contentSubFolder',
           },
         ],
       },
       {
         title: 'Our work',
-        url: '/our-work/',
+        url: '/contentPages',
         items: [
           {
             title: 'Riverscapes Consortium Data Exchange',
-            url: '/our-work/data-exchange',
+            url: '/contentPages/contentSubFolder',
           },
           {
             title: 'Riverscapes Consortium Applications',
-            url: '/our-work/apps',
+            url: '/contentPages/contentSubFolder',
           },
           {
             title: 'Riverscapes Consortium Models',
-            url: '/our-work/models',
+            url: '/contentPages/contentSubFolder',
           },
           {
             title: 'Data Standards and Compliance',
-            url: '/our-work/standards',
+            url: '/contentPages/contentSubFolder',
           },
         ],
       },
@@ -60,19 +70,19 @@ module.exports = {
       },
       {
         title: 'Workshops & events',
-        url: '/workshops-events',
+        url: '/contentPages',
       },
       {
         title: 'Get involved',
-        url: '/get-involved',
+        url: '/contentPages',
       },
       {
         title: 'Contact',
-        url: '/',
+        url: '/contentPages',
       },
       {
         title: 'Search',
-        url: '/search',
+        url: '/contentPages',
       },
     ],
   },
