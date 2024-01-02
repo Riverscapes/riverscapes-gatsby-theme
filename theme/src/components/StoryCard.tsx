@@ -1,7 +1,7 @@
-import { Box, Card, CardActionArea, CardContent, Grid, Typography, useTheme } from '@mui/material'
+import { Box, Card, CardActionArea, CardContent, Grid, Typography } from '@mui/material'
 import React from 'react'
-import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { ContentLink as Link } from './ContentLink'
 
 interface StoryCardProps {
   title: string
@@ -12,11 +12,10 @@ interface StoryCardProps {
 }
 
 export const StoryCard: React.FC<StoryCardProps> = ({ title, to, description, image, imageAlt }) => {
-  const theme = useTheme()
   const imgIsString = typeof image === 'string'
   return (
     <Grid item xs={12} md={6} lg={3}>
-      <Card>
+      <Card sx={{ height: '100%' }}>
         <CardActionArea component={Link} to={to}>
           {imgIsString ? (
             <Box>

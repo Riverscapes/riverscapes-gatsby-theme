@@ -4,7 +4,7 @@
 
 import React from 'react'
 import { withPrefix } from 'gatsby'
-import { RSLink } from './RSLink'
+import { ContentLink } from '../ContentLink'
 import { Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
 
 type RSStaticImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
@@ -50,9 +50,9 @@ type RSStaticImageLinkProps = {
 export const RSStaticImageLink: React.FC<RSStaticImageLinkProps> = ({ to, children }) => {
   if (!to) return <>{children}</>
   return (
-    <RSLink to={to} sx={{ textAlign: 'center' }}>
+    <ContentLink to={to} sx={{ textAlign: 'center' }}>
       {children}
-    </RSLink>
+    </ContentLink>
   )
 }
 

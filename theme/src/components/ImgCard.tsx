@@ -3,9 +3,9 @@
  */
 
 import React from 'react'
-import { default as Link } from '../ContentLink'
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
-import { Box, Card, CardActionArea, CardContent, Typography, useTheme } from '@mui/material'
+import { Box, Card, CardActionArea, CardContent, Typography } from '@mui/material'
+import { ContentLink as Link } from './ContentLink'
 
 interface ImgCardProps {
   to: string
@@ -17,7 +17,6 @@ interface ImgCardProps {
 }
 
 const ImgCard: React.FC<ImgCardProps> = ({ to, img, imgAlt, heading, headingVariant, children }) => {
-  const theme = useTheme()
   const imgIsString = typeof img === 'string'
   return (
     <Card>

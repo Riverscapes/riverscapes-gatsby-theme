@@ -18,7 +18,7 @@ import {
 } from '@mui/material'
 import 'prismjs/themes/prism-dark.css'
 import RSLinkButton from './custom/RSLinkButton'
-import { RSLink } from './custom/RSLink'
+import { ContentLink } from './ContentLink'
 import { StoryCard } from './StoryCard'
 import Hero from './custom/Hero'
 import { YoutubeEmbed } from './custom/YoutubeEmbed'
@@ -43,7 +43,7 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
     Button: RSLinkButton,
     Icon: RSIcon,
     Image: RSStaticImage,
-    Link: RSLink,
+    Link: ContentLink,
     Youtube: YoutubeEmbed,
     // These aren't supposed to be used directly but we need them to catch
     // conversion errors from old MDX components
@@ -135,7 +135,7 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
               return <a id={props.href} {...props} />
             }
 
-            return <RSLink to={href} {...(props as any)} />
+            return <ContentLink to={href} {...(props as any)} />
           },
           p: ({ children }) => (
             <Typography

@@ -1,32 +1,36 @@
-import React from 'react'
-import { Link as GatsbyLink } from 'gatsby'
-import type { GatsbyLinkProps } from 'gatsby'
+/**
+ * LinkButton component
+ */
 
-export interface LinkProps extends GatsbyLinkProps<unknown> {
+import React from 'react'
+import { Link as MuiLink, LinkProps } from '@mui/material'
+import { Link as GatsbyLink } from 'gatsby'
+
+interface LinkButtonProps extends Omit<LinkProps, 'href'> {
   to: string
   children: React.ReactNode
 }
 
-const ContentLink: React.FC<LinkProps> = ({ to, children, ref, ...rest }) => {
-  // Check if the link is an external URL
-  const isExternal = /^https?:\/\//.test(to);
-
-  // Render an external link or Gatsby Link accordingly
-  if (isExternal) {
-    return (
-      <a href={to} {...rest}>
-        {children}
-      </a>
-    );
-  } else {
-    const CustomLinkStub = (props, ref) => <GatsbyLink to={to} {...rest} ref={ref} />
-    const CustomLink = React.forwardRef(CustomLinkStub)
-    return (
-      <CustomLink to={to} {...rest}>
-        {children}
-      </CustomLink>
-    );
-  }
+export const ContentLink: React.FC<LinkButtonProps> = ({ to, children, ...props }) => {
+  const isExternal = /^https?:\/\//.test(to)
+  return isExternal ? (
+    <MuiLink href={to} {...props} target={'_blank'}>
+      {children}
+    </MuiLink>
+  ) : (
+    <InternalLink to={to} {...props}>
+      {children}
+    </InternalLink>
+  )
 }
 
-export default ContentLink
+const InternalLink: React.FC<LinkButtonProps> = ({ to, children, ...props }) => {
+  const CustomLinkStub = (props, ref) => <GatsbyLink to={to} {...props} ref={ref} />
+  const Component = React.forwardRef(CustomLinkStub)
+
+  return (
+    <MuiLink component={Component} {...props}>
+      {children}
+    </MuiLink>
+  )
+}
