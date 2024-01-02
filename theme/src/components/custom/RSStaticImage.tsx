@@ -71,7 +71,7 @@ export const RStaticFullWidthWrapper: React.FC<RStaticFullWidthWrapperProps> = (
   const theme = useTheme()
   const isSmall = useMediaQuery(theme.breakpoints.down('md'))
   if (!noWrap) return <>{children}</>
-  console.log('marzipan', isSmall)
+
   const sx =
     !isSmall && float
       ? {
