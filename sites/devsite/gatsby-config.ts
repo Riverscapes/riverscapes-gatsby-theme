@@ -4,6 +4,13 @@ module.exports = {
   // You need pathPrefix if you're hosting GitHub Pages at a Project Pages or if your
   // site will live at a subdirectory like https://example.com/mypathprefix/.
   // pathPrefix: '/mypathprefix',
+  flags: {
+    // DEV_SSR fixes a problem where `gatsby develop` is overwhelming the system memory
+    // It's related to this issue: https://github.com/gatsbyjs/gatsby/issues/36899
+    // More about DEV_SSR: https://www.gatsbyjs.com/docs/debugging-html-builds/#ssr-during-gatsby-develop
+    // Eventually this needs to go away but likely not until the Gatsby webpack version is updated
+    DEV_SSR: false,
+  },
   pathPrefix: '/riverscapes-gatsby-theme',
   siteMetadata: {
     title: `Riverscapes Developer Site`,
