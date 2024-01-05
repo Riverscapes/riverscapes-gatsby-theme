@@ -11,8 +11,13 @@ import MDXRender from '../components/MDXRender'
 import SideNav from '../components/menus/SideNav'
 
 import defaultImage from '../images/card-image.jpg'
+import { ParamsContext } from '../paramsContext'
 
 const PageTemplate = ({ data: { site, mdx: page, allMdx: childPages }, children, location }) => {
+  // If the page has a query of ?render=noFrame, then just return the content
+  const urlParams = new URLSearchParams(location.search)
+  const noFrame = urlParams.get('render') === 'noFrame' || false
+
   const siteTitle = site.siteMetadata?.title || `Title`
   const pageTitle = page.frontmatter.title || null
   const pageDescription = page.frontmatter.description || null
@@ -48,44 +53,46 @@ const PageTemplate = ({ data: { site, mdx: page, allMdx: childPages }, children,
       </Grid>
     )
   })
-  const hasSidebar = Boolean(page.tableOfContents?.items?.length > 0)
+  const hasSidebar = Boolean(!noFrame && page.tableOfContents?.items?.length > 0)
 
   return (
-    <Layout location={location} title={siteTitle}>
-      <Box
-        component="article"
-        itemScope
-        itemType="http://schema.org/Article"
-        sx={{
-          position: 'relative',
-        }}
-      >
-        {!page.frontmatter.isHome ? (
-          <>
-            <Box component="header">{pageHeading}</Box>
-            <Container maxWidth={'xl'}>
-              <Grid container spacing={14}>
-                <Grid item xs={12} md={hasSidebar ? 8 : 12}>
-                  <MDXRender>{children}</MDXRender>
-                </Grid>
-                {hasSidebar && (
-                  <Grid item xs={12} md={4} component="aside">
-                    <SideNav heading="On this page" headingType="h2" content={page.tableOfContents} showHeading />
+    <ParamsContext.Provider value={{ noFrame }}>
+      <Layout location={location} title={siteTitle}>
+        <Box
+          component="article"
+          itemScope
+          itemType="http://schema.org/Article"
+          sx={{
+            position: 'relative',
+          }}
+        >
+          {!page.frontmatter.isHome ? (
+            <>
+              <Box component="header">{pageHeading}</Box>
+              <Container maxWidth={'xl'}>
+                <Grid container spacing={14}>
+                  <Grid item xs={12} md={hasSidebar ? 8 : 12}>
+                    <MDXRender>{children}</MDXRender>
                   </Grid>
-                )}
-              </Grid>
-            </Container>
-            <Container maxWidth="xl" sx={{ mb: 4 }}>
-              <Grid container spacing={4} sx={{ my: 3 }}>
-                {cardsContent}
-              </Grid>
-            </Container>
-          </>
-        ) : (
-          <MDXRender>{children}</MDXRender>
-        )}
-      </Box>
-    </Layout>
+                  {hasSidebar && (
+                    <Grid item xs={12} md={4} component="aside">
+                      <SideNav heading="On this page" headingType="h2" content={page.tableOfContents} showHeading />
+                    </Grid>
+                  )}
+                </Grid>
+              </Container>
+              <Container maxWidth="xl" sx={{ mb: 4 }}>
+                <Grid container spacing={4} sx={{ my: 3 }}>
+                  {cardsContent}
+                </Grid>
+              </Container>
+            </>
+          ) : (
+            <MDXRender>{children}</MDXRender>
+          )}
+        </Box>
+      </Layout>
+    </ParamsContext.Provider>
   )
 }
 

@@ -486,6 +486,16 @@ def add(a, b):
 
 # Advanced
 
+## `noFrame` mode
+
+Sometimes we need to render just the content of a page inside one of our tools. For this we simply add `render=noFrame` query param to the end of the URL. For example:
+
+```
+https://whatever.riverscapes.net/whatever/whatever?render=noFrame
+```
+
+This will strip out the sidebar, header and footer and allow the content to be rendered on its own.
+
 ## Material UI (MUI)
 
 [MUI Core](https://mui.com/material-ui/getting-started/) is a ReactJS implementation of Google's Material Design. It's a very powerful library and we use it extensively. It's also very well documented. You can find a lot of information [on their site](https://mui.com/material-ui/getting-started/).

@@ -4,6 +4,7 @@ import { theme } from '../muiTheme'
 import Header from './Header'
 import Footer from './Footer'
 import { Box, CssBaseline } from '@mui/material'
+import { ParamsContext } from '../paramsContext'
 
 interface LayoutProps {
   location: Location
@@ -14,6 +15,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
+  const { noFrame } = React.useContext(ParamsContext)
 
   return (
     <>
@@ -21,9 +23,9 @@ const Layout: React.FC<LayoutProps> = ({ location, title, children }) => {
       <Box className="global-wrapper" data-is-root-path={isRootPath}>
         <StyledEngineProvider injectFirst>
           <ThemeProvider theme={theme}>
-            <Header />
+            {!noFrame && <Header />}
             <Box component="main">{children}</Box>
-            <Footer />
+            {!noFrame && <Footer />}
           </ThemeProvider>
         </StyledEngineProvider>
       </Box>
