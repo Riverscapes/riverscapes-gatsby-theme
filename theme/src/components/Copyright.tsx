@@ -23,7 +23,7 @@ export const Copyright: React.FC = () => {
       >
         <StaticImage
           layout={'constrained'}
-          formats={['auto', 'webp', 'avif']}
+          formats={['auto', 'webp']}
           src="../images/icon-copyright.png"
           width={36}
           quality={100}
@@ -32,7 +32,7 @@ export const Copyright: React.FC = () => {
         />
         <StaticImage
           layout={'constrained'}
-          formats={['auto', 'webp', 'avif']}
+          formats={['auto', 'webp']}
           src="../images/icon-person.png"
           width={36}
           quality={100}

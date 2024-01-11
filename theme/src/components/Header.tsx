@@ -75,7 +75,7 @@ const Header: React.FC = () => {
       </Container>
       <StaticImage
         layout="fullWidth"
-        formats={['auto', 'webp', 'avif']}
+        formats={['auto', 'webp']}
         src="../images/header-border.png"
         quality={95}
         alt="Wave Pattern"

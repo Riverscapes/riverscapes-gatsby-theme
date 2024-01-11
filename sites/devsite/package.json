@@ -17,8 +17,15 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "gatsby develop -p 8002",
     "start:clean": "yarn clean; gatsby develop -p 8002",
+    "optimize": "node scripts/optimizeImages.js",
     "serve": "gatsby serve --prefix-paths -o",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "devDependencies": {
+    "colors": "^1.4.0",
+    "numeral": "^2.0.6",
+    "pidusage": "^3.0.2",
+    "ps-tree": "^1.2.0"
   }
 }

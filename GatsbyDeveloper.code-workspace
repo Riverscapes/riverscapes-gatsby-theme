@@ -2,7 +2,7 @@
   "folders": [
     {
       "name": "🧰 Developer Site",
-      "path": "sites/devsite"
+      "path": "sites/devsite",
     },
     {
       "name": "🌍 Clean Template Site",
@@ -58,22 +58,6 @@
           "${workspaceFolder}/sites/**/.cache/**", 
           "${workspaceFolder}/theme/**",
         ],
-      },
-      {
-        "type": "node",
-        "request": "launch",
-        "name": "Debug Gatsby Node API",
-        "console": "integratedTerminal",
-        "program": "${workspaceFolder}/node_modules/.bin/gatsby",
-        "runtimeExecutable": "${env:NVM_BIN}/node",
-        "args": ["develop"],
-        "sourceMaps": true,
-        "cwd": "${workspaceFolder}/sites/template",
-        "outFiles": [
-          "${workspaceFolder}/sites/template/.cache/**",
-          "${workspaceFolder}/theme/**",
-        ],
-        "runtimeArgs": ["--inspect=9229"],
       }
     ]
   },

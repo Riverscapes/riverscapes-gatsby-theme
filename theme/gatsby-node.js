@@ -7,6 +7,7 @@
 
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+// const { optimizeImages } = require('./dist/optimize')
 
 const replacePath = (path) => (path === `/` ? path : path.replace(/\/$/, ``))
 
@@ -131,4 +132,28 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       value: replacePath(slug),
     })
   }
+}
+
+/**
+ * Execute image optimization during 'build' and 'develop' phases
+ */
+exports.onPostBootstrap = async ({ graphql, reporter, store }) => {
+  // Get the site's content folder
+  // reporter.info('Pre-Optimizing images...')
+  // const siteDirectory = store.getState().program.directory
+  // const contentPath = path.join(siteDirectory, 'content')
+  // const staticPath = path.join(siteDirectory, 'static')
+  // if (!fs.existsSync(contentPath)) {
+  //   reporter.panicOnBuild(`Content folder not found.`, new Error('Content folder not found.'))
+  // } else if (!fs.existsSync(staticPath)) {
+  //   reporter.panicOnBuild(`Static folder not found.`, new Error('Static folder not found.'))
+  // }
+  // await Promise.all([
+  //   optimizeImages('static/images', reporter)
+  //     .then(() => reporter.info('Image optimization complete.'))
+  //     .catch((err) => reporter.error('Image optimization failed:', err)),
+  //   optimizeImages('content', reporter)
+  //     .then(() => reporter.info('Image optimization complete.'))
+  //     .catch((err) => reporter.error('Image optimization failed:', err)),
+  // ])
 }

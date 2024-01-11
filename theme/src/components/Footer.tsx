@@ -38,7 +38,7 @@ declare global {
 
 const Footer: React.FC = () => {
   const theme = useTheme()
-  const boxRef = useRef(null) // Create a ref for the <Box> element
+  const boxRef = useRef<HTMLDivElement>(null) // Create a ref for the <Box> element
   const styles = stylesThunk(theme)
 
   const data = useStaticQuery(graphql`
@@ -89,7 +89,7 @@ const Footer: React.FC = () => {
           zIndex: -1,
         }}
         layout="fullWidth"
-        formats={['auto', 'webp', 'avif']}
+        formats={['auto', 'webp']}
         src="../images/background-footer.jpg"
         quality={95}
         alt="Wave Pattern"
@@ -107,7 +107,7 @@ const Footer: React.FC = () => {
             <GatsbyLink to="/">
               <StaticImage
                 layout="constrained"
-                formats={['auto', 'webp', 'avif']}
+                formats={['auto', 'webp']}
                 src="../images/logo.png"
                 width={228}
                 quality={100}
@@ -136,7 +136,7 @@ const Footer: React.FC = () => {
             <IconButton onClick={() => window.open(`https://twitter.com/${social?.twitter}` || '', '_blank')}>
               <StaticImage
                 layout={'constrained'}
-                formats={['auto', 'webp', 'avif']}
+                formats={['auto', 'webp']}
                 src="../images/icon-twitter.png"
                 width={36}
                 quality={100}
