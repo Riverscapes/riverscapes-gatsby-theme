@@ -1,14 +1,16 @@
 {
-  // NOTE: the .devcontainer folder should always go into the root of your repository.
   "dockerFile": "Dockerfile",
-  "name": "Gatsby Riverscapes Theme: Dev Container",
+  "name": "Gatsby Docs Dev Container",
   "waitFor": "onCreateCommand",
   // On container creation, install dependencies.
-  "postCreateCommand": "yarn install",
+  "postCreateCommand": "cd docs; yarn install",
   // Build and run the dev site on container start.
-  "postAttachCommand": "cd sites/devsite; yarn build; yarn serve",
+  "postAttachCommand": "cd docs; gatsby build; gatsby serve -H 0.0.0.0 -p 8000",
   "customizations": {
     "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      },
       "extensions": [
         "GitHub.copilot",
         "GitHub.copilot-chat",
@@ -17,9 +19,7 @@
         "unifiedjs.vscode-mdx",
         "dbaeumer.vscode-eslint",
         "christian-kohler.npm-intellisense",
-        "mhutchie.git-graph",
-        "GraphQL.vscode-graphql",
-        "GraphQL.vscode-graphql-syntax"
+        "mhutchie.git-graph"
       ]
     }
   },

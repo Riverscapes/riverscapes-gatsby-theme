@@ -27,6 +27,5 @@
     "numeral": "^2.0.6",
     "pidusage": "^3.0.2",
     "ps-tree": "^1.2.0"
-  },
-  "packageManager": "yarn@4.0.2"
+  }
 }

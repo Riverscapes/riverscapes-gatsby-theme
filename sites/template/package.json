@@ -21,6 +21,5 @@
     "serve": "gatsby serve --prefix-paths -o",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  },
-  "packageManager": "yarn@4.0.2"
+  }
 }

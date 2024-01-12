@@ -44,7 +44,15 @@
   },
   "extensions": {
     "recommendations": [
-      "unifiedjs.vscode-mdx"
+      "GitHub.copilot",
+      "GitHub.copilot-chat",
+      "eriklynd.json-tools",
+      "yzhang.markdown-all-in-one",
+      "unifiedjs.vscode-mdx",
+      "dbaeumer.vscode-eslint",
+      "christian-kohler.npm-intellisense",
+      "mhutchie.git-graph"
     ]
-  }
+  },
+  "terminal.integrated.defaultProfile.linux": "zsh"
 }

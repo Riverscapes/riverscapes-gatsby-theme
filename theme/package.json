@@ -75,6 +75,5 @@
     "build": "tsc",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "typecheck": "tsc --noEmit"
-  },
-  "packageManager": "yarn@4.0.2"
+  }
 }
