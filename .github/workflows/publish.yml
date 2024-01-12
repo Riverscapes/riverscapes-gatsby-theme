@@ -52,11 +52,11 @@ jobs:
 
       # This is the yarn install step
       - name: Install dependencies
-        working-directory: ./docs
+        working-directory: .
         run: yarn install
 
       - name: Build with Gatsby
-        working-directory: ./docs
+        working-directory: .
         env:
           PREFIX_PATHS: 'true'
         run: yarn run build
