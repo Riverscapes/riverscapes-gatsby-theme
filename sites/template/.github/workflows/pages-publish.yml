@@ -36,6 +36,9 @@ jobs:
           cache-dependency-path: ./docs/package.json
           cache: yarn
 
+      - name: Get correct version of Yarn
+        run: corepack enable; yarn set version berry
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
@@ -45,8 +48,6 @@ jobs:
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: gatsby
 
-      - name: Get correct version of Yarn
-        run: corepack enable; yarn set version berry
 
       - name: Restore cache
         uses: actions/cache@v3

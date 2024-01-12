@@ -5,8 +5,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "command": "yarn build",
-      "name": "Rebuild Site",
+      "name": "👷 Rebuild Gatsby Site",
+      "command": "yarn exec gatsby build",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "name": "🗑️ Clean Gatsby Build",
+      "command": "yarn exec gatsby clean",
       "request": "launch",
       "type": "node-terminal"
     },

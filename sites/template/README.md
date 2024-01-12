@@ -24,7 +24,7 @@ v18.16.0
 
 ## Creating a new `./docs` site
 
-1. Copy everything (excluding `node_modules`, `.cache` and `public`) in this `./template` folder to a `./docs` subfolder in your desired repo. **NOTE: Make SURE to get all the dot-prefixed hidden files.**
+1. Copy everything (excluding `node_modules`, `.cache` and `public`) in this `./template` folder to a `./docs` subfolder in your desired repo. **NOTE: Make SURE to get all the dot-prefixed hidden files and folders includeing `.vscode`.**
 2. Open the `Docs.code-workspace` in the new location. 
    - *You may need to open the workspace file and adjust the paths inside it if you move it to a different location.*
    - For those of us with nvm installed (typically non-windows users) This should put your terminal in the right place so that the `.nvmrc` file registers and the correct version of node is installed. 
