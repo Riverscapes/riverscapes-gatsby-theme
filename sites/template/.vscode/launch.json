@@ -17,7 +17,7 @@
       "type": "node-terminal"
     },
     {
-      "name": "📦 Upgrade Theme",
+      "name": "📦 Upgrade Gatsby Theme",
       "command": "yarn up @riverscapes/gatsby-theme",
       "request": "launch",
       "type": "node-terminal"
