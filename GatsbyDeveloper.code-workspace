@@ -44,7 +44,8 @@
     },
     "files.exclude": {
       "**/node_modules/**": true
-    }
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh"
   },
   "launch": {
     "configurations": [
@@ -61,9 +62,4 @@
       }
     ]
   },
-  "extensions": {
-    "recommendations": [
-      "unifiedjs.vscode-mdx"
-    ]
-  }
 }

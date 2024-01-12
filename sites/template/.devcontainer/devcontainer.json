@@ -1,4 +1,5 @@
 {
+  // NOTE: the .devcontainer folder should always go into the root of your repository.
   "dockerFile": "Dockerfile",
   "name": "Gatsby Riverscapes Theme: Dev Container",
   "waitFor": "onCreateCommand",

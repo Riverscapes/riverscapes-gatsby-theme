@@ -5,6 +5,12 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "command": "yarn build",
+      "name": "Rebuild Site",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
       "name": "Resource Debugger",
       "console": "integratedTerminal",
       "program": "${workspaceFolder}/scripts/debug.js",

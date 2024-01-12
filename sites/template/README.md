@@ -37,7 +37,8 @@ v18.16.0
 7. Now move the 2 yml files in the root of your `.git` repo. They are living in the `.github/workflows` folder next to this README.md file but they will need to be moved to the root of whatever repo they end up in.
    1. `/.github/workflows/pages-publish.yml`
    2. `/.github/workflows/pages-validate.yml`
-8. Once you push these files push the whole mess to Github and then go to the repo settings and enable Github Pages:
+8. Move the entire `.devcontainer` folder to the root of your repo. This is the folder that contains the `Dockerfile` and `devcontainer.json` files.
+9. Once you push these files push the whole mess to Github and then go to the repo settings and enable Github Pages:
    1. Repo Settings
    2. Pages
    3. Build and deployment --> Source --> Select `Github Actions`

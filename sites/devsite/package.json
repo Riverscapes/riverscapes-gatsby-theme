@@ -13,12 +13,12 @@
     "typescript": "^4.7.2"
   },
   "scripts": {
-    "build": "gatsby build --prefix-paths",
+    "build": "gatsby build",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "gatsby develop -p 8002",
     "start:clean": "yarn clean; gatsby develop -p 8002",
     "optimize": "node scripts/optimizeImages.js",
-    "serve": "gatsby serve --prefix-paths -o",
+    "serve": "gatsby serve -p 8002 -H 0.0.0.0",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
@@ -27,5 +27,6 @@
     "numeral": "^2.0.6",
     "pidusage": "^3.0.2",
     "ps-tree": "^1.2.0"
-  }
+  },
+  "packageManager": "yarn@4.0.2"
 }
