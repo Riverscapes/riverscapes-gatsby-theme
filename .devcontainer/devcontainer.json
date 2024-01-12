@@ -3,7 +3,7 @@
   "name": "Gatsby Docs Dev Container",
   "waitFor": "onCreateCommand",
   // On container creation, install dependencies.
-  "postCreateCommand": "cd sites/devsite; yarn install",
+  "postCreateCommand": "cd sites/devsite; yarn install --immutable --immutable-cache",
   // Build and run the dev site on container start.
   "postAttachCommand": "cd sites/devsite; gatsby build; gatsby serve -H 0.0.0.0 -p 8000",
   "customizations": {

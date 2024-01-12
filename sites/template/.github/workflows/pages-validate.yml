@@ -46,7 +46,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./docs
-        run: yarn install --immutable --immutable-cache  --loglevel=error
+        run: yarn install --immutable --immutable-cache
         
       - name: Build with Gatsby
         working-directory: ./docs
