@@ -19,6 +19,7 @@ import {
 
 import RSLinkButton from './custom/RSLinkButton'
 import { ContentLink } from './ContentLink'
+import ImgCard from './ImgCard'
 import { StoryCard } from './StoryCard'
 import Hero from './custom/Hero'
 import { YoutubeEmbed } from './custom/YoutubeEmbed'
@@ -37,6 +38,7 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
     HomepageCardContent,
     HomepageCardHighlight,
     HomepageCardStat,
+    ImgCard,
     // And here are the custom components we wrote to make content
     // writing easier
     Hero,

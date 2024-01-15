@@ -5,7 +5,7 @@
   // On container creation, install dependencies.
   "postCreateCommand": "cd sites/devsite; yarn install --immutable --immutable-cache",
   // Build and run the dev site on container start.
-  "postAttachCommand": "cd sites/devsite; gatsby build; gatsby serve -H 0.0.0.0 -p 8000",
+  "postAttachCommand": "cd sites/devsite; gatsby build; gatsby serve -H 0.0.0.0 -p 8002",
   "customizations": {
     "vscode": {
       "settings": {
@@ -27,13 +27,13 @@
   },
   // Trigger actions on ports. More info: https://containers.dev/implementors/json_reference/#port-attributes
   "portsAttributes": {
-    "8000": {
+    "8002": {
       "label": "Application",
-      "onAutoForward": "openPreview"
+      "onAutoForward": "openBrowserOnce"
     }
   },
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [
-    8000
+    8002
   ]
 }
