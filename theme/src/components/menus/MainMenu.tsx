@@ -180,7 +180,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ mobileMenuState }) => {
 
   // Here's the small mobile menu
   return (
-    <Box>
+    <Box sx={{ width: 1 }}>
       <Box sx={{ overflow: 'hidden' }} ref={containerRef}>
         <Slide
           direction="down"
