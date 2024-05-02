@@ -120,7 +120,12 @@ const Footer: React.FC = () => {
             <Typography variant="h3" paragraph sx={{ color: 'inherit' }}>
               {footerContent.contact.heading}
             </Typography>
-            <Typography variant="body1" dangerouslySetInnerHTML={{ __html: footerContent.contact.content }} />
+            {footerContent.contact.content.map((item, index) => (
+              <Box><Typography key={index} variant="body1" component={GatsbyLink} to={item.link}>
+                {item.label}
+              </Typography>
+              </Box>
+            ))}
             {hasHelpWidget && <Box ref={boxRef}>{/* Your other content */}</Box>}
           </Box>
           <Box>
