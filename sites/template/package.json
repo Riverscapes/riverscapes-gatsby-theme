@@ -17,7 +17,7 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "gatsby develop -p 8000",
     "start:clean": "yarn clean; gatsby develop -p 8000",
-    "upgrade:theme": "yarn up @riverscapes/gatsby-theme",
+    "upgrade:theme": "yarn up @riverscapesw/gatsby-theme",
     "serve": "gatsby serve --prefix-paths -o",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"

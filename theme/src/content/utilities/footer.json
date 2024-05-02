@@ -1,7 +1,20 @@
 {
     "contact": {
         "heading": "Support & Contact",
-        "content": "support@riverscapes.freshdesk.com"
+        "content": [
+            {
+                "label": "Knowledge Base",
+                "link": "https://riverscapes.freshdesk.com/support/solutions"
+            },
+            {
+                "label": "Submit a Support Ticket",
+                "link": "https://riverscapes.freshdesk.com/support/tickets/new"
+            },
+            {
+                "label": "support@riverscapes.freshdesk.com",
+                "link": "mailto:support@riverscapes.freshdesk.com"
+            }
+        ]
     },
     "link": {
         "heading": "Link"
