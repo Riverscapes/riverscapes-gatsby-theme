@@ -13,6 +13,7 @@ import footerContent from '../content/utilities/footer.json'
 /* Footer style */
 import { Copyright } from './Copyright'
 import { Box, Container, Divider, IconButton, Stack, SxProps, Theme, Typography, useTheme } from '@mui/material'
+import MenuButton from './menus/MenuButton'
 
 const stylesThunk = (theme: Theme): Record<string, SxProps<Theme>> => ({
   wrapper: {
@@ -120,12 +121,37 @@ const Footer: React.FC = () => {
             <Typography variant="h3" paragraph sx={{ color: 'inherit' }}>
               {footerContent.contact.heading}
             </Typography>
-            {footerContent.contact.content.map((item, index) => (
-              <Box><Typography key={index} variant="body1" component={GatsbyLink} to={item.link}>
-                {item.label}
-              </Typography>
-              </Box>
-            ))}
+            <Stack
+              direction={'column'}
+              gap={{
+                xs: 0,
+                lg: 2,
+              }}
+              sx={{
+                '& *': {
+                  color: 'white',
+                },
+                width: '100%;',
+              }}
+            >
+              {footerContent.contact.content.map((item, index) => (
+                <MenuButton
+                  key={`menu-item-${index}`}
+                  target="_blank"
+                  sx={{
+                    color: 'white',
+                    justifyContent: 'flex-start',
+                    p: 0,
+                    '&:hover': {
+                      textDecoration: 'underline',
+                    },
+                  }}
+                  to={item.link}
+                >
+                  {item.label}
+                </MenuButton>
+              ))}
+            </Stack>
             {hasHelpWidget && <Box ref={boxRef}>{/* Your other content */}</Box>}
           </Box>
           <Box>
