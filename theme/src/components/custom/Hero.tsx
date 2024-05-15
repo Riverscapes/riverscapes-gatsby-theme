@@ -29,7 +29,7 @@ const stylesThunk = (theme: Theme): Record<string, SxProps<Theme>> => ({
     },
   },
   content: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.paper,
     boxShadow: theme.shadows[4],
     zIndex: 10,
     '&>:nth-of-type(1)': {
@@ -45,7 +45,6 @@ const stylesThunk = (theme: Theme): Record<string, SxProps<Theme>> => ({
       marginLeft: '2vw',
       width: '88vw',
       maxWidth: CONSTANTS.maxWidthContent,
-      background: theme.palette.background.default,
       padding: theme.spacing(2),
     },
     [theme.breakpoints.up('lg')]: {
@@ -53,13 +52,12 @@ const stylesThunk = (theme: Theme): Record<string, SxProps<Theme>> => ({
       width: '88vw',
       bottom: `calc(${theme.typography.pxToRem(50)} * -1)`,
       maxWidth: CONSTANTS.maxWidthContent,
-      background: theme.palette.background.default,
       padding: theme.spacing(6),
     },
     [theme.breakpoints.up('xl')]: {
       left: '50%',
       maxWidth: CONSTANTS.maxWidthContent,
-      marginLeft: `calc(${theme.typography.pxToRem(-760)} / 2)`,
+      marginLeft: `calc(-${theme.breakpoints.values.xl}px / 2)`,
     },
   },
 })
