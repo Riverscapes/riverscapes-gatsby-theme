@@ -118,7 +118,7 @@ const Footer: React.FC = () => {
             </GatsbyLink>
           </Box>
           <Box>
-            <Typography variant="h3" paragraph sx={{ color: 'inherit' }}>
+            <Typography variant="h4" paragraph sx={{ color: 'inherit' }}>
               {footerContent.contact.heading}
             </Typography>
             <Stack
@@ -155,13 +155,13 @@ const Footer: React.FC = () => {
             {hasHelpWidget && <Box ref={boxRef}>{/* Your other content */}</Box>}
           </Box>
           <Box>
-            <Typography variant="h3" paragraph sx={{ color: 'inherit' }}>
+            <Typography variant="h4" paragraph sx={{ color: 'inherit' }}>
               {footerContent.link.heading}
             </Typography>
             <Menu invert />
           </Box>
           <Box>
-            <Typography variant="h3" paragraph sx={{ color: 'inherit' }}>
+            <Typography variant="h4" paragraph sx={{ color: 'inherit' }}>
               {footerContent.follow.heading}
             </Typography>
             <IconButton onClick={() => window.open(`https://twitter.com/${social?.twitter}` || '', '_blank')}>
