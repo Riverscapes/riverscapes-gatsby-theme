@@ -49,6 +49,7 @@ const defaultTheme = createTheme({
     },
     background: {
       default: '#f0f0f0', // --color-background-primary
+      paper: '#ffffff', // --color-white
     },
   },
   shape: {
