@@ -138,6 +138,22 @@ export const theme = createTheme({
         fontSize: '1.375rem',
       },
     },
+    sideMenu: {
+      color: defaultTheme.palette.text.primary,
+      fontFamily: '"JetBrains Mono", "Courier New", sans-serif',
+      fontSize: '1.875rem',
+      fontWeight: 400,
+      position: 'relative',
+      '&:after': {
+        content: '""',
+        background: '#BBCD3f',
+        position: 'absolute',
+        bottom: '-1rem',
+        height: '0.3125rem',
+        width: '6.25rem',
+        left: 0,
+      },
+    },
   },
   components: {
     MuiCssBaseline: {
