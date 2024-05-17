@@ -9,11 +9,12 @@ import Banner from '../components/Banner'
 import ImgCard from '../components/ImgCard'
 import MDXRender from '../components/MDXRender'
 import SideNav from '../components/menus/SideNav'
+import AllPagesMenu from '../components/menus/AllPagesMenu'
 
 import defaultImage from '../images/card-image.jpg'
 import { ParamsContext } from '../paramsContext'
 
-const PageTemplate = ({ data: { site, mdx: page, allMdx: childPages }, children, location }) => {
+const PageTemplate = ({ data: { site, mdx: page, bottomMenu: childPages, sideMenu }, children, location }) => {
   // If the page has a query of ?render=noFrame, then just return the content
   const urlParams = new URLSearchParams(location.search)
   const noFrame = urlParams.get('render') === 'noFrame' || false
@@ -74,9 +75,12 @@ const PageTemplate = ({ data: { site, mdx: page, allMdx: childPages }, children,
                   <Grid item xs={12} md={hasSidebar ? 8 : 12}>
                     <MDXRender>{children}</MDXRender>
                   </Grid>
+                  
+  
                   {hasSidebar && (
                     <Grid item xs={12} md={4} component="aside">
                       <SideNav heading="On this page" headingType="h2" content={page.tableOfContents} showHeading />
+                      <AllPagesMenu heading="All pages" headingType="h2" nodes={sideMenu.nodes} showHeading />
                     </Grid>
                   )}
                 </Grid>
@@ -123,7 +127,7 @@ export const pageQuery = graphql`
       tableOfContents(maxDepth: 3)
     }
     # TODO: NOTICE THE HARD CODING TO REGEX MATCH THE SLUG
-    allMdx(filter: { fields: { slug: { regex: "/our-work//" } } }) {
+    bottomMenu: allMdx(filter: { fields: { slug: { regex: "/our-work//" } } }) {
       nodes {
         id
         fields {
@@ -140,6 +144,16 @@ export const pageQuery = graphql`
               gatsbyImageData(width: 800)
             }
           }
+        }
+      }
+    }
+    sideMenu: allMdx {
+      nodes {
+        frontmatter {
+          title
+        }
+        fields {
+          slug
         }
       }
     }
