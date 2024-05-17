@@ -172,6 +172,9 @@ export const theme = createTheme({
           [defaultTheme.breakpoints.up('lg')]: {
             fontSize: '1.375rem',
           },
+          "&:hover": {
+            backgroundColor: "transparent"
+          }
         },
       },
       variants: [
