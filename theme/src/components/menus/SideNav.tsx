@@ -28,7 +28,7 @@ const SideNav: React.FC<SideNavProps> = ({
         mb: 3,
       }}
       component={headingType}
-      variant="h2"
+      variant="sideMenu"
     >
       {heading}
     </Typography>

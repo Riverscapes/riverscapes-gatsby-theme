@@ -22,8 +22,6 @@ const stylesThunk = (theme: Theme): Record<string, SxProps<Theme>> => ({
     gap: 4,
   },
   logo: {
-    paddingLeft: 2,
-    paddingRight: 2,
     flexGrow: 0,
     minWidth: {
       md: '150px',
