@@ -15,6 +15,11 @@ interface SideNavProps {
   theme?: 'white' | 'none'
 }
 
+type RecursiveReturn = {
+  el: JSX.Element
+  isCurrent: boolean
+}
+
 const SideNav: React.FC<SideNavProps> = ({
   heading = '',
   headingType = 'h2',
@@ -36,27 +41,39 @@ const SideNav: React.FC<SideNavProps> = ({
     ''
   )
 
-  const renderTree = (nodes: MobileMenu | MobileMenuItem, key: string, level: number) => {
+  const defaultExpanded = []
+
+  const renderTree = (nodes: MobileMenu | MobileMenuItem, key: string, level: number): RecursiveReturn => {
     const nextLevel = level + 1
     const currentKey = `${level}${key}`
     const nodesItem = nodes as MobileMenuItem
     const nodesMenu = nodes as MobileMenu
 
-    return (
-      <TreeItemLink key={currentKey} nodeId={`${currentKey}`} to={nodesItem.url} label={nodesItem.title}>
-        {nodesMenu.items && Array.isArray(nodesMenu.items)
-          ? nodesMenu.items.map((node, nodekey) => {
-              return renderTree(node, `${level}${nodekey}`, nextLevel)
-            })
-          : null}
-      </TreeItemLink>
-    )
+    // Make sure to remove any trailing slashes
+    const currPath = window.location.pathname.replace(/\/$/, '')
+    let isCurrent = nodesItem.url && currPath === nodesItem.url
+
+    return {
+      el: (
+        <TreeItemLink key={currentKey} nodeId={`${currentKey}`} to={nodesItem.url} label={nodesItem.title}>
+          {nodesMenu.items && Array.isArray(nodesMenu.items)
+            ? nodesMenu.items.map((node, nodekey) => {
+                const { el, isCurrent: isCurrentInner } = renderTree(node, `${level}${nodekey}`, nextLevel)
+                if (isCurrentInner) defaultExpanded.push(`${currentKey}`)
+                isCurrent = isCurrent || isCurrentInner
+                return el
+              })
+            : null}
+        </TreeItemLink>
+      ),
+      isCurrent,
+    }
   }
 
   const contentItem = (node: MobileMenuItem[]) => {
     const level = 0
     return (node || []).map((item, key) => {
-      return renderTree(item, `${key}`, level)
+      return renderTree(item, `${key}`, level).el
     })
   }
 
@@ -70,6 +87,9 @@ const SideNav: React.FC<SideNavProps> = ({
       {navHeading}
       <TreeView
         aria-label="Side Navigation"
+        defaultExpanded={defaultExpanded}
+        disableSelection
+        disabledItemsFocusable
         defaultCollapseIcon={
           <IconButton
             size="medium"

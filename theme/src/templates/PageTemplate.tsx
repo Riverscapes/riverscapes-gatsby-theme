@@ -9,7 +9,7 @@ import Banner from '../components/Banner'
 import ImgCard from '../components/ImgCard'
 import MDXRender from '../components/MDXRender'
 import SideNav from '../components/menus/SideNav'
-import AllPagesMenu from '../components/menus/AllPagesMenu'
+import AllPagesMenu from '../components/menus/allPagesMenu'
 
 import defaultImage from '../images/card-image.jpg'
 import { ParamsContext } from '../paramsContext'
@@ -54,7 +54,7 @@ const PageTemplate = ({ data: { site, mdx: page, bottomMenu: childPages, sideMen
       </Grid>
     )
   })
-  const hasSidebar = Boolean(!noFrame && page.tableOfContents?.items?.length > 0)
+  const hasSidebar = Boolean(!noFrame)
 
   return (
     <ParamsContext.Provider value={{ noFrame }}>
@@ -75,11 +75,12 @@ const PageTemplate = ({ data: { site, mdx: page, bottomMenu: childPages, sideMen
                   <Grid item xs={12} md={hasSidebar ? 8 : 12}>
                     <MDXRender>{children}</MDXRender>
                   </Grid>
-                  
-  
+
                   {hasSidebar && (
                     <Grid item xs={12} md={4} component="aside">
-                      <SideNav heading="On this page" headingType="h2" content={page.tableOfContents} showHeading />
+                      {page.tableOfContents?.items?.length > 0 && (
+                        <SideNav heading="On this page" headingType="h2" content={page.tableOfContents} showHeading />
+                      )}
                       <AllPagesMenu heading="All pages" headingType="h2" nodes={sideMenu.nodes} showHeading />
                     </Grid>
                   )}

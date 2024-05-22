@@ -1,6 +1,5 @@
 import React from 'react'
 import SideNav from './SideNav'
-import log from 'loglevel'
 
 interface AllPagesMenuProps {
   nodes: Node[]
@@ -36,9 +35,13 @@ const AllPagesMenu: React.FC<AllPagesMenuProps> = ({
     const groupedItems = {}
 
     entries.forEach((entry) => {
-      const slugLevels = entry.fields.slug.split('/').filter((level) => level !== '')
+      const slugLevels = entry.fields.slug
+        .split('/')
+        .filter((level) => level !== '')
+        .map((level) => level.replace(/_/g, ' '))
+
       let currentGroup = groupedItems
-      log.info('MARZIPAN', slugLevels, currentGroup)
+
       slugLevels.forEach((level, index) => {
         if (!currentGroup[level]) {
           currentGroup[level] = {}
