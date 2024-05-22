@@ -1,16 +1,18 @@
 /**
  * Custom MUI theme for Riverscapes website
  */
-import { createTheme } from '@mui/material'
+import { SxProps, createTheme } from '@mui/material'
 
 declare module '@mui/material/styles' {
   interface TypographyVariants {
-    p: React.CSSProperties
+    p: SxProps
+    sideMenu: SxProps
   }
 
   // allow configuration using `createTheme`
   interface TypographyVariantsOptions {
-    p?: React.CSSProperties
+    p?: SxProps
+    sideMenu?: SxProps
   }
 }
 
@@ -18,6 +20,7 @@ declare module '@mui/material/styles' {
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     p: true
+    sideMenu: true
   }
 }
 
@@ -172,9 +175,9 @@ export const theme = createTheme({
           [defaultTheme.breakpoints.up('lg')]: {
             fontSize: '1.375rem',
           },
-          "&:hover": {
-            backgroundColor: "transparent"
-          }
+          '&:hover': {
+            backgroundColor: 'transparent',
+          },
         },
       },
       variants: [
