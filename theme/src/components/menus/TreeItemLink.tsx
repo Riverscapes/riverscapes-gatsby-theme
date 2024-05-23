@@ -17,7 +17,10 @@ interface TreeItemLinkProps extends TreeItemProps {
 const TreeItemLink: React.FC<TreeItemLinkProps> = ({ to, label, children, ...rest }) => {
   const theme = useTheme()
   // Make sure to remove any trailing slashes
-  const currPath = window.location.pathname.replace(/\/$/, '')
+  let currPath = ''
+  if (typeof window !== 'undefined') {
+    currPath = window.location.pathname.replace(/\/$/, '')
+  }
   const isCurrent = to && currPath === to
   const isLink = to && to.length > 0
   const isLeaf = !children || (Array.isArray(children) && children.length === 0)

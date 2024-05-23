@@ -50,7 +50,10 @@ const SideNav: React.FC<SideNavProps> = ({
     const nodesMenu = nodes as MobileMenu
 
     // Make sure to remove any trailing slashes
-    const currPath = window.location.pathname.replace(/\/$/, '')
+    let currPath = ''
+    if (typeof window !== 'undefined') {
+      currPath = window.location.pathname.replace(/\/$/, '')
+    }
     let isCurrent = nodesItem.url && currPath === nodesItem.url
 
     return {
