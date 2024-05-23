@@ -13,6 +13,9 @@ import AllPagesMenu from '../components/menus/allPagesMenu'
 
 import defaultImage from '../images/card-image.jpg'
 import { ParamsContext } from '../paramsContext'
+import log from 'loglevel'
+
+log.enableAll()
 
 const PageTemplate = ({ data: { site, mdx: page, bottomMenu: childPages, sideMenu }, children, location }) => {
   // If the page has a query of ?render=noFrame, then just return the content

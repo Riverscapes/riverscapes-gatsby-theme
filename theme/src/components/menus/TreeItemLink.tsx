@@ -7,6 +7,7 @@ import { navigate } from 'gatsby'
 import { TreeItem, TreeItemProps } from '@mui/x-tree-view/TreeItem'
 import { Button, useTheme } from '@mui/material'
 import { Place } from '@mui/icons-material'
+import log from 'loglevel'
 
 interface TreeItemLinkProps extends TreeItemProps {
   to: string
@@ -20,6 +21,9 @@ const TreeItemLink: React.FC<TreeItemLinkProps> = ({ to, label, children, ...res
   let currPath = ''
   if (typeof window !== 'undefined') {
     currPath = window.location.pathname.replace(/\/$/, '')
+    log.debug('currPath:', currPath)
+  } else {
+    log.debug('window is undefined')
   }
   const isCurrent = to && currPath === to
   const isLink = to && to.length > 0
