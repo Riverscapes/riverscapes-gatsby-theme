@@ -1,4 +1,4 @@
-name: Gatsby Publish
+name: Gatsby GHPages Publish
 
 on:
   push:
@@ -32,29 +32,37 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version-file: .nvmrc
+          node-version-file: ./.nvmrc
           cache-dependency-path: ./package.json
           cache: yarn
 
       - name: Get correct version of Yarn
         run: corepack enable; yarn set version berry
 
-      # Having a cache can save us a lot of time when installing dependencies
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v4
+        with:
+          # Automatically inject pathPrefix in your Gatsby configuration file.
+          #
+          # You may remove this line if you want to manage the configuration yourself.
+          static_site_generator: gatsby
+
       - name: Restore cache
         uses: actions/cache@v4
         with:
           path: |
+            ./.yarn/cache
             ./sites/devsite/public
-            ./sites/devsite/.cache
+            ./.cache
           key: ${{ runner.os }}-gatsby-build-${{ hashFiles('public') }}
           restore-keys: |
             ${{ runner.os }}-gatsby-build-
 
-      # This is the yarn install step
       - name: Install dependencies
         working-directory: .
-        run: yarn install --immutable --immutable-cache
-
+        run: yarn install --immutable
+        
       - name: Build with Gatsby
         working-directory: .
         env:
@@ -62,7 +70,7 @@ jobs:
         run: yarn run build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./sites/devsite/public
 
