@@ -30,6 +30,7 @@ const TreeItemLink: React.FC<TreeItemLinkProps> = ({ to, label, children, ...res
   const isLink = Boolean(to && to.length > 0)
   const isLeaf = Boolean(!children || (Array.isArray(children) && children.length === 0))
   log.debug('MARZIPAN', {
+    to,
     beforePath,
     currPath,
     isCurrent,
