@@ -6,6 +6,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import TreeItemLink from './TreeItemLink'
 import { MobileMenu, MobileMenuItem } from '../../types'
 import { Box, IconButton } from '@mui/material'
+import { withPathAttributes } from '../../hooks/withPathAttributes'
 
 interface SideNavProps {
   heading?: string
@@ -49,12 +50,7 @@ const SideNav: React.FC<SideNavProps> = ({
     const nodesItem = nodes as MobileMenuItem
     const nodesMenu = nodes as MobileMenu
 
-    // Make sure to remove any trailing slashes
-    let currPath = ''
-    if (typeof window !== 'undefined') {
-      currPath = window.location.pathname.replace(/\/$/, '')
-    }
-    let isCurrent = nodesItem.url && currPath === nodesItem.url
+    let { isCurrent } = withPathAttributes(nodesItem.url)
 
     return {
       el: (
