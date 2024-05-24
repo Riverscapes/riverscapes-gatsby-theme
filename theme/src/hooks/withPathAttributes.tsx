@@ -1,5 +1,5 @@
+import { useLocation } from '@reach/router'
 import { withPrefix } from 'gatsby'
-import log from 'loglevel'
 
 export type PathAttributes = {
   isCurrent: boolean
@@ -8,14 +8,12 @@ export type PathAttributes = {
 }
 
 export const withPathAttributes = (to?: string, children?: React.ReactNode): PathAttributes => {
+  const location = useLocation()
+
   // Make sure to remove any trailing slashes
-  let currPath = ''
+  const currPath = location.pathname ? location.pathname.replace(/\/$/, '') : ''
   const prefixedTo = withPrefix(to || '')
-  if (typeof window !== 'undefined') {
-    currPath = window.location.pathname.replace(/\/$/, '')
-  } else {
-    log.debug('window is undefined')
-  }
+
   const isCurrent = Boolean(prefixedTo && currPath === prefixedTo)
   const isLink = Boolean(prefixedTo && prefixedTo.length > 0)
   const isLeaf = Boolean(!children || (Array.isArray(children) && children.length === 0))
