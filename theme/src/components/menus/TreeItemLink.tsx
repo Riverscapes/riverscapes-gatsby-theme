@@ -19,15 +19,23 @@ const TreeItemLink: React.FC<TreeItemLinkProps> = ({ to, label, children, ...res
   const theme = useTheme()
   // Make sure to remove any trailing slashes
   let currPath = ''
+  let beforePath = ''
   if (typeof window !== 'undefined') {
+    beforePath = window.location.pathname
     currPath = window.location.pathname.replace(/\/$/, '')
-    log.debug('currPath:', currPath)
   } else {
     log.debug('window is undefined')
   }
-  const isCurrent = to && currPath === to
-  const isLink = to && to.length > 0
-  const isLeaf = !children || (Array.isArray(children) && children.length === 0)
+  const isCurrent = Boolean(to && currPath === to)
+  const isLink = Boolean(to && to.length > 0)
+  const isLeaf = Boolean(!children || (Array.isArray(children) && children.length === 0))
+  log.debug('MARZIPAN', {
+    beforePath,
+    currPath,
+    isCurrent,
+    isLink,
+    isLeaf,
+  })
 
   return (
     <TreeItem
