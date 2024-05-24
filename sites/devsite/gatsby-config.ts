@@ -27,25 +27,15 @@ module.exports = {
     menuLinks: [
       {
         title: 'About us',
-        url: '/contentPages',
+        url: '/About_Us',
         items: [
           {
             title: 'What is a riverscape',
-            url: '/contentPages/contentSubFolder',
-            items: [
-              {
-                title: 'Level 2 A',
-                url: '/contentPages/contentSubFolder',
-              },
-              {
-                title: 'Level 2 B',
-                url: '/contentPages/contentSubFolder',
-              },
-            ],
+            url: '/About_Us/whatisariverscape',
           },
           {
             title: 'FAIR principles',
-            url: '/contentPages/contentSubFolder',
+            url: '/About_Us/fair',
           },
         ],
       },

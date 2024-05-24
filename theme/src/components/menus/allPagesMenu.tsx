@@ -10,7 +10,7 @@ interface AllPagesMenuProps {
 
 const AllPagesMenu: React.FC<AllPagesMenuProps> = ({
   nodes,
-  heading = 'All pages',
+  heading = 'Site Index',
   headingType = 'h2',
   showHeading = false,
 }) => {
