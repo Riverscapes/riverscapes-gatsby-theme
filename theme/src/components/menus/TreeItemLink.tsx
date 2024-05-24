@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import { navigate } from 'gatsby'
+import { navigate, withPrefix } from 'gatsby'
 import { TreeItem, TreeItemProps } from '@mui/x-tree-view/TreeItem'
 import { Button, useTheme } from '@mui/material'
 import { Place } from '@mui/icons-material'
@@ -20,15 +20,17 @@ const TreeItemLink: React.FC<TreeItemLinkProps> = ({ to, label, children, ...res
   // Make sure to remove any trailing slashes
   let currPath = ''
   let beforePath = ''
+  const prefixedTo = withPrefix(to || '')
   if (typeof window !== 'undefined') {
     beforePath = window.location.pathname
     currPath = window.location.pathname.replace(/\/$/, '')
   } else {
     log.debug('window is undefined')
   }
-  const isCurrent = Boolean(to && currPath === to)
-  const isLink = Boolean(to && to.length > 0)
+  const isCurrent = Boolean(prefixedTo && currPath === prefixedTo)
+  const isLink = Boolean(prefixedTo && prefixedTo.length > 0)
   const isLeaf = Boolean(!children || (Array.isArray(children) && children.length === 0))
+
   log.debug('MARZIPAN', {
     to,
     beforePath,
