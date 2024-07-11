@@ -5,7 +5,7 @@
   // On container creation, install dependencies.
   "postCreateCommand": "cd sites/devsite; yarn install --immutable --immutable-cache",
   // Build and run the dev site on container start.
-  "postAttachCommand": "cd sites/devsite; gatsby build; gatsby serve -H 0.0.0.0 -p 8002",
+  "postAttachCommand": "cd sites/devsite; gatsby develop -p 8002",
   "customizations": {
     "vscode": {
       "settings": {
