@@ -1,18 +1,11 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
-import { Tool } from './types'
-
-export type ToolListFilters = {
-  purpose: string[]
-  compliance: string[]
-  interface: string[]
-  resolution: string[]
-}
+import { Tool, ToolListFilterValues } from './types'
 
 export interface ToolListFilterProps {
   tools: Tool[]
   setFilters: (filters: any) => void
-  filters: ToolListFilters
+  filters: ToolListFilterValues
 }
 
 export const ToolListFilters: React.FC<ToolListFilterProps> = ({ tools, setFilters, filters }) => {

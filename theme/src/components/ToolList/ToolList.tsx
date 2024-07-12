@@ -1,12 +1,12 @@
 import { Box, Button, ButtonGroup, Stack } from '@mui/material'
 import React, { useMemo } from 'react'
-import { ToolListFilters } from './ToolListFilters'
-import { Tool } from './types'
+import { Tool, ToolListFilterValues } from './types'
 import { ToolListCardView } from './ToolListCardView'
 import { ToolListTableView } from './ToolListTableView'
+import { ToolListFilters } from './ToolListFilters'
 
 export interface ToolListProps {
-  initialFilters: ToolListFilters
+  initialFilters: ToolListFilterValues
   tools: Tool[]
 }
 

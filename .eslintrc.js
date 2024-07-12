@@ -21,7 +21,6 @@ module.exports = {
     '**/node_modules/**',
     '**/src/schema/**',
     '**/src/mock/**',
-    '**/*.stories.tsx',
   ],
   rules: {
     'react/no-unknown-property': ['error', { ignore: ['css'] }],
