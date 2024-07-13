@@ -1,4 +1,4 @@
-import { Box, Paper } from '@mui/material'
+import { Box, Paper, Typography } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2/Grid2'
 import React from 'react'
 import { Tool } from './types'
@@ -26,7 +26,9 @@ export interface ToolListCardProps {
 export const ToolListCard: React.FC<ToolListCardProps> = ({ tool }) => {
   return (
     <Paper elevation={3}>
-      <Box>{tool.name}</Box>
+      <Box>
+        <Typography sx={{ fontWeight: 'bold' }}>{tool.name}</Typography>
+      </Box>
       <Box>{tool.description}</Box>
     </Paper>
   )
