@@ -11,7 +11,7 @@ export const ToolListCardView: React.FC<ToolListCardViewProps> = ({ tools }) => 
   return (
     <Grid container spacing={2}>
       {tools.map((tool) => (
-        <Grid key={tool.id} xs={12} sm={6} md={4} lg={3}>
+        <Grid key={tool.id} xs={12} sm={6} md={4}>
           <ToolListCard tool={tool} />
         </Grid>
       ))}
@@ -25,7 +25,7 @@ export interface ToolListCardProps {
 
 export const ToolListCard: React.FC<ToolListCardProps> = ({ tool }) => {
   return (
-    <Paper elevation={3}>
+    <Paper elevation={3} sx={{ p: 2 }}>
       <Box>
         <Typography sx={{ fontWeight: 'bold' }}>{tool.name}</Typography>
       </Box>
