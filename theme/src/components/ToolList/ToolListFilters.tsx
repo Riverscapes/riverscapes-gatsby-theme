@@ -47,7 +47,7 @@ export const ToolListFilters: React.FC<ToolListFilterProps> = ({ tools, setFilte
   return (
     <Stack spacing={2}>
       {Object.keys(filterList).map((key) => (
-        <Stack key={key} spacing={1} sx={{ border: '1px solid black', p: 1 }}>
+        <Stack key={key} spacing={1} sx={{ border: '1px solid black', p: 2 }}>
           <Typography>{filterSectionNames[key]}</Typography>
           <FormGroup>
             {filterList[key].sort().map((value) => (
