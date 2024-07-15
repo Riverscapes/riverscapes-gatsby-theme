@@ -18,7 +18,7 @@ import {
 } from '@mui/material'
 
 import RSLinkButton from './custom/RSLinkButton'
-import { ToolList } from './ToolList'
+import { ToolList, ToolListContainer } from './ToolList'
 import { ContentLink } from './ContentLink'
 import ImgCard from './ImgCard'
 import { StoryCard } from './StoryCard'
@@ -35,6 +35,7 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
 
   const shortcodes: Record<string, any> = {
     ToolList,
+    ToolListContainer,
     // Here are the homepage-specifc cards
     HomepageCard,
     HomepageCardContent,
