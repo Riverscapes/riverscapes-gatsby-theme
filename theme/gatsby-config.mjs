@@ -30,6 +30,15 @@ const config = ({ contentPath, manifest }) => {
           path: contentPath,
         },
       },
+      `gatsby-transformer-json`,
+      {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          name: `data`,
+          ignore: [`**/\.*`],
+          path: `${contentPath}/../data`,
+        },
+      },
       {
         resolve: `gatsby-plugin-mdx`,
         options: {
