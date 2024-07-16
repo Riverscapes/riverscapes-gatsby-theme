@@ -57,16 +57,18 @@ export const ToolList: React.FC<ToolListProps> = ({ name, initialFilters, tools 
   }, [view, tools, filters])
 
   const viewButtonIcon = view === ViewEnum.Card ? <ViewListIcon /> : <DashboardIcon />
-  const viewButtonLabel = `Switch to ${view === ViewEnum.Card ? 'Table View' : 'Card View'}`
+  const viewButtonLabel = view === ViewEnum.Card ? 'Table View' : 'Card View'
   const viewButtonAction = view === ViewEnum.Card ? ViewEnum.Table : ViewEnum.Card
 
   return (
-    <Box sx={{ border: '1px solid red', p: 2 }}>
+    <Box sx={{ py: 1 }}>
       <Stack spacing={2}>
         <Box>
           <Grid container spacing={3}>
             <Grid xs={6} sx={{ display: 'flex', alignItems: 'center' }}>
-              <Typography sx={{ fontWeight: 'bold' }}>{name}</Typography>
+              <Typography variant={'h6'} sx={{ fontWeight: 'bold' }}>
+                {name}
+              </Typography>
             </Grid>
             <Grid xs={6} sx={{ textAlign: 'right' }}>
               <Button endIcon={viewButtonIcon} onClick={() => setView(viewButtonAction)}>
@@ -78,10 +80,10 @@ export const ToolList: React.FC<ToolListProps> = ({ name, initialFilters, tools 
 
         <Box>
           <Grid container spacing={3}>
-            <Grid xs={3}>
+            <Grid xs={4}>
               <ToolListFilters tools={tools} setFilters={setFilters} filters={filters} />
             </Grid>
-            <Grid xs={9}>
+            <Grid xs={8}>
               <Box>{viewEl}</Box>
             </Grid>
           </Grid>

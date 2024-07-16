@@ -1,4 +1,4 @@
-import { Box, Typography, Stack, FormGroup, FormControlLabel, Checkbox } from '@mui/material'
+import { Box, Button, Typography, Stack, FormGroup, FormControlLabel, Checkbox } from '@mui/material'
 import React, { useMemo } from 'react'
 import { Tool, ToolListFilterValues } from './types'
 
@@ -45,38 +45,56 @@ export const ToolListFilters: React.FC<ToolListFilterProps> = ({ tools, setFilte
   }, [tools])
 
   return (
-    <Stack spacing={2}>
-      {Object.keys(filterList).map((key) => (
-        <Stack key={key} spacing={1} sx={{ border: '1px solid black', p: 2 }}>
-          <Typography>{filterSectionNames[key]}</Typography>
-          <FormGroup>
-            {filterList[key].sort().map((value) => (
-              <FormControlLabel
-                key={value}
-                control={
-                  <Checkbox
-                    checked={filters[key].includes(value)}
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        setFilters({
-                          ...filters,
-                          [key]: [...filters[key], value],
-                        })
-                      } else {
-                        setFilters({
-                          ...filters,
-                          [key]: filters[key].filter((v) => v !== value),
-                        })
-                      }
-                    }}
-                  />
-                }
-                label={value}
-              />
-            ))}
-          </FormGroup>
-        </Stack>
-      ))}
-    </Stack>
+    <Box>
+      <Box sx={{ textAlign: 'right' }}>
+        <Button
+          sx={{ my: 0 }}
+          size="small"
+          onClick={() => {
+            setFilters({
+              purpose: [],
+              compliance: [],
+              interface: [],
+              resolution: [],
+            })
+          }}
+        >
+          <Typography variant="overline">Clear Filters</Typography>
+        </Button>
+      </Box>
+      <Stack spacing={2}>
+        {Object.keys(filterList).map((key) => (
+          <Stack key={key} spacing={1} sx={{ border: '1px solid black', p: 2 }}>
+            <Typography>{filterSectionNames[key]}</Typography>
+            <FormGroup>
+              {filterList[key].sort().map((value) => (
+                <FormControlLabel
+                  key={value}
+                  control={
+                    <Checkbox
+                      checked={filters[key].includes(value)}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          setFilters({
+                            ...filters,
+                            [key]: [...filters[key], value],
+                          })
+                        } else {
+                          setFilters({
+                            ...filters,
+                            [key]: filters[key].filter((v) => v !== value),
+                          })
+                        }
+                      }}
+                    />
+                  }
+                  label={value}
+                />
+              ))}
+            </FormGroup>
+          </Stack>
+        ))}
+      </Stack>
+    </Box>
   )
 }

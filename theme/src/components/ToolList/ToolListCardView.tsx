@@ -1,7 +1,9 @@
-import { Box, Paper, Typography } from '@mui/material'
+import { Box, Card, Typography } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2/Grid2'
 import React from 'react'
 import { Tool } from './types'
+
+import { StaticImage } from 'gatsby-plugin-image'
 
 export interface ToolListCardViewProps {
   tools: Tool[]
@@ -24,12 +26,22 @@ export interface ToolListCardProps {
 }
 
 export const ToolListCard: React.FC<ToolListCardProps> = ({ tool }) => {
+  console.log(__dirname)
+
   return (
-    <Paper elevation={3} sx={{ p: 2 }}>
-      <Box>
-        <Typography sx={{ fontWeight: 'bold' }}>{tool.name}</Typography>
+    <Card>
+      <Box sx={{ width: '100%', height: '70px' }}>
+        <StaticImage
+          src="/static/images/tools/default.jpg"
+          alt="card image"
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
       </Box>
-      <Box>{tool.description}</Box>
-    </Paper>
+
+      <Box sx={{ p: 2 }}>
+        <Typography sx={{ fontWeight: 'bold' }}>{tool.name}</Typography>
+        <Box>{tool.description}</Box>
+      </Box>
+    </Card>
   )
 }
