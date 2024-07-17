@@ -40,6 +40,14 @@ const config = ({ contentPath, manifest }) => {
         },
       },
       {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          name: `siteImages`,
+          ignore: [`**/\.*`],
+          path: `${contentPath}/../../static/images`,
+        },
+      },
+      {
         resolve: `gatsby-plugin-mdx`,
         options: {
           mdxOptions: {

@@ -14,7 +14,7 @@ export const ToolListContainer: React.FC<ToolListContainerProps> = ({ name, init
     query ToolsQuery {
       allToolsJson {
         nodes {
-          id
+          toolId
           name
           description
           purpose
@@ -27,7 +27,6 @@ export const ToolListContainer: React.FC<ToolListContainerProps> = ({ name, init
   `)
 
   const tools = data.allToolsJson.nodes
-  console.log('LALALALA TOOLS', tools)
 
   return <ToolList name={name} initialFilters={initialFilters} tools={tools} />
 }
