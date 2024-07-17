@@ -6,7 +6,7 @@ export type ToolListFilterValues = {
 }
 
 export type Tool = {
-  id: string
+  toolId: string
   name: string
   description: string
 } & ToolListFilterValues
