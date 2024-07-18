@@ -1,4 +1,4 @@
-import { Box, Card, Typography } from '@mui/material'
+import { Box, Card, Typography, Link } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2/Grid2'
 import React, { useMemo } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
@@ -11,19 +11,20 @@ export interface ToolListCardViewProps {
 }
 
 export const ToolListCardView: React.FC<ToolListCardViewProps> = ({ tools }) => {
-  const toolImages = useMemo(() => {
-    const imageData = useStaticQuery(graphql`
-      query ToolImages {
-        allFile(filter: { sourceInstanceName: { eq: "siteImages" }, relativeDirectory: { eq: "tools" } }) {
-          nodes {
-            name
-            childImageSharp {
-              gatsbyImageData
-            }
+  const imageData = useStaticQuery(graphql`
+    query ToolImages {
+      allFile(filter: { sourceInstanceName: { eq: "siteImages" }, relativeDirectory: { eq: "tools" } }) {
+        nodes {
+          name
+          childImageSharp {
+            gatsbyImageData
           }
         }
       }
-    `)
+    }
+  `)
+
+  const toolImages = useMemo(() => {
     const allImages = new Map(imageData.allFile.nodes.map((node) => [node.name, node]))
 
     const imageMap = new Map()
@@ -34,13 +35,17 @@ export const ToolListCardView: React.FC<ToolListCardViewProps> = ({ tools }) => 
         image = getImage(imageNode.childImageSharp)
       } catch (e) {
         const defaultImage = allImages.get('default') as { childImageSharp: any }
+        if (defaultImage == undefined) {
+          imageMap.set(tool.toolId, null)
+          return
+        }
         image = getImage(defaultImage.childImageSharp)
       }
       imageMap.set(tool.toolId, image)
     })
 
     return imageMap
-  }, [tools])
+  }, [tools, imageData])
 
   return (
     <Grid container spacing={2}>
@@ -61,16 +66,22 @@ export interface ToolListCardProps {
 export const ToolListCard: React.FC<ToolListCardProps> = ({ tool, image }) => {
   return (
     <Card>
-      <Box sx={{ width: '100%', height: '70px' }}>
-        <GatsbyImage
-          image={image}
-          alt={`card image for ${tool.name}`}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        />
-      </Box>
+      {image && (
+        <Box sx={{ width: '100%', height: '70px' }}>
+          <Link href={tool.url} target="_blank">
+            <GatsbyImage
+              image={image}
+              alt={`card image for ${tool.name}`}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          </Link>
+        </Box>
+      )}
 
       <Box sx={{ p: 2 }}>
-        <Typography sx={{ fontWeight: 'bold' }}>{tool.name}</Typography>
+        <Typography component={Link} sx={{ fontWeight: 'bold' }} href={tool.url} target="_blank" underline="none">
+          {tool.name}
+        </Typography>
         <Box>{tool.description}</Box>
       </Box>
     </Card>

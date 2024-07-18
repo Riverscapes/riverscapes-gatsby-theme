@@ -17,6 +17,7 @@ export const ToolListContainer: React.FC<ToolListContainerProps> = ({ name, init
           toolId
           name
           description
+          url
           purpose
           compliance
           interface
@@ -25,8 +26,16 @@ export const ToolListContainer: React.FC<ToolListContainerProps> = ({ name, init
       }
     }
   `)
-
   const tools = data.allToolsJson.nodes
+
+  if (!initialFilters) {
+    initialFilters = {
+      purpose: [],
+      compliance: [],
+      interface: [],
+      resolution: [],
+    }
+  }
 
   return <ToolList name={name} initialFilters={initialFilters} tools={tools} />
 }

@@ -48,7 +48,7 @@ export const ToolListFilters: React.FC<ToolListFilterProps> = ({ tools, setFilte
     <Box>
       <Box sx={{ textAlign: 'right' }}>
         <Button
-          sx={{ my: 0 }}
+          sx={{ my: 0, height: '1.25rem' }}
           size="small"
           onClick={() => {
             setFilters({
