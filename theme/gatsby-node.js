@@ -5,6 +5,7 @@
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/
  */
 
+const fs = require('fs')
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 // const { optimizeImages } = require('./dist/optimize')
@@ -116,6 +117,20 @@ function MDXSafetyFilter(text) {
   safeText = safeText.replace(/<hr([^>]*)(?<!\/)>/g, '<ErrorUnclosed tagName="hr"><hr$1 /></ErrorUnclosed>')
 
   return safeText
+}
+
+// Ensure that content/data/tools.json exists
+exports.onPreInit = ({ actions }) => {
+  console.log('Runnin?', __dirname)
+
+  if (!fs.existsSync('./content/data/tools.json')) {
+    // make folders just in case
+    fs.mkdirSync('./content/data', { recursive: true })
+    fs.writeFileSync(
+      './content/data/tools.json',
+      `[{"toolId":"","name":"","description":"","url":"","purpose":[""],"compliance":[""],"interface":[""],"resolution":[""]}]`
+    )
+  }
 }
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
