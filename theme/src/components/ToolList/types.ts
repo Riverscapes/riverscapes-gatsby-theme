@@ -9,4 +9,5 @@ export type Tool = {
   toolId: string
   name: string
   description: string
+  url: string
 } & ToolListFilterValues

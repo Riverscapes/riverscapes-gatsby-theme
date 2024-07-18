@@ -62,7 +62,7 @@ export const ToolList: React.FC<ToolListProps> = ({ name, initialFilters, tools 
 
   return (
     <Box sx={{ py: 1 }}>
-      <Stack spacing={2}>
+      <Stack spacing={1}>
         <Box>
           <Grid container spacing={3}>
             <Grid xs={6} sx={{ display: 'flex', alignItems: 'center' }}>
