@@ -119,20 +119,6 @@ function MDXSafetyFilter(text) {
   return safeText
 }
 
-// Ensure that content/data/tools.json exists
-exports.onPreInit = ({ actions }) => {
-  console.log('Runnin?', __dirname)
-
-  if (!fs.existsSync('./content/data/tools.json')) {
-    // make folders just in case
-    fs.mkdirSync('./content/data', { recursive: true })
-    fs.writeFileSync(
-      './content/data/tools.json',
-      `[{"toolId":"","name":"","description":"","url":"","purpose":[""],"compliance":[""],"interface":[""],"resolution":[""]}]`
-    )
-  }
-}
-
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === `Mdx`) {
