@@ -26,7 +26,16 @@ export const ToolListContainer: React.FC<ToolListContainerProps> = ({ name, init
       }
     }
   `)
-  const tools = data.allToolsJson.nodes
+  const allTools = data.allToolsJson.nodes
+
+  // If there is real content (from user JSON), filter out the default empty tool
+  let tools
+  const hasRealContent = allTools.some((tool) => tool.name.trim() !== '' && tool.toolId)
+  if (hasRealContent) {
+    tools = allTools.filter((tool) => tool.name.trim() !== '' && tool.toolId)
+  } else {
+    tools = allTools
+  }
 
   if (!initialFilters) {
     initialFilters = {

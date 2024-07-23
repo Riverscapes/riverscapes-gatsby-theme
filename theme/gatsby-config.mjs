@@ -34,9 +34,17 @@ const config = ({ contentPath, manifest }) => {
       {
         resolve: `gatsby-source-filesystem`,
         options: {
+          name: `content`,
+          ignore: [`**/\.*`],
+          path: `${contentPath}/..`,
+        },
+      },
+      {
+        resolve: `gatsby-source-filesystem`,
+        options: {
           name: `data`,
           ignore: [`**/\.*`],
-          path: `${contentPath}/../data`,
+          path: `${srcRoot}/src/content/data`,
         },
       },
       {
