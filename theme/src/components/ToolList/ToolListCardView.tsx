@@ -4,6 +4,7 @@ import React, { useMemo } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
 
+import { ToolInfoModal } from './ToolInfoModal'
 import { Tool } from './types'
 
 export interface ToolListCardViewProps {
@@ -11,6 +12,19 @@ export interface ToolListCardViewProps {
 }
 
 export const ToolListCardView: React.FC<ToolListCardViewProps> = ({ tools }) => {
+  const [modalState, setModalState] = React.useState({
+    modalOpen: false,
+    tool: tools[0],
+  })
+
+  const handleModalOpen = (tool) => {
+    setModalState({ modalOpen: true, tool })
+  }
+
+  const handleModalClose = () => {
+    setModalState((state) => ({ ...state, modalOpen: false }))
+  }
+
   const imageData = useStaticQuery(graphql`
     query ToolImages {
       allFile(filter: { sourceInstanceName: { eq: "siteImages" }, relativeDirectory: { eq: "tools" } }) {
@@ -48,27 +62,31 @@ export const ToolListCardView: React.FC<ToolListCardViewProps> = ({ tools }) => 
   }, [tools, imageData])
 
   return (
-    <Grid container spacing={2}>
-      {tools.map((tool) => (
-        <Grid key={tool.toolId} xs={12} sm={6} md={4}>
-          <ToolListCard tool={tool} image={toolImages.get(tool.toolId)} />
-        </Grid>
-      ))}
-    </Grid>
+    <Box>
+      <Grid container spacing={2}>
+        {tools.map((tool) => (
+          <Grid key={tool.toolId} xs={12} sm={6} md={4}>
+            <ToolListCard tool={tool} image={toolImages.get(tool.toolId)} onClick={() => handleModalOpen(tool)} />
+          </Grid>
+        ))}
+      </Grid>
+      <ToolInfoModal onClose={handleModalClose} open={modalState['modalOpen']} tool={modalState['tool']} />
+    </Box>
   )
 }
 
 export interface ToolListCardProps {
   tool: Tool
   image: any
+  onClick?: () => void
 }
 
-export const ToolListCard: React.FC<ToolListCardProps> = ({ tool, image }) => {
+export const ToolListCard: React.FC<ToolListCardProps> = ({ tool, image, onClick }) => {
   return (
     <Card>
       {image && (
         <Box sx={{ width: '100%', height: '70px' }}>
-          <Link href={tool.url} target="_blank">
+          <Link sx={{ cursor: 'pointer' }} onClick={onClick}>
             <GatsbyImage
               image={image}
               alt={`card image for ${tool.name}`}
@@ -79,7 +97,20 @@ export const ToolListCard: React.FC<ToolListCardProps> = ({ tool, image }) => {
       )}
 
       <Box sx={{ p: 2 }}>
-        <Typography component={Link} sx={{ fontWeight: 'bold' }} href={tool.url} target="_blank" underline="none">
+        <Typography
+          component={Link}
+          sx={{
+            fontWeight: 'bold',
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+            textOverflow: 'ellipsis',
+            display: 'inline-block',
+            maxWidth: '100%',
+          }}
+          href={tool.url}
+          target="_blank"
+          underline="none"
+        >
           {tool.name}
         </Typography>
         <Box>{tool.description}</Box>
