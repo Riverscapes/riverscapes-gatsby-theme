@@ -1,7 +1,7 @@
 {
   "name": "@riverscapes/gatsby-theme",
   "description": "Riverscapes website powered by Gatsby and Markdown",
-  "version": "0.1.29",
+  "version": "0.1.30",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -26,6 +26,7 @@
     "gatsby-remark-prismjs": "^7.10.0",
     "gatsby-remark-responsive-iframe": "^6.10.0",
     "gatsby-source-filesystem": "^5.13.0",
+    "gatsby-transformer-json": "^5.13.1",
     "gatsby-transformer-remark": "^6.13.0",
     "gatsby-transformer-sharp": "^5.13.0",
     "loglevel": "^1.8.1",

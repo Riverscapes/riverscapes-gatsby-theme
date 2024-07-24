@@ -3674,6 +3674,7 @@ __metadata:
     gatsby-remark-prismjs: "npm:^7.10.0"
     gatsby-remark-responsive-iframe: "npm:^6.10.0"
     gatsby-source-filesystem: "npm:^5.13.0"
+    gatsby-transformer-json: "npm:^5.13.1"
     gatsby-transformer-remark: "npm:^6.13.0"
     gatsby-transformer-sharp: "npm:^5.13.0"
     loglevel: "npm:^1.8.1"
@@ -3696,8 +3697,6 @@ __metadata:
   resolution: "@riverscapes/gatsby@workspace:."
   dependencies:
     gatsby: "npm:^5.13.0"
-    gatsby-source-filesystem: "npm:^5.13.1"
-    gatsby-transformer-json: "npm:^5.13.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     typescript: "npm:^4.7.2"
@@ -10972,7 +10971,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-source-filesystem@npm:^5.13.0, gatsby-source-filesystem@npm:^5.13.1":
+"gatsby-source-filesystem@npm:^5.13.0":
   version: 5.13.1
   resolution: "gatsby-source-filesystem@npm:5.13.1"
   dependencies:
