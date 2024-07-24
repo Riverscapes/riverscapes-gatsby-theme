@@ -71,9 +71,9 @@ export const ToolList: React.FC<ToolListProps> = ({ name, initialFilters, tools 
               </Typography>
             </Grid>
             <Grid xs={6} sx={{ textAlign: 'right' }}>
-              <Button endIcon={viewButtonIcon} onClick={() => setView(viewButtonAction)}>
+              {/* <Button endIcon={viewButtonIcon} onClick={() => setView(viewButtonAction)}>
                 {viewButtonLabel}
-              </Button>
+              </Button> */}
             </Grid>
           </Grid>
         </Box>
