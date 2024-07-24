@@ -1,4 +1,16 @@
-import { Box, Typography, Link, DialogTitle, Dialog, DialogContent, Stack, IconButton, Chip } from '@mui/material'
+import {
+  Box,
+  Typography,
+  Link,
+  DialogTitle,
+  Dialog,
+  DialogContent,
+  Stack,
+  IconButton,
+  Chip,
+  useTheme,
+  Button,
+} from '@mui/material'
 import React from 'react'
 import { Tool } from './types'
 import CloseIcon from '@mui/icons-material/Close'
@@ -11,25 +23,32 @@ export interface ToolInfoModalProps {
 }
 
 export const ToolInfoModal: React.FC<ToolInfoModalProps> = ({ open, tool, onClose }) => {
+  const theme = useTheme()
+
   return (
     <Dialog onClose={onClose} open={open} maxWidth={'md'} fullWidth={true}>
-      <DialogTitle sx={{ mr: 3 }} variant="h3">
-        {tool.name}
-        <Typography variant="subtitle2">
-          <Link href={tool.url} target={'_blank'}>
-            {tool.url.replace('https://', '')}
-            {tool.url.includes('riverscapes.net') ? '' : <OpenInNewIcon sx={{ fontSize: 16 }} />}
-          </Link>
-        </Typography>
+      <DialogTitle sx={{ color: theme.palette.primary.contrastText, backgroundColor: theme.palette.primary.light }}>
+        <Stack direction={'row'} flexDirection={'row'} justifyContent={'space-between'} alignItems={'flex-start'}>
+          <Stack>
+            <Typography component="div" variant="h3" color={'inherit'}>
+              {tool.name}
+            </Typography>
+            <Box>
+              <Button size="small" href={tool.url} target={'_blank'} color={'inherit'} endIcon={<OpenInNewIcon />}>
+                {tool.url.replace('https://', '')}
+              </Button>
+            </Box>
+          </Stack>
+
+          <IconButton aria-label="close" onClick={onClose} color={'inherit'}>
+            <CloseIcon />
+          </IconButton>
+        </Stack>
       </DialogTitle>
 
-      <IconButton aria-label="close" onClick={onClose} sx={{ position: 'absolute', top: 0, right: 0, mt: 1, mr: 1 }}>
-        <CloseIcon />
-      </IconButton>
-
-      <DialogContent sx={{ pt: 1 }}>
-        <Box sx={{ mb: 1 }}>
-          <Typography>{tool.description}</Typography>
+      <DialogContent>
+        <Box sx={{ py: 2 }}>
+          <Typography sx={{ whiteSpace: 'preserve-breaks' }}>{tool.description}</Typography>
         </Box>
 
         <Stack spacing={1}>
