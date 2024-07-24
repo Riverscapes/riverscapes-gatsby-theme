@@ -21,7 +21,7 @@
   },
   {
     "toolId": "toolc",
-    "name": "Tool C",
+    "name": "Tool Catastrophic Calmity Construction Company C Clarification Center",
     "description": "This is Tool C",
     "url": "https://staging.phlux.riverscapes.net",
     "purpose": ["Purpose C"],
@@ -42,7 +42,7 @@
   {
     "toolId": "toole",
     "name": "Tool E",
-    "description": "This is Tool E",
+    "description": "This is Tool E. Tool E was meant to provide a description that is longer than the others. Much, much longer. It's a good thing that we have a lot of space to work with here. Man, come to think of it, do we even have enough space?\n\nNahhh... I'm sure it's fine. But just in case, maybe I should stop describing TOOL E soon. \n So... Tool E is a tool that helps with E's. It's a great tool. You should use it.",
     "url": "https://github.com/Riverscapes",
     "purpose": ["Purpose C", "Purpose E"],
     "compliance": ["Compliance C"],

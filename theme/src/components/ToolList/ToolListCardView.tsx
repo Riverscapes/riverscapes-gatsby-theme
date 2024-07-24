@@ -83,7 +83,7 @@ export interface ToolListCardProps {
 
 export const ToolListCard: React.FC<ToolListCardProps> = ({ tool, image, onClick }) => {
   return (
-    <Card>
+    <Card sx={{ height: '100%' }}>
       {image && (
         <Box sx={{ width: '100%', height: '70px' }}>
           <Link sx={{ cursor: 'pointer' }} onClick={onClick}>
@@ -106,14 +106,23 @@ export const ToolListCard: React.FC<ToolListCardProps> = ({ tool, image, onClick
             textOverflow: 'ellipsis',
             display: 'inline-block',
             maxWidth: '100%',
+            cursor: 'pointer',
           }}
-          href={tool.url}
-          target="_blank"
+          onClick={onClick}
           underline="none"
         >
           {tool.name}
         </Typography>
-        <Box>{tool.description}</Box>
+        <Box>
+          {tool.description.length < 100 ? tool.description : tool.description.slice(0, 100) + '...'}
+          {tool.description.length > 100 ? (
+            <Link sx={{ cursor: 'pointer' }} onClick={onClick}>
+              See More
+            </Link>
+          ) : (
+            ''
+          )}
+        </Box>
       </Box>
     </Card>
   )
