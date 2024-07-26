@@ -25,16 +25,18 @@ export const ToolList: React.FC<ToolListProps> = ({ initialFilters, tools, custo
 
   const viewEl = useMemo(() => {
     const filteredTools = tools.filter((tool) => {
+      // List of filter categories
       const filterGroups = Object.keys(filters)
-      filterGroups.forEach((key) => {
-        if (filters[key].length > 0) {
-          if (!filters[key].some((value) => tool[key].includes(value))) {
-            return false
-          }
-        }
-      })
 
-      return true
+      // Include tool if passes for all filter groups
+      return filterGroups.every((key) => {
+        if (filters[key].length === 0) {
+          return true
+        }
+
+        // Iterate over filter values, return true if any in tool values
+        return filters[key].some((value) => tool[key].includes(value))
+      })
     })
 
     switch (view) {
