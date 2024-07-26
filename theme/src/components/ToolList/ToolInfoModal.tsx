@@ -52,7 +52,10 @@ export const ToolInfoModal: React.FC<ToolInfoModalProps> = ({ open, tool, onClos
         </Box>
 
         <Stack spacing={1}>
-          {['purpose', 'compliance', 'interface', 'resolution'].map((key) => {
+          {['grade', 'compliance', 'interface', 'extent', 'resolution'].map((key) => {
+            if (tool[key].length === 0) {
+              return
+            }
             return (
               <Stack key={key} direction="row" spacing={1}>
                 <Typography variant="overline">{key.charAt(0).toUpperCase() + key.slice(1) + ':'}</Typography>

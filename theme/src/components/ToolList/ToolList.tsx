@@ -9,7 +9,7 @@ import { ToolListTableView } from './ToolListTableView'
 import { ToolListFilters } from './ToolListFilters'
 
 export interface ToolListProps {
-  name: string
+  customFilterOptions?: ToolListFilterValues
   initialFilters: ToolListFilterValues
   tools: Tool[]
 }
@@ -19,32 +19,21 @@ const ViewEnum = {
   Table: 'Table',
 }
 
-export const ToolList: React.FC<ToolListProps> = ({ name, initialFilters, tools }) => {
+export const ToolList: React.FC<ToolListProps> = ({ initialFilters, tools, customFilterOptions }) => {
   const [filters, setFilters] = React.useState(initialFilters)
   const [view, setView] = React.useState(ViewEnum.Card)
 
   const viewEl = useMemo(() => {
     const filteredTools = tools.filter((tool) => {
-      if (filters.purpose.length > 0) {
-        if (!filters.purpose.some((value) => tool.purpose.includes(value))) {
-          return false
+      const filterGroups = Object.keys(filters)
+      filterGroups.forEach((key) => {
+        if (filters[key].length > 0) {
+          if (!filters[key].some((value) => tool[key].includes(value))) {
+            return false
+          }
         }
-      }
-      if (filters.compliance.length > 0) {
-        if (!filters.compliance.some((value) => tool.compliance.includes(value))) {
-          return false
-        }
-      }
-      if (filters.interface.length > 0) {
-        if (!filters.interface.some((value) => tool.interface.includes(value))) {
-          return false
-        }
-      }
-      if (filters.resolution.length > 0) {
-        if (!filters.resolution.some((value) => tool.resolution.includes(value))) {
-          return false
-        }
-      }
+      })
+
       return true
     })
 
@@ -63,25 +52,21 @@ export const ToolList: React.FC<ToolListProps> = ({ name, initialFilters, tools 
   return (
     <Box sx={{ py: 1 }}>
       <Stack spacing={1}>
-        <Box>
-          <Grid container spacing={3}>
-            <Grid xs={6} sx={{ display: 'flex', alignItems: 'center' }}>
-              <Typography variant={'h6'} sx={{ fontWeight: 'bold' }}>
-                {name}
-              </Typography>
-            </Grid>
-            <Grid xs={6} sx={{ textAlign: 'right' }}>
-              {/* <Button endIcon={viewButtonIcon} onClick={() => setView(viewButtonAction)}>
-                {viewButtonLabel}
-              </Button> */}
-            </Grid>
-          </Grid>
-        </Box>
+        {/* 
+          <Button endIcon={viewButtonIcon} onClick={() => setView(viewButtonAction)}>
+            {viewButtonLabel}
+          </Button>
+         */}
 
         <Box>
           <Grid container spacing={3}>
             <Grid xs={4}>
-              <ToolListFilters tools={tools} setFilters={setFilters} filters={filters} />
+              <ToolListFilters
+                tools={tools}
+                setFilters={setFilters}
+                filters={filters}
+                customFilterOptions={customFilterOptions}
+              />
             </Grid>
             <Grid xs={8}>
               <Box>{viewEl}</Box>

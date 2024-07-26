@@ -5,12 +5,20 @@ description: Just testing a new Component
 
 Ids nulla non ea aliquip sint velit aute nulla est adipisicing consectetur exercitation proident. Cillum id laboris aliqua proident occaecat exercitation cillum laborum eu occaecat ullamco id laborum ullamco. Elit exercitation exercitation adipisicing consectetur ea. Mollit dolor minim ex ea non labore anim laboris aliquip.
 
-<ToolListContainer name={"Cool tools"} initialFilters={{
-  purpose: [],
-  compliance: [],
-  interface: [],
-  resolution: []
-}}/>
+<ToolListContainer
+  initialFilters={{
+    grade: [],
+    compliance: [],
+    interface: [],
+    extent: [],
+    resolution: [],
+  }}
+  customFilterOptions={{
+    grade: ['Commercial', 'Professional', 'Production'],
+    resolution: ['Cell', 'Reach', 'Any'],
+  }}
+/>
+
 
 Irure aliqua non est id sunt exercitation id non ullamco proident dolore officia laboris. Consequat cillum id cillum elit dolor qui cillum ad quis do consequat tempor nostrud. Eu esse esse eu nulla id incididunt laboris id sint ad ullamco sit qui commodo. Quis duis pariatur Lorem mollit.
 

@@ -5,11 +5,11 @@ import { ToolListFilterValues } from './types'
 import { ToolList } from './ToolList'
 
 export interface ToolListContainerProps {
-  name: string
+  customFilterOptions?: ToolListFilterValues
   initialFilters?: ToolListFilterValues
 }
 
-export const ToolListContainer: React.FC<ToolListContainerProps> = ({ name, initialFilters }) => {
+export const ToolListContainer: React.FC<ToolListContainerProps> = ({ initialFilters, customFilterOptions }) => {
   const data = useStaticQuery(graphql`
     query ToolsQuery {
       allToolsJson {
@@ -18,9 +18,10 @@ export const ToolListContainer: React.FC<ToolListContainerProps> = ({ name, init
           name
           description
           url
-          purpose
+          grade
           compliance
           interface
+          extent
           resolution
         }
       }
@@ -37,14 +38,15 @@ export const ToolListContainer: React.FC<ToolListContainerProps> = ({ name, init
     tools = allTools
   }
 
-  if (!initialFilters) {
-    initialFilters = {
-      purpose: [],
-      compliance: [],
-      interface: [],
-      resolution: [],
-    }
+  // Ensure that the initial filter options have empty keys for all categories
+  const initialFiltersAll = {
+    grade: [],
+    compliance: [],
+    interface: [],
+    extent: [],
+    resolution: [],
+    ...initialFilters,
   }
 
-  return <ToolList name={name} initialFilters={initialFilters} tools={tools} />
+  return <ToolList initialFilters={initialFiltersAll} tools={tools} customFilterOptions={customFilterOptions} />
 }

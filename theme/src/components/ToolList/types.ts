@@ -1,7 +1,8 @@
 export type ToolListFilterValues = {
-  purpose: string[]
+  grade: string[]
   compliance: string[]
   interface: string[]
+  extent: string[]
   resolution: string[]
 }
 

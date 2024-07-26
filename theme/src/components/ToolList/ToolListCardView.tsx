@@ -65,7 +65,7 @@ export const ToolListCardView: React.FC<ToolListCardViewProps> = ({ tools }) => 
     <Box>
       <Grid container spacing={2}>
         {tools.map((tool) => (
-          <Grid key={tool.toolId} xs={12} sm={6} md={4}>
+          <Grid key={tool.toolId} xs={12} sm={6}>
             <ToolListCard tool={tool} image={toolImages.get(tool.toolId)} onClick={() => handleModalOpen(tool)} />
           </Grid>
         ))}
