@@ -3,9 +3,10 @@ import React, { useMemo } from 'react'
 import { Tool, ToolListFilterValues } from './types'
 
 export type ToolListFilters = {
-  purpose: string[]
+  grade: string[]
   compliance: string[]
   interface: string[]
+  extent: string[]
   resolution: string[]
 }
 
@@ -13,33 +14,38 @@ export interface ToolListFilterProps {
   tools: Tool[]
   setFilters: (filters: any) => void
   filters: ToolListFilterValues
+  customFilterOptions?: ToolListFilterValues
 }
 
 const filterSectionNames = {
-  purpose: 'Type or Purpose',
+  grade: 'Tool Grade',
   compliance: 'RC standards compliance level/grade',
   interface: 'Interface',
+  extent: 'Extent',
   resolution: 'Resolution',
 }
 
-export const ToolListFilters: React.FC<ToolListFilterProps> = ({ tools, setFilters, filters }) => {
+export const ToolListFilters: React.FC<ToolListFilterProps> = ({ tools, setFilters, filters, customFilterOptions }) => {
   const filterList = useMemo(() => {
-    const purposeSet = new Set<string>()
-    const complianceSet = new Set<string>()
-    const interfaceSet = new Set<string>()
-    const resolutionSet = new Set<string>()
+    const gradeSet = new Set<string>(customFilterOptions?.grade)
+    const complianceSet = new Set<string>(customFilterOptions?.compliance)
+    const interfaceSet = new Set<string>(customFilterOptions?.interface)
+    const extentSet = new Set<string>(customFilterOptions?.extent)
+    const resolutionSet = new Set<string>(customFilterOptions?.resolution)
 
     tools.forEach((tool) => {
-      tool.purpose.forEach((purpose) => purposeSet.add(purpose))
+      tool.grade.forEach((grade) => gradeSet.add(grade))
       tool.compliance.forEach((compliance) => complianceSet.add(compliance))
       tool.interface.forEach((interface_) => interfaceSet.add(interface_))
+      tool.extent.forEach((extent) => extentSet.add(extent))
       tool.resolution.forEach((resolution) => resolutionSet.add(resolution))
     })
 
     return {
-      purpose: Array.from(purposeSet),
+      grade: Array.from(gradeSet),
       compliance: Array.from(complianceSet),
       interface: Array.from(interfaceSet),
+      extent: Array.from(extentSet),
       resolution: Array.from(resolutionSet),
     }
   }, [tools])
@@ -52,9 +58,10 @@ export const ToolListFilters: React.FC<ToolListFilterProps> = ({ tools, setFilte
           size="small"
           onClick={() => {
             setFilters({
-              purpose: [],
+              grade: [],
               compliance: [],
               interface: [],
+              extent: [],
               resolution: [],
             })
           }}
@@ -67,7 +74,7 @@ export const ToolListFilters: React.FC<ToolListFilterProps> = ({ tools, setFilte
           <Stack key={key} spacing={1} sx={{ border: '1px solid black', p: 2 }}>
             <Typography>{filterSectionNames[key]}</Typography>
             <FormGroup>
-              {filterList[key].sort().map((value) => (
+              {filterList[key].map((value) => (
                 <FormControlLabel
                   key={value}
                   control={

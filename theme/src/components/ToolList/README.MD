@@ -17,9 +17,10 @@ The contents of the JSON file should be in the same format as the following exam
     "name": "Tool A",
     "description": "This is Tool A",
     "url": "https://www.example.com",
-    "purpose": ["Purpose A"],
+    "grade": ["Grade A"],
     "compliance": ["Compliance A"],
     "interface": ["Interface A"],
+    "extent": ["Extent A"],
     "resolution": ["Resolution A"]
   },
   {
@@ -27,9 +28,10 @@ The contents of the JSON file should be in the same format as the following exam
     "name": "Tool B",
     "description": "This is Tool B",
     "url": "https://google.com",
-    "purpose": ["Purpose A", "Purpose B"],
+    "grade": ["Grade A", "Grade B"],
     "compliance": ["Compliance A"],
     "interface": ["Interface A", "Interface B"],
+    "extent": ["Extent B"],
     "resolution": ["Resolution A", "Resolution B"]
   },
   ...
@@ -49,17 +51,24 @@ You may additionally want to create an image called `default.jpg` in the same lo
 ## Using the component in Markdown
 
 You can use this component in your MDX file as follows:
-```md
-<ToolListContainer name={"Cool Tools"} initialFilters={{
-  purpose: ["Purpose B"],
-  compliance: [],
-  interface: ["Interface A"],
-  resolution: []
-}}/>
+```mdx
+<ToolListContainer
+  initialFilters={{
+    grade: ['Grade B'],
+    compliance: [],
+    interface: ['Interface A'],
+    extent: [],
+    resolution: [],
+  }}
+  customFilterOptions={{
+    grade: ['Grade A', 'Grade B'], {/* Customizing order */}
+    resolution: ['Resolution X', 'Resolution Y'], {/* Adding custom filter values */}
+  }}
+/>
 ```
 
-`name` (REQUIRED) is the section title that is displayed at the top of the component.
-
 `intialFilters` (optional) is an object that selects certain filters to be active by default. If you do not include this, there will simply be no filters active by default.
+
+`customFilterOptions` (optional) is an object that adds custom filters or a custom filter order. Without using this field filters will only appear as options if at least one tool has the value.
 
 **Important!** Take note that the component you use is `ToolListContainer`, NOT `ToolList`. The container reads the data from your `tools.json` and passes them to an internal `ToolList`. You should only use `ToolList` directly if for some reason (eg. testing) you do not want to set up a `tools.json` file.

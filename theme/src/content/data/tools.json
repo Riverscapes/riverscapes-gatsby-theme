@@ -4,9 +4,10 @@
     "name": "",
     "description": "This is intentionally left blank. DO NOT delete.",
     "url": "",
-    "purpose": [""],
+    "grade": [""],
     "compliance": [""],
     "interface": [""],
+    "extent": [""],
     "resolution": [""]
   }
 ]
