@@ -105,7 +105,7 @@ const Footer: React.FC = () => {
           alignItems={'flex-start'}
         >
           <Box>
-            <GatsbyLink to="/">
+            <GatsbyLink to="https://riverscapes.net" target="_blank">
               <StaticImage
                 layout="constrained"
                 formats={['auto', 'webp']}
