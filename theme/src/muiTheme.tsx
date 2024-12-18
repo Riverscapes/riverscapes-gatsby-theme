@@ -1,7 +1,7 @@
 /**
  * Custom MUI theme for Riverscapes website
  */
-import { SxProps, createTheme } from '@mui/material'
+import { SxProps, createTheme, lighten } from '@mui/material'
 
 declare module '@mui/material/styles' {
   interface TypographyVariants {
@@ -176,7 +176,8 @@ export const theme = createTheme({
             fontSize: '1.375rem',
           },
           '&:hover': {
-            backgroundColor: 'transparent',
+            color: '#fff',
+            backgroundColor: lighten(defaultTheme.palette.info.light, 0.2),
           },
         },
       },
