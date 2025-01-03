@@ -20,7 +20,7 @@ module.exports = {
     // Just leave this empty ('') if you don't want a help widget in the footer
     helpWidgetId: '153000000178',
     description: ``,
-    siteUrl: `https://riverscapes.github.io/`,
+    siteUrl: `https://riverscapes.github.io/riverscapes-gatsby-theme/`,
     social: {
       twitter: `RiverscapesC`,
     },
