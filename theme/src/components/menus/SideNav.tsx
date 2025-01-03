@@ -32,6 +32,8 @@ const SideNav: React.FC<SideNavProps> = ({
     <Typography
       sx={{
         mb: 3,
+        fontWeight: 'bold',
+        fontSize: '1.4rem',
       }}
       component={headingType}
       variant="sideMenu"

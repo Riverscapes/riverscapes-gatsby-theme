@@ -18,7 +18,6 @@ const TreeItemLink: React.FC<TreeItemLinkProps> = ({ to, label, children, ...res
   const theme = useTheme()
 
   const { isCurrent, isLeaf, isLink } = withPathAttributes(to, children)
-
   return (
     <TreeItem
       onClick={
@@ -47,11 +46,11 @@ const TreeItemLink: React.FC<TreeItemLinkProps> = ({ to, label, children, ...res
         },
         '& .MuiTreeItem-content': {
           borderBottom: '1px solid #bbcd3f',
-          py: 1,
+          py: 0.75,
         },
         '& .MuiTreeItem-label': {
           color: theme.palette.text.primary,
-          fontSize: '1.2rem',
+          fontSize: '1rem',
         },
         '& .MuiTreeItem-group': {
           ml: 0,
@@ -71,30 +70,13 @@ const TreeItemLink: React.FC<TreeItemLinkProps> = ({ to, label, children, ...res
             textAlign: 'left',
             color: isLink ? theme.palette.text.primary : theme.palette.text.secondary,
             fontWeight: isCurrent ? 'bold' : 'normal',
+            fontSize: '0.85rem',
             // On hover, underline
             '&:hover': {
               textDecoration: !isCurrent ? 'underline' : undefined,
             },
           }}
-          onClick={
-            isLeaf || isCurrent
-              ? undefined
-              : (e) => {
-                  e.preventDefault()
-                  e.stopPropagation()
-                  if (to.startsWith('#')) {
-                    const element = document.getElementById(to)
-                    e.preventDefault()
-                    element.scrollIntoView()
-                  } else if (to.length > 0) {
-                    // If it's not the current page then navigate to it
-                    if (!isCurrent) {
-                      e.preventDefault()
-                      navigate(to)
-                    }
-                  }
-                }
-          }
+          href={isLeaf || isCurrent ? undefined : to}
         >
           {label}
         </Button>

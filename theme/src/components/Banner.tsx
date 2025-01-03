@@ -14,12 +14,12 @@ const Banner: React.FC<BannerProps> = ({ title, description }) => {
         background: `url(${background})`,
         backgroundSize: 'cover',
         width: '100%',
-        minHeight: '18vw', // 350/1920
+        minHeight: '15vw', // 350/1920
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         height: {
-          xl: '18vw', // 350/1920
+          xl: '15vw', // 350/1920
         },
       }}
     >
@@ -36,6 +36,7 @@ const Banner: React.FC<BannerProps> = ({ title, description }) => {
           variant="h1"
           sx={{
             color: 'white',
+            fontSize: '2.2rem',
           }}
         >
           {title}
