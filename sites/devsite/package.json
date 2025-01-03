@@ -7,10 +7,10 @@
   "author": "Matt Reimer <matt@northarrowresearch.com>",
   "dependencies": {
     "@riverscapes/gatsby-theme": "*",
-    "gatsby": "^5.13.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "^4.7.2"
+    "gatsby": "^5.14.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^4.9.5"
   },
   "scripts": {
     "build": "gatsby build",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "colors": "^1.4.0",
+    "gatsby-plugin-bundle-stats": "^4.17.0",
     "numeral": "^2.0.6",
     "pidusage": "^3.0.2",
     "ps-tree": "^1.2.0"

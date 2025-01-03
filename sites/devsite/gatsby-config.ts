@@ -84,6 +84,7 @@ module.exports = {
     ],
   },
   plugins: [
+    'gatsby-plugin-bundle-stats',
     {
       resolve: '@riverscapes/gatsby-theme',
       options: {
