@@ -93,6 +93,7 @@ module.exports = {
           name: `Riverscapes Developer Site`,
           short_name: `RiverscapesDEV`,
           start_url: `/riverscapes-gatsby-theme`,
+          iconUrl: `static/images/favicon.png`,
         },
       },
     },

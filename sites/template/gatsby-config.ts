@@ -50,6 +50,8 @@ module.exports = {
           short_name: `RiverscapesTemplate`,
           // TODO: You need to change this to your site's URL. This should match the `pathPrefix` above.
           start_url: `/riverscapes-template`,
+          // This becomes the favicon
+          iconUrl: `static/images/favicon.png`,
         },
       },
     },
