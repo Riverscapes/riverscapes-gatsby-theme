@@ -12,21 +12,29 @@ const RESOLUTIONS = ['Cell', 'Point', 'Reach']
 
 // A tool generator function that returns a list of random tools.
 const generateTools = (count: number): Array<Tool> => {
-  return Array.from({ length: count }, () => ({
-    id: faker.string.uuid(),
-    // TITLECASE: (s.split(" ").map((el) => {return el.charAt(0).toUpperCase() + el.slice(1)})).join(" ")
-    name: faker.lorem
-      .words()
-      .split(' ')
-      .map((el) => el.charAt(0).toUpperCase() + el.slice(1))
-      .join(' '),
-    description: faker.lorem.sentence(),
-    // Choose between 1 and 3 random values for each filter.
-    compliance: _.sampleSize(COMPLIANCE, _.random(1, 3)),
-    interface: _.sampleSize(INTERFACE, _.random(1, 3)),
-    purpose: _.sampleSize(PURPOSE, _.random(1, 3)),
-    resolution: _.sampleSize(RESOLUTIONS, _.random(1, 3)),
-  }))
+  return Array.from(
+    { length: count },
+    () =>
+      ({
+        id: faker.string.uuid(),
+        // TITLECASE: (s.split(" ").map((el) => {return el.charAt(0).toUpperCase() + el.slice(1)})).join(" ")
+        name: faker.lorem
+          .words()
+          .split(' ')
+          .map((el) => el.charAt(0).toUpperCase() + el.slice(1))
+          .join(' '),
+        description: faker.lorem.sentence(),
+        toolId: faker.string.uuid(),
+        grade: ['Grade'],
+        url: faker.internet.url(),
+        extent: [],
+        // Choose between 1 and 3 random values for each filter.
+        compliance: _.sampleSize(COMPLIANCE, _.random(1, 3)),
+        interface: _.sampleSize(INTERFACE, _.random(1, 3)),
+        purpose: _.sampleSize(PURPOSE, _.random(1, 3)),
+        resolution: _.sampleSize(RESOLUTIONS, _.random(1, 3)),
+      } as Tool)
+  )
 }
 
 const meta = {
@@ -39,11 +47,18 @@ const meta = {
     layout: 'fullscreen',
   },
   args: {
-    name: 'Explore Latin Tools',
+    customFilterOptions: {
+      compliance: COMPLIANCE,
+      extent: [],
+      grade: [],
+      interface: INTERFACE,
+      resolution: RESOLUTIONS,
+    },
     initialFilters: {
+      extent: [],
+      grade: [],
       compliance: [],
       interface: [],
-      purpose: [],
       resolution: [],
     },
     tools: generateTools(40),
@@ -57,55 +72,72 @@ export const ToolListStory: Story = {}
 
 export const CustomStory: Story = {
   args: {
-    name: 'Explore Cool Tools',
+    customFilterOptions: {
+      compliance: COMPLIANCE,
+      extent: [],
+      grade: [],
+      interface: INTERFACE,
+      resolution: RESOLUTIONS,
+    },
     initialFilters: {
+      extent: [],
+      grade: [],
       compliance: [],
       interface: [],
-      purpose: [],
       resolution: [],
     },
     tools: [
       {
-        id: 'toola',
+        toolId: 'toola',
         name: 'Tool A',
         description: 'This is Tool A',
-        purpose: ['Purpose A'],
+        extent: ['Extent A'],
+        grade: ['Grade A'],
+        url: 'https://example.com',
         compliance: ['Compliance A'],
         interface: ['Interface A'],
         resolution: ['Resolution A'],
       },
       {
-        id: 'toolb',
+        toolId: 'toolb',
         name: 'Tool B',
         description: 'This is Tool B',
-        purpose: ['Purpose A', 'Purpose B'],
+        extent: ['Extent A'],
+        grade: ['Grade A'],
+        url: 'https://example.com',
         compliance: ['Compliance A'],
         interface: ['Interface A', 'Interface B'],
         resolution: ['Resolution A', 'Resolution B'],
       },
       {
-        id: 'toolc',
+        toolId: 'toolc',
         name: 'Tool C',
         description: 'This is Tool C',
-        purpose: ['Purpose C'],
+        extent: ['Extent A'],
+        grade: ['Grade A'],
+        url: 'https://example.com',
         compliance: ['Compliance C'],
         interface: ['Interface C'],
         resolution: ['Resolution C'],
       },
       {
-        id: 'toold',
+        toolId: 'toold',
         name: 'Tool D',
         description: 'This is Tool D',
-        purpose: ['Purpose A', 'Purpose B', 'Purpose D'],
+        extent: ['Extent A'],
+        grade: ['Grade A'],
+        url: 'https://example.com',
         compliance: ['Compliance A'],
         interface: ['Interface A', 'Interface B', 'Interface D'],
         resolution: ['Resolution A', 'Resolution B', 'Resolution D'],
       },
       {
-        id: 'toole',
+        toolId: 'toole',
         name: 'Tool E',
         description: 'This is Tool E',
-        purpose: ['Purpose C', 'Purpose E'],
+        extent: ['Extent A'],
+        grade: ['Grade A'],
+        url: 'https://example.com',
         compliance: ['Compliance C'],
         interface: ['Interface C', 'Interface E'],
         resolution: ['Resolution C', 'Resolution E'],
