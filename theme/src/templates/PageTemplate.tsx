@@ -123,6 +123,7 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
+        menuWeight
         date(formatString: "MMMM DD, YYYY")
         description
         banner
@@ -140,6 +141,7 @@ export const pageQuery = graphql`
         frontmatter {
           description
           title
+          menuWeight
           blurb
           isHome
           imageAlt
@@ -155,6 +157,7 @@ export const pageQuery = graphql`
       nodes {
         frontmatter {
           title
+          menuWeight
         }
         fields {
           slug

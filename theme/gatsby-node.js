@@ -95,6 +95,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
     type MdxFrontmatter {
       title: String
+      menuWeight: Int
       description: String
       blurb: String
       date(formatString: String): String
