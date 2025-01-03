@@ -8,6 +8,7 @@ import { TreeItem, TreeItemProps } from '@mui/x-tree-view/TreeItem'
 import { Button, useTheme } from '@mui/material'
 import { Place } from '@mui/icons-material'
 import { withPathAttributes } from '../../hooks/withPathAttributes'
+import { ContentLink } from '../ContentLink'
 
 interface TreeItemLinkProps extends TreeItemProps {
   to: string
@@ -66,6 +67,7 @@ const TreeItemLink: React.FC<TreeItemLinkProps> = ({ to, label, children, ...res
       label={
         <Button
           endIcon={isCurrent ? <Place /> : null}
+          component={ContentLink}
           sx={{
             textAlign: 'left',
             color: isLink ? theme.palette.text.primary : theme.palette.text.secondary,
@@ -76,7 +78,7 @@ const TreeItemLink: React.FC<TreeItemLinkProps> = ({ to, label, children, ...res
               textDecoration: !isCurrent ? 'underline' : undefined,
             },
           }}
-          href={isLeaf || isCurrent ? undefined : to}
+          to={isLeaf || isCurrent ? undefined : to}
         >
           {label}
         </Button>
