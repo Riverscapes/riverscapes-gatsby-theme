@@ -9,8 +9,6 @@ const fs = require('fs')
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 // const { optimizeImages } = require('./dist/optimize')
-const util = require('util')
-const { hasJSDocParameterTags } = require('typescript')
 
 const replacePath = (path) => (path === `/` ? path : path.replace(/\/$/, ``))
 
