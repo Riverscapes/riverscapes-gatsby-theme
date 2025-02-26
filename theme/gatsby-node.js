@@ -47,7 +47,6 @@ async function getResults({ graphql, reporter }) {
  * This function creates all the individual pages in this site
  */
 const createIndividualPage = async ({ pages, gatsbyUtilities }) => {
-  console.log(pages)
   for (const page of pages) {
     await gatsbyUtilities.actions.createPage({
       // Use the WordPress uri as the Gatsby page path
@@ -82,20 +81,9 @@ const createIndividualPage = async ({ pages, gatsbyUtilities }) => {
 exports.createPages = async (gatsbyUtilities) => {
   // Query our posts from the GraphQL server
   const results = await getResults(gatsbyUtilities)
-  // console.log(util.inspect(results, { depth: null, colors: true }))
-  // const pages = results.allMdx.nodes.filter((node) => node.parent?.sourceInstanceName === 'page')
-  const pages = (results.allMdx?.nodes || []).filter((val) => val.parent.sourceInstanceName.includes('page'))
-  // console.log(typeof pages)
-  // console.log('pages', pages)
-  // console.log(pages.length)
-  // // have an array with only the first element of pages
 
-  const firstPage = pages
-  // console.log(typeof firstPage)
-  // console.log('firstPage', firstPage)
-  // // If there are pages, create page for them
-  // console.log('is pages an array?', Array.isArray(pages))
-  // console.log('Is first page an array?', Array.isArray(firstPage))
+  const pages = (results.allMdx?.nodes || []).filter((val) => val.parent.sourceInstanceName.includes('page'))
+
   if (pages.length) {
     await createIndividualPage({ pages, gatsbyUtilities })
   }
