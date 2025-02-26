@@ -13,7 +13,6 @@ const config = ({ contentPath, manifest }) => {
   return {
     plugins: [
       `gatsby-plugin-image`,
-      `gatsby-plugin-mdx-source-name`,
       {
         resolve: `gatsby-source-filesystem`,
         options: {

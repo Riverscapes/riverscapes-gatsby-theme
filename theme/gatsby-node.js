@@ -9,6 +9,8 @@ const fs = require('fs')
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 // const { optimizeImages } = require('./dist/optimize')
+const util = require('util')
+const { hasJSDocParameterTags } = require('typescript')
 
 const replacePath = (path) => (path === `/` ? path : path.replace(/\/$/, ``))
 
@@ -23,7 +25,11 @@ async function getResults({ graphql, reporter }) {
           }
           fields {
             slug
-            source
+          }
+          parent {
+            ... on File {
+              sourceInstanceName
+            }
           }
         }
       }
@@ -40,36 +46,34 @@ async function getResults({ graphql, reporter }) {
 /**
  * This function creates all the individual pages in this site
  */
-const createIndividualPage = async ({ pages, gatsbyUtilities }) =>
-  Promise.all(
-    pages.map((page, index) => {
-      // createPage is an action passed to createPages
-      // See https://www.gatsbyjs.com/docs/actions#createPage for more info
-      gatsbyUtilities.actions.createPage({
-        // Use the WordPress uri as the Gatsby page path
-        // This is a good idea so that internal links and menus work
-        path: replacePath(page.fields.slug),
+const createIndividualPage = async ({ pages, gatsbyUtilities }) => {
+  console.log(pages)
+  for (const page of pages) {
+    await gatsbyUtilities.actions.createPage({
+      // Use the WordPress uri as the Gatsby page path
+      // This is a good idea so that internal links and menus work
+      path: replacePath(page.fields.slug),
 
-        // use the blog post template as the page component
-        component: `${path.resolve(path.join(__dirname, `src/templates/PageTemplate.tsx`))}?__contentFilePath=${
-          page.internal.contentFilePath
-        }`,
+      // use the blog post template as the page component
+      component: `${path.resolve(path.join(__dirname, `src/templates/PageTemplate.tsx`))}?__contentFilePath=${
+        page.internal.contentFilePath
+      }`,
 
-        // `context` is available in the template as a prop and
-        // as a variable in GraphQL.
-        context: {
-          // we need to add the post id here
-          // so our blog post template knows which blog post
-          // the current page is (when you open it in a browser)
-          id: page.id,
+      // `context` is available in the template as a prop and
+      // as a variable in GraphQL.
+      context: {
+        // we need to add the post id here
+        // so our blog post template knows which blog post
+        // the current page is (when you open it in a browser)
+        id: page.id,
 
-          // We also use the next and previous id's to query them and add links!
-          // previousPostId: previousPostId,
-          // nextPostId: nextPostId,
-        },
-      })
+        // We also use the next and previous id's to query them and add links!
+        // previousPostId: previousPostId,
+        // nextPostId: nextPostId,
+      },
     })
-  )
+  }
+}
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
@@ -78,9 +82,20 @@ const createIndividualPage = async ({ pages, gatsbyUtilities }) =>
 exports.createPages = async (gatsbyUtilities) => {
   // Query our posts from the GraphQL server
   const results = await getResults(gatsbyUtilities)
-  const pages = results.allMdx.nodes.filter((val) => val.fields.source.includes('page'))
+  // console.log(util.inspect(results, { depth: null, colors: true }))
+  // const pages = results.allMdx.nodes.filter((node) => node.parent?.sourceInstanceName === 'page')
+  const pages = (results.allMdx?.nodes || []).filter((val) => val.parent.sourceInstanceName.includes('page'))
+  // console.log(typeof pages)
+  // console.log('pages', pages)
+  // console.log(pages.length)
+  // // have an array with only the first element of pages
 
-  // If there are pages, create page for them
+  const firstPage = pages
+  // console.log(typeof firstPage)
+  // console.log('firstPage', firstPage)
+  // // If there are pages, create page for them
+  // console.log('is pages an array?', Array.isArray(pages))
+  // console.log('Is first page an array?', Array.isArray(firstPage))
   if (pages.length) {
     await createIndividualPage({ pages, gatsbyUtilities })
   }
