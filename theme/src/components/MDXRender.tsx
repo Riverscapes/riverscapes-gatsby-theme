@@ -66,10 +66,18 @@ const MDXRender: React.FC<React.PropsWithChildren> = ({ children }) => {
     mt: 8,
     mb: 6,
     clear: 'both',
+    position: 'relative',
     '&:hover': {
       '& .header-link-icon': {
         display: 'block',
       },
+    },
+    '& .header-link-icon': {
+      position: 'relative',
+      display: 'inline-block',
+      left: 0,
+      top: 0,
+      marginRight: '8px',
     },
     // Dial back the font sizes a bit for the content
     // area. Reference `/theme/src/muiTheme.tsx`
