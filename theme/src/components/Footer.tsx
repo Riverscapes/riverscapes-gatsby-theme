@@ -26,58 +26,9 @@ const stylesThunk = (theme: Theme): Record<string, SxProps<Theme>> => ({
   },
 })
 
-// In order to use the Freshworks widget, we need to declare the global
-declare global {
-  interface Window {
-    fwSettings: {
-      widget_id: number
-      // Add other properties if needed
-    }
-    FreshworksWidget: (...args: any[]) => void
-  }
-}
-
 const Footer: React.FC = () => {
   const theme = useTheme()
-  const boxRef = useRef<HTMLDivElement>(null) // Create a ref for the <Box> element
   const styles = stylesThunk(theme)
-
-  const data = useStaticQuery(graphql`
-    query Query {
-      site {
-        siteMetadata {
-          helpWidgetId
-          social {
-            twitter
-          }
-        }
-      }
-    }
-  `)
-
-  // Set these values by editing "siteMetadata" in gatsby-config.js
-  const social = data.site.siteMetadata?.social
-  const hasHelpWidget = data.site.siteMetadata?.helpWidgetId !== undefined
-  const helpWidgetId = data.site.siteMetadata?.helpWidgetId
-
-  useEffect(() => {
-    if (!helpWidgetId) return
-    // Configure Freshworks widget settings
-    window.fwSettings = {
-      widget_id: 153000000178,
-    }
-
-    const script = document.createElement('script')
-    script.type = 'text/javascript'
-    script.src = `https://widget.freshworks.com/widgets/${helpWidgetId}.js`
-    script.async = true
-    script.defer = true
-
-    // Append the script to the DOM element inside the <Box>
-    if (boxRef.current) {
-      boxRef.current.appendChild(script)
-    }
-  }, [helpWidgetId]) // Empty dependency array means this effect runs once after the initial render
 
   return (
     <Box component="footer" sx={styles.wrapper}>
@@ -152,29 +103,12 @@ const Footer: React.FC = () => {
                 </MenuButton>
               ))}
             </Stack>
-            {hasHelpWidget && <Box ref={boxRef}>{/* Your other content */}</Box>}
           </Box>
           <Box>
             <Typography variant="h4" paragraph sx={{ color: 'inherit' }}>
               {footerContent.link.heading}
             </Typography>
             <Menu invert />
-          </Box>
-          <Box>
-            <Typography variant="h4" paragraph sx={{ color: 'inherit' }}>
-              {footerContent.follow.heading}
-            </Typography>
-            <IconButton onClick={() => window.open(`https://twitter.com/${social?.twitter}` || '', '_blank')}>
-              <StaticImage
-                layout={'constrained'}
-                formats={['auto', 'webp']}
-                src="../images/icon-twitter.png"
-                width={36}
-                quality={100}
-                alt="Twitter logo"
-                placeholder="none"
-              />
-            </IconButton>
           </Box>
         </Stack>
       </Container>
