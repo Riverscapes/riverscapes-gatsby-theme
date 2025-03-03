@@ -42,7 +42,7 @@ const stylesThunk = (theme: Theme): Record<string, SxProps<Theme>> => ({
 const Header: React.FC = () => {
   const theme = useTheme()
   const styles = stylesThunk(theme)
-  const isLargerScreen = useMediaQuery(theme.breakpoints.up('md'))
+  const isLargerScreen = useMediaQuery(theme.breakpoints.up('lg'))
   const [mobileMenu, setMobileMenu] = useState(false)
 
   const handleMobileMenuChange = () => {
