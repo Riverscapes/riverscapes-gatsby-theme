@@ -52,7 +52,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ mobileMenuState }) => {
   // Set these values by editing "siteMetadata" in gatsby-config.js
   const menu = data.site.siteMetadata.menuLinks
 
-  const [anchorEl, setAnchorEl] = useState([])
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
   const containerRef = useRef(null)
   const menuRef = useRef([])
@@ -61,16 +61,17 @@ const MainMenu: React.FC<MainMenuProps> = ({ mobileMenuState }) => {
     menuRef.current = menuRef.current.slice(0, menu.length)
   }, [menu])
 
-  // const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    const id = event.currentTarget.id
-    const newArr = [...anchorEl]
-    newArr[id] = menuRef.current[id]
-    setAnchorEl(newArr)
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    const sameMenu = anchorEl === event.currentTarget
+    if (sameMenu) {
+      setAnchorEl(null)
+    } else {
+      setAnchorEl(event.currentTarget) // Otherwise, set the new anchor
+    }
   }
-  const handleClose = (event) => {
-    const newArr = []
-    setAnchorEl(newArr)
+  const handleClose = () => {
+    // Close the menu when clicking away
+    setAnchorEl(null)
   }
 
   const mobileMenu: MobileMenu = {
@@ -126,8 +127,8 @@ const MainMenu: React.FC<MainMenuProps> = ({ mobileMenuState }) => {
               </ButtonGroup>
               <Popper
                 id={`menu-${key}`}
-                open={Boolean(anchorEl[`${key}`])}
-                anchorEl={anchorEl[`${key}`]}
+                open={Boolean(anchorEl && anchorEl.id === `${key}`)} // Open only if it's the active menu
+                anchorEl={anchorEl} // Set the active menu position
                 placement="bottom-start"
               >
                 <ClickAwayListener onClickAway={handleClose}>
