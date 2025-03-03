@@ -31,7 +31,7 @@ interface MainMenuProps {
 
 const MainMenu: React.FC<MainMenuProps> = ({ mobileMenuState }) => {
   const theme = useTheme()
-  const isLargerScreen = useMediaQuery(theme.breakpoints.up('md'))
+  const isLargerScreen = useMediaQuery(theme.breakpoints.up('lg'))
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       site {
