@@ -42,7 +42,7 @@ const stylesThunk = (theme: Theme): Record<string, SxProps<Theme>> => ({
 const Header: React.FC = () => {
   const theme = useTheme()
   const styles = stylesThunk(theme)
-  const isXL = useMediaQuery(theme.breakpoints.up('xl'))
+  const isLargerScreen = useMediaQuery(theme.breakpoints.up('md'))
   const [mobileMenu, setMobileMenu] = useState(false)
 
   const handleMobileMenuChange = () => {
@@ -58,7 +58,7 @@ const Header: React.FC = () => {
               <RSStaticImage src="/images/logo.png" width={228} alt="Riverscapes Consortium logo" />
             </Link>
           </Box>
-          {!isXL ? (
+          {!isLargerScreen ? (
             <Box sx={styles.menuButton}>
               <Button onClick={handleMobileMenuChange} variant="text" sx={{ color: '#fff' }} startIcon={<MenuIcon />}>
                 Menu
@@ -78,7 +78,7 @@ const Header: React.FC = () => {
         quality={95}
         alt="Wave Pattern"
       />
-      {!isXL && (
+      {!isLargerScreen && (
         <Box sx={styles.mobileMenu}>
           <Menu menuOption="full" horizontal mobileMenuState={mobileMenu} invert />
         </Box>

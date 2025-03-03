@@ -31,7 +31,7 @@ interface MainMenuProps {
 
 const MainMenu: React.FC<MainMenuProps> = ({ mobileMenuState }) => {
   const theme = useTheme()
-  const isXL = useMediaQuery(theme.breakpoints.up('xl'))
+  const isLargerScreen = useMediaQuery(theme.breakpoints.up('md'))
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       site {
@@ -78,7 +78,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ mobileMenuState }) => {
     items: menu,
   }
 
-  if (isXL)
+  if (isLargerScreen)
     return (
       <Stack
         direction="row"
@@ -105,13 +105,11 @@ const MainMenu: React.FC<MainMenuProps> = ({ mobileMenuState }) => {
                   component={Link}
                   to={link.url}
                   key={key}
-                  sx={{ px: 0 }}
+                  sx={{ px: 0, whiteSpace: 'nowrap', minWidth: 'auto' }}
                   endIcon={
                     <IconButton
                       id={`${key}`}
                       aria-haspopup="true"
-                      aria-controls={anchorEl[`${key}`] ? `menu-${key}` : undefined}
-                      aria-expanded={anchorEl[`${key}`] ? 'true' : undefined}
                       onClick={(e) => {
                         e.preventDefault()
                         e.stopPropagation()
@@ -140,7 +138,14 @@ const MainMenu: React.FC<MainMenuProps> = ({ mobileMenuState }) => {
                     }}
                   >
                     {link.items.map((dropdownItem, itemIndex) => (
-                      <MenuItem key={itemIndex} onClick={handleClose} divider>
+                      <MenuItem
+                        key={itemIndex}
+                        onClick={handleClose}
+                        divider
+                        sx={{
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
                         <MenuButton
                           to={dropdownItem.url}
                           style={{
@@ -171,6 +176,7 @@ const MainMenu: React.FC<MainMenuProps> = ({ mobileMenuState }) => {
               color="inherit"
               startIcon={link.title === 'Search' ? <SearchIcon /> : ''}
               variant="text"
+              sx={{ whiteSpace: 'nowrap' }}
             >
               {link.title}
             </Button>
