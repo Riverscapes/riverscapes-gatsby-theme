@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages and access to the repository
 permissions:
   contents: read
   pages: write
